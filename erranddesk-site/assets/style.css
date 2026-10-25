@@ -1,0 +1,36 @@
+:root{--ink:#1d2329;--muted:#5b6670;--line:#dfe3e7;--bg:#fff;--soft:#f5f7f9;--accent:#1f5f8b;--warn:#8a5a00;--warnbg:#fff7e6}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:#fff;padding:6px}
+a{color:var(--accent)}
+.site-header{border-bottom:1px solid var(--line);background:var(--soft)}
+.site-header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-top:12px;padding-bottom:12px}
+.brand{font-weight:700;text-decoration:none;color:var(--ink);font-size:1.15rem}
+.brand .tag{display:block;font-weight:400;font-size:.8rem;color:var(--muted)}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+nav a{text-decoration:none}nav a[aria-current]{font-weight:700;text-decoration:underline}
+.soon{color:var(--muted)}
+main{padding-top:20px;padding-bottom:40px}
+h1{font-size:1.75rem;line-height:1.25;margin:.4em 0}
+h2{font-size:1.3rem;margin-top:2em;border-top:1px solid var(--line);padding-top:1em}
+h3{font-size:1.08rem;margin-top:1.4em}
+.lede{font-size:1.08rem;color:#2c353d}
+.meta{color:var(--muted);font-size:.9rem}
+.note{background:var(--warnbg);border-left:4px solid #e0a800;padding:10px 14px;margin:16px 0;color:#3d2c00}
+.box{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:12px 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.93rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+thead th{background:var(--soft)}
+tbody th{background:#fafbfc;font-weight:600;white-space:nowrap}
+.official{font-weight:600}
+.unk{color:var(--warn);font-style:italic}
+sup a{text-decoration:none;font-size:.75rem}
+ol.sources{font-size:.88rem;color:#333}ol.sources li{margin:4px 0;word-break:break-word}
+details{border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.small{font-size:.85rem;color:var(--muted)}
+.site-footer{border-top:1px solid var(--line);background:var(--soft);font-size:.9rem;padding:16px 0}
+@media (max-width:600px){h1{font-size:1.45rem}body{font-size:15.5px}}

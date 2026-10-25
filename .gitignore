@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Build artifact (regenerate from erranddesk-site/)
+erranddesk-site.zip
+
+# Private notes and local secrets
+aws.doc
+*.env
+.env*
+*.pem
+*.key
+
+# Editors
+.vscode/
+.idea/
