@@ -1,0 +1,9 @@
+# Default owner (solo maintainer). Documents ownership and auto-requests reviews;
+# not enforced as a required review.
+* @gpu7
+
+# Higher-sensitivity paths
+/.github/ @gpu7
+/SECURITY.md @gpu7
+/s3-bucket-policy.json @gpu7
+/cloudfront-function-index-rewrite.js @gpu7
