@@ -1,0 +1,6 @@
+# build output (the deployed copy lives in ../erranddesk-site/)
+public/
+__pycache__/
+*.pyc
+*.zip
+.DS_Store
