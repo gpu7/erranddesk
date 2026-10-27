@@ -1,0 +1,6 @@
+{
+  "base_url": "https://erranddesk.com/",
+  "default_lastmod": "2026-10-21",
+  "_notes": "base_url: production domain (env SITE_BASE_URL overrides). cf_analytics_token: Cloudflare Web Analytics site token; empty = no analytics code emitted at all.",
+  "cf_analytics_token": "addd0942b0e7481cacc1b10e11ffbd27"
+}
