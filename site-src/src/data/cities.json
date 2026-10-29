@@ -7,7 +7,8 @@
   "KS": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kansas (2025_gaz_place_20.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_20.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "NM": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Mexico (2025_gaz_place_35.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_35.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "AZ": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Arizona (2025_gaz_place_04.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_04.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "SD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, South Dakota (2025_gaz_place_46.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_46.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "SD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, South Dakota (2025_gaz_place_46.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_46.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "ND": "U.S. Census Bureau, 2025 Gazetteer Files, Places, North Dakota (2025_gaz_place_38.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_38.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -17,7 +18,8 @@
   "KS": "Kansas",
   "NM": "New Mexico",
   "AZ": "Arizona",
-  "SD": "South Dakota"
+  "SD": "South Dakota",
+  "ND": "North Dakota"
  },
  "cities": [
   {
@@ -624,6 +626,17 @@
    "lon": -97.155685,
    "x": 479.48,
    "y": 163.08
+  },
+  {
+   "name": "Fargo",
+   "state": "ND",
+   "slug": "fargo",
+   "gazetteer_name": "Fargo city",
+   "geoid": "3825700",
+   "lat": 46.8647,
+   "lon": -96.82908,
+   "x": 485.11,
+   "y": 118.82
   }
  ]
 }
