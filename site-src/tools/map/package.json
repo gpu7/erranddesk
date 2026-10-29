@@ -1,0 +1,12 @@
+{
+  "name": "erranddesk-map-data",
+  "private": true,
+  "type": "module",
+  "description": "One-off generator for src/data/us-map.json and the x/y in src/data/colorado-cities.json. Not needed to build the site.",
+  "dependencies": {
+    "d3-geo": "3.1.1",
+    "topojson-client": "3.1.0",
+    "topojson-simplify": "3.0.3",
+    "us-atlas": "3.0.1"
+  }
+}

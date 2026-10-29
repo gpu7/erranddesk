@@ -41,3 +41,20 @@ summary{cursor:pointer;font-weight:600}
 .site-footer .support{border-top:1px solid var(--line);margin-top:10px;padding-top:6px}
 .btn-tip{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;border-radius:6px;padding:6px 14px;font-weight:600}
 .btn-tip:hover,.btn-tip:focus{background:#174a6d}
+/* /map/ page */
+.usmap{margin:16px 0}
+.usmap svg{display:block;width:100%;height:auto;aspect-ratio:975/610;background:#eef3f7;border:1px solid var(--line);border-radius:6px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.usmap svg:active{cursor:grabbing}
+.usmap .nation{fill:#fff;stroke:#9aa5ae;stroke-width:.6;vector-effect:non-scaling-stroke}
+.usmap .borders{fill:none;stroke:#c3cbd2;stroke-width:.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.usmap .co{fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.usmap .dot{fill:#c0392b;stroke:#fff;stroke-width:.5}
+.usmap .hit{fill:transparent}
+.usmap a:hover .dot,.usmap a:focus .dot{fill:#7b1d12}
+.usmap a:focus{outline:none}.usmap a:focus-visible .dot{stroke:var(--ink)}
+.usmap .lbl{fill:var(--ink);font-weight:600;paint-order:stroke;stroke:#fff;stroke-linejoin:round;pointer-events:none}
+.usmap-tools{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.usmap-tools button{font:inherit;font-size:.95rem;min-width:44px;min-height:44px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--soft);color:var(--ink);cursor:pointer}
+.usmap-tools button:hover{background:#e9eef2}.usmap-tools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.usmap-help{margin-top:6px}
+.city-list{columns:2;column-gap:24px}@media (max-width:600px){.city-list{columns:1}}
