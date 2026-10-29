@@ -3,13 +3,15 @@
   "CO": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Colorado (2025_gaz_place_08.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Wyoming (2025_gaz_place_56.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_56.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "UT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Utah (2025_gaz_place_49.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_49.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "NE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nebraska (2025_gaz_place_31.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_31.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "NE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nebraska (2025_gaz_place_31.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_31.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "KS": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kansas (2025_gaz_place_20.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_20.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
   "WY": "Wyoming",
   "UT": "Utah",
-  "NE": "Nebraska"
+  "NE": "Nebraska",
+  "KS": "Kansas"
  },
  "cities": [
   {
@@ -396,6 +398,17 @@
    "lon": -99.082312,
    "x": 445.46,
    "y": 258.34
+  },
+  {
+   "name": "Wichita",
+   "state": "KS",
+   "slug": "wichita",
+   "gazetteer_name": "Wichita city",
+   "geoid": "2079000",
+   "lat": 37.690638,
+   "lon": -97.345836,
+   "x": 474.09,
+   "y": 327.99
   }
  ]
 }
