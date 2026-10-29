@@ -36,6 +36,15 @@ st_names = and_list([STATES[st] for st in used])
 metro = [c for c in cities if math.hypot(c["x"] - den["x"], c["y"] - den["y"]) <= 9.5]
 mb = [min(c["x"] for c in metro), min(c["y"] for c in metro), max(c["x"] for c in metro), max(c["y"] for c in metro)]
 f = lambda v: f"{v:.2f}".rstrip("0").rstrip(".")
+slc = next((c for c in cities if c["slug"] == "salt-lake-city"), None)
+slca = [c for c in cities if slc and math.hypot(c["x"] - slc["x"], c["y"] - slc["y"]) <= 9.5]
+def padbox(cs, mn=6):  # bounding box of cs, widened to at least mn viewBox units each way
+    x0, y0, x1, y1 = min(c["x"] for c in cs), min(c["y"] for c in cs), max(c["x"] for c in cs), max(c["y"] for c in cs)
+    cx, cy, w, h = (x0 + x1) / 2, (y0 + y1) / 2, max(x1 - x0, mn), max(y1 - y0, mn)
+    return [cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2]
+slcb = padbox(slca) if len(slca) >= 2 else []
+slc_btn = '\n<button type="button" data-act="slc">Salt Lake area</button>' if slcb else ""
+slc_attr = f' data-slc="{" ".join(f(v) for v in slcb)}"' if slcb else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -72,9 +81,9 @@ page = f"""<!--meta
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
 <button type="button" data-act="ut">Zoom to Utah</button>
-<button type="button" data-act="metro">Denver area</button>
+<button type="button" data-act="metro">Denver area</button>{slc_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}" role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
@@ -95,4 +104,4 @@ page = f"""<!--meta
 </article>
 <script src="/assets/map.js?v={JS_V}" defer></script>"""
 (SRC / "pages" / "map.html").write_text(page + "\n")
-print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro])
+print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca])
