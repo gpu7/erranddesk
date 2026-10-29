@@ -613,6 +613,17 @@
    "lon": -96.787339,
    "x": 485.28,
    "y": 176.92
+  },
+  {
+   "name": "Watertown",
+   "state": "SD",
+   "slug": "watertown",
+   "gazetteer_name": "Watertown city",
+   "geoid": "4669300",
+   "lat": 44.909188,
+   "lon": -97.155685,
+   "x": 479.48,
+   "y": 163.08
   }
  ]
 }
