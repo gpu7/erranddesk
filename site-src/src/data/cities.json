@@ -328,6 +328,17 @@
    "lon": -111.645057,
    "x": 230.7,
    "y": 247.59
+  },
+  {
+   "name": "St. George",
+   "state": "UT",
+   "slug": "st-george",
+   "gazetteer_name": "St. George city",
+   "geoid": "4965330",
+   "lat": 37.077006,
+   "lon": -113.576534,
+   "x": 184.7,
+   "y": 313.16
   }
  ]
 }
