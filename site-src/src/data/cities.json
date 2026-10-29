@@ -602,6 +602,17 @@
    "lon": -98.468104,
    "x": 458.75,
    "y": 150.07
+  },
+  {
+   "name": "Brookings",
+   "state": "SD",
+   "slug": "brookings",
+   "gazetteer_name": "Brookings city",
+   "geoid": "4607580",
+   "lat": 44.303364,
+   "lon": -96.787339,
+   "x": 485.28,
+   "y": 176.92
   }
  ]
 }
