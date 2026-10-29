@@ -1,0 +1,205 @@
+{
+ "_source": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Colorado (2025_gaz_place_08.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+ "cities": [
+  {
+   "name": "Arvada",
+   "slug": "arvada",
+   "gazetteer_name": "Arvada city",
+   "geoid": "0803455",
+   "lat": 39.833728,
+   "lon": -105.150306,
+   "x": 340.3,
+   "y": 271.47
+  },
+  {
+   "name": "Aurora",
+   "slug": "aurora",
+   "gazetteer_name": "Aurora city",
+   "geoid": "0804000",
+   "lat": 39.709537,
+   "lon": -104.720509,
+   "x": 347.43,
+   "y": 274.99
+  },
+  {
+   "name": "Boulder",
+   "slug": "boulder",
+   "gazetteer_name": "Boulder city",
+   "geoid": "0807850",
+   "lat": 40.024431,
+   "lon": -105.251251,
+   "x": 338.99,
+   "y": 266.95
+  },
+  {
+   "name": "Broomfield",
+   "slug": "broomfield",
+   "gazetteer_name": "Broomfield city",
+   "geoid": "0809280",
+   "lat": 39.953877,
+   "lon": -105.050898,
+   "x": 342.27,
+   "y": 268.89
+  },
+  {
+   "name": "Castle Rock",
+   "slug": "castle-rock",
+   "gazetteer_name": "Castle Rock town",
+   "geoid": "0812415",
+   "lat": 39.376194,
+   "lon": -104.852922,
+   "x": 344.44,
+   "y": 282.38
+  },
+  {
+   "name": "Centennial",
+   "slug": "centennial",
+   "gazetteer_name": "Centennial city",
+   "geoid": "0812815",
+   "lat": 39.590856,
+   "lon": -104.863754,
+   "x": 344.71,
+   "y": 277.47
+  },
+  {
+   "name": "Colorado Springs",
+   "slug": "colorado-springs",
+   "gazetteer_name": "Colorado Springs city",
+   "geoid": "0816000",
+   "lat": 38.867255,
+   "lon": -104.760749,
+   "x": 344.96,
+   "y": 294.14
+  },
+  {
+   "name": "Commerce City",
+   "slug": "commerce-city",
+   "gazetteer_name": "Commerce City city",
+   "geoid": "0816495",
+   "lat": 39.882792,
+   "lon": -104.794908,
+   "x": 346.51,
+   "y": 270.93
+  },
+  {
+   "name": "Denver",
+   "slug": "denver",
+   "gazetteer_name": "Denver city",
+   "geoid": "0820000",
+   "lat": 39.76185,
+   "lon": -104.881105,
+   "x": 344.77,
+   "y": 273.55
+  },
+  {
+   "name": "Fort Collins",
+   "slug": "fort-collins",
+   "gazetteer_name": "Fort Collins city",
+   "geoid": "0827425",
+   "lat": 40.548216,
+   "lon": -105.064833,
+   "x": 343.33,
+   "y": 255.32
+  },
+  {
+   "name": "Grand Junction",
+   "slug": "grand-junction",
+   "gazetteer_name": "Grand Junction city",
+   "geoid": "0831660",
+   "lat": 39.089062,
+   "lon": -108.567452,
+   "x": 279.45,
+   "y": 281.65
+  },
+  {
+   "name": "Greeley",
+   "slug": "greeley",
+   "gazetteer_name": "Greeley city",
+   "geoid": "0832155",
+   "lat": 40.414034,
+   "lon": -104.771043,
+   "x": 348.04,
+   "y": 258.85
+  },
+  {
+   "name": "Lakewood",
+   "slug": "lakewood",
+   "gazetteer_name": "Lakewood city",
+   "geoid": "0843000",
+   "lat": 39.698939,
+   "lon": -105.117573,
+   "x": 340.57,
+   "y": 274.59
+  },
+  {
+   "name": "Littleton",
+   "slug": "littleton",
+   "gazetteer_name": "Littleton city",
+   "geoid": "0845255",
+   "lat": 39.590375,
+   "lon": -105.020084,
+   "x": 342.01,
+   "y": 277.23
+  },
+  {
+   "name": "Longmont",
+   "slug": "longmont",
+   "gazetteer_name": "Longmont city",
+   "geoid": "0845970",
+   "lat": 40.168199,
+   "lon": -105.100522,
+   "x": 341.89,
+   "y": 263.93
+  },
+  {
+   "name": "Loveland",
+   "slug": "loveland",
+   "gazetteer_name": "Loveland city",
+   "geoid": "0846465",
+   "lat": 40.416905,
+   "lon": -105.063111,
+   "x": 343.07,
+   "y": 258.32
+  },
+  {
+   "name": "Parker",
+   "slug": "parker",
+   "gazetteer_name": "Parker town",
+   "geoid": "0857630",
+   "lat": 39.505946,
+   "lon": -104.775828,
+   "x": 346.04,
+   "y": 279.55
+  },
+  {
+   "name": "Pueblo",
+   "slug": "pueblo",
+   "gazetteer_name": "Pueblo city",
+   "geoid": "0862000",
+   "lat": 38.269228,
+   "lon": -104.610816,
+   "x": 346.33,
+   "y": 308.03
+  },
+  {
+   "name": "Thornton",
+   "slug": "thornton",
+   "gazetteer_name": "Thornton city",
+   "geoid": "0877290",
+   "lat": 39.920433,
+   "lon": -104.941413,
+   "x": 344.08,
+   "y": 269.83
+  },
+  {
+   "name": "Westminster",
+   "slug": "westminster",
+   "gazetteer_name": "Westminster city",
+   "geoid": "0883835",
+   "lat": 39.880122,
+   "lon": -105.061513,
+   "x": 341.93,
+   "y": 270.56
+  }
+ ]
+}

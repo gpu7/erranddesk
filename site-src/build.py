@@ -120,6 +120,7 @@ for page in sorted((SRC / "pages").rglob("*.html")):
         .replace("{{nav_free_notary}}", ' aria-current="page"' if meta.get("nav") == "free-notary" else "")
         .replace("{{nav_guides}}", ' aria-current="page"' if meta.get("nav") == "guides" else "")
         .replace("{{nav_about}}", ' aria-current="page"' if meta.get("nav") == "about" else "")
+        .replace("{{nav_map}}", ' aria-current="page"' if meta.get("nav") == "map" else "")
         .replace("{{analytics}}", ANALYTICS)
         .replace("{{content}}", body))
     dest.write_text(html); print("built", dest.relative_to(OUT))
