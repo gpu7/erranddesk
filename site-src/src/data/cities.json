@@ -374,6 +374,17 @@
    "lon": -95.93856,
    "x": 499.06,
    "y": 249.05
+  },
+  {
+   "name": "Grand Island",
+   "state": "NE",
+   "slug": "grand-island",
+   "gazetteer_name": "Grand Island city",
+   "geoid": "3119595",
+   "lat": 40.921352,
+   "lon": -98.358559,
+   "x": 457.93,
+   "y": 253.67
   }
  ]
 }
