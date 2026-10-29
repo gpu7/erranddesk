@@ -556,6 +556,17 @@
    "lon": -111.743121,
    "x": 202.86,
    "y": 403.91
+  },
+  {
+   "name": "Chandler",
+   "state": "AZ",
+   "slug": "chandler",
+   "gazetteer_name": "Chandler city",
+   "geoid": "0412000",
+   "lat": 33.282765,
+   "lon": -111.851819,
+   "x": 200.73,
+   "y": 404.19
   }
  ]
 }
