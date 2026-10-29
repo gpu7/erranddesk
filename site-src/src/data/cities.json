@@ -591,6 +591,17 @@
    "lon": -103.217924,
    "x": 380.88,
    "y": 177.81
+  },
+  {
+   "name": "Aberdeen",
+   "state": "SD",
+   "slug": "aberdeen",
+   "gazetteer_name": "Aberdeen city",
+   "geoid": "4600100",
+   "lat": 45.464678,
+   "lon": -98.468104,
+   "x": 458.75,
+   "y": 150.07
   }
  ]
 }
