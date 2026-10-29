@@ -545,6 +545,17 @@
    "lon": -111.715968,
    "x": 203.7,
    "y": 401.99
+  },
+  {
+   "name": "Gilbert",
+   "state": "AZ",
+   "slug": "gilbert",
+   "gazetteer_name": "Gilbert town",
+   "geoid": "0427400",
+   "lat": 33.310345,
+   "lon": -111.743121,
+   "x": 202.86,
+   "y": 403.91
   }
  ]
 }
