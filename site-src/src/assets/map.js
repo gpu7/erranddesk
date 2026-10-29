@@ -17,6 +17,8 @@
   var ksb = (svg.getAttribute("data-ks") || "").split(" ").map(Number);
   var kcb = (svg.getAttribute("data-kc") || "").split(" ").map(Number);
   var nmb = (svg.getAttribute("data-nm") || "").split(" ").map(Number);
+  var azb = (svg.getAttribute("data-az") || "").split(" ").map(Number);
+  var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
   var dots = [].slice.call(svg.querySelectorAll(".dot"));
   var hits = [].slice.call(svg.querySelectorAll(".hit"));
   var labels = [].slice.call(svg.querySelectorAll(".lbl")).sort(function (a, b) {
@@ -104,6 +106,8 @@
     else if (a === "ks" && ksb.length === 4) fit(ksb[0], ksb[1], ksb[2], ksb[3]);
     else if (a === "kc" && kcb.length === 4) fit(kcb[0], kcb[1], kcb[2], kcb[3]);
     else if (a === "nm" && nmb.length === 4) fit(nmb[0], nmb[1], nmb[2], nmb[3]);
+    else if (a === "az" && azb.length === 4) fit(azb[0], azb[1], azb[2], azb[3]);
+    else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
     say("Zoom " + (W / vb.w).toFixed(1) + "x");
   });
 

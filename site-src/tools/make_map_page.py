@@ -66,6 +66,15 @@ ks_path = f'\n<path class="ks" style="fill:#e3eef6;stroke:var(--accent);stroke-w
 nm_btn = '\n<button type="button" data-act="nm">Zoom to New Mexico</button>' if "NM" in used else ""
 nm_attr = f' data-nm="{" ".join(f(v) for v in m["new_mexico_bounds"])}"' if "NM" in used else ""
 nm_path = f'\n<path class="nm" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["new_mexico"]}"/>' if "NM" in used else ""
+az_btn = '\n<button type="button" data-act="az">Zoom to Arizona</button>' if "AZ" in used else ""
+az_attr = f' data-az="{" ".join(f(v) for v in m["arizona_bounds"])}"' if "AZ" in used else ""
+az_path = f'\n<path class="az" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["arizona"]}"/>' if "AZ" in used else ""
+phx = next((c for c in cities if c["slug"] == "phoenix"), None)
+phxa = [c for c in cities if phx and math.hypot(c["x"] - phx["x"], c["y"] - phx["y"]) <= 9.5]
+# Phoenix and its East Valley neighbors (Mesa, Gilbert, Chandler) share one padded box, like the Kansas City area; shown once two or more are on the map.
+phxb = padbox(phxa) if len(phxa) >= 2 else []
+phx_btn = '\n<button type="button" data-act="phx">Phoenix area</button>' if phxb else ""
+phx_attr = f' data-phx="{" ".join(f(v) for v in phxb)}"' if phxb else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -110,15 +119,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}
-<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}
+<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{kc_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{kc_attr}{phx_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
@@ -134,4 +143,4 @@ page = f"""<!--meta
 </article>
 <script src="/assets/map.js?v={JS_V}" defer></script>"""
 (SRC / "pages" / "map.html").write_text(page + "\n")
-print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca], "; omaha area:", [c["slug"] for c in omaa], "; kansas city area:", [c["slug"] for c in kca]); print("title:", meta["title"]); print("description:", meta["description"])
+print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca], "; omaha area:", [c["slug"] for c in omaa], "; kansas city area:", [c["slug"] for c in kca], "; phoenix area:", [c["slug"] for c in phxa]); print("title:", meta["title"]); print("description:", meta["description"])
