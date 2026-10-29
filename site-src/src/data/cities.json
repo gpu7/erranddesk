@@ -385,6 +385,17 @@
    "lon": -98.358559,
    "x": 457.93,
    "y": 253.67
+  },
+  {
+   "name": "Kearney",
+   "state": "NE",
+   "slug": "kearney",
+   "gazetteer_name": "Kearney city",
+   "geoid": "3125055",
+   "lat": 40.701745,
+   "lon": -99.082312,
+   "x": 445.46,
+   "y": 258.34
   }
  ]
 }
