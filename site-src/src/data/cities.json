@@ -580,6 +580,17 @@
    "lon": -96.731962,
    "x": 486.04,
    "y": 194.29
+  },
+  {
+   "name": "Rapid City",
+   "state": "SD",
+   "slug": "rapid-city",
+   "gazetteer_name": "Rapid City city",
+   "geoid": "4652980",
+   "lat": 44.071071,
+   "lon": -103.217924,
+   "x": 380.88,
+   "y": 177.81
   }
  ]
 }
