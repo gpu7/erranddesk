@@ -249,6 +249,17 @@
    "lon": -106.321282,
    "x": 327.65,
    "y": 201.01
+  },
+  {
+   "name": "Gillette",
+   "state": "WY",
+   "slug": "gillette",
+   "gazetteer_name": "Gillette city",
+   "geoid": "5631855",
+   "lat": 44.27258,
+   "lon": -105.498936,
+   "x": 344.43,
+   "y": 169.99
   }
  ]
 }
