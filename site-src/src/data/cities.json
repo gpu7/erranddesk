@@ -1,11 +1,13 @@
 {
  "_source": {
   "CO": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Colorado (2025_gaz_place_08.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "WY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Wyoming (2025_gaz_place_56.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_56.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "WY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Wyoming (2025_gaz_place_56.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_56.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "UT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Utah (2025_gaz_place_49.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_49.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
-  "WY": "Wyoming"
+  "WY": "Wyoming",
+  "UT": "Utah"
  },
  "cities": [
   {
@@ -282,6 +284,17 @@
    "lon": -109.220921,
    "x": 276.11,
    "y": 223.31
+  },
+  {
+   "name": "Salt Lake City",
+   "state": "UT",
+   "slug": "salt-lake-city",
+   "gazetteer_name": "Salt Lake City city",
+   "geoid": "4967000",
+   "lat": 40.776928,
+   "lon": -111.930991,
+   "x": 227.89,
+   "y": 234.78
   }
  ]
 }

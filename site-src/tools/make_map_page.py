@@ -30,7 +30,9 @@ def gap(c):  # distance to the nearest other city, in viewBox units; labels show
 den = next(c for c in cities if c["slug"] == "denver")
 used = [st for st in STATES if any(c["state"] == st for c in cities)]
 count = lambda st: sum(c["state"] == st for c in cities)
-st_names = " and ".join(STATES[st] for st in used)
+def and_list(xs):  # "A", "A and B", "A, B and C"
+    return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+st_names = and_list([STATES[st] for st in used])
 metro = [c for c in cities if math.hypot(c["x"] - den["x"], c["y"] - den["y"]) <= 9.5]
 mb = [min(c["x"] for c in metro), min(c["y"] for c in metro), max(c["x"] for c in metro), max(c["y"] for c in metro)]
 f = lambda v: f"{v:.2f}".rstrip("0").rstrip(".")
@@ -47,7 +49,7 @@ for c in cities:
 items = "\n".join(f'<h3 id="list-{STATES[st].lower()}">{STATES[st]}</h3>\n<ul class="city-list">\n'
                   + "\n".join(f'<li><a href="/{c["slug"]}/">{e(c["name"])}, {STATES[st]}</a></li>' for c in cities if c["state"] == st)
                   + "\n</ul>" for st in used)
-lede_n = " and ".join(f"{count(st)} in {STATES[st]}" for st in used)
+lede_n = and_list([f"{count(st)} in {STATES[st]}" for st in used])
 meta = {"title": f"Errand Desk City Guides Map: {st_names}",
         "description": f"Interactive U.S. map of our city guides in {st_names}. Zoom in and tap a dot to open that city's printing, fax, notary and passport guide.",
         "nav": "map", "lastmod": LASTMOD, "schema": "page"}
@@ -69,13 +71,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
+<button type="button" data-act="ut">Zoom to Utah</button>
 <button type="button" data-act="metro">Denver area</button>
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}" role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}" role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>
 <g class="cities">
 {chr(10).join(dots)}
 </g>
