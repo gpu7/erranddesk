@@ -409,6 +409,17 @@
    "lon": -97.345836,
    "x": 474.09,
    "y": 327.99
+  },
+  {
+   "name": "Overland Park",
+   "state": "KS",
+   "slug": "overland-park",
+   "gazetteer_name": "Overland Park city",
+   "geoid": "2053775",
+   "lat": 38.889042,
+   "lon": -94.690584,
+   "x": 520.92,
+   "y": 300.54
   }
  ]
 }
