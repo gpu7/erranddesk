@@ -54,6 +54,15 @@ oma_attr = f' data-omaha="{" ".join(f(v) for v in omab)}"' if omab else ""
 ne_btn = '\n<button type="button" data-act="ne">Zoom to Nebraska</button>' if "NE" in used else ""
 ne_attr = f' data-ne="{" ".join(f(v) for v in m["nebraska_bounds"])}"' if "NE" in used else ""
 ne_path = f'\n<path class="ne" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["nebraska"]}"/>' if "NE" in used else ""
+kc = next((c for c in cities if c["slug"] == "kansas-city"), None)
+kca = [c for c in cities if kc and math.hypot(c["x"] - kc["x"], c["y"] - kc["y"]) <= 9.5]
+# Kansas City, Kansas and its Johnson County neighbors (Overland Park, Olathe) share one padded box, like the Omaha area.
+kcb = padbox(kca) if kca else []
+kc_btn = '\n<button type="button" data-act="kc">Kansas City area</button>' if kcb else ""
+kc_attr = f' data-kc="{" ".join(f(v) for v in kcb)}"' if kcb else ""
+ks_btn = '\n<button type="button" data-act="ks">Zoom to Kansas</button>' if "KS" in used else ""
+ks_attr = f' data-ks="{" ".join(f(v) for v in m["kansas_bounds"])}"' if "KS" in used else ""
+ks_path = f'\n<path class="ks" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["kansas"]}"/>' if "KS" in used else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -98,15 +107,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}
-<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}
+<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{kc_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
@@ -122,4 +131,4 @@ page = f"""<!--meta
 </article>
 <script src="/assets/map.js?v={JS_V}" defer></script>"""
 (SRC / "pages" / "map.html").write_text(page + "\n")
-print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca], "; omaha area:", [c["slug"] for c in omaa]); print("title:", meta["title"]); print("description:", meta["description"])
+print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca], "; omaha area:", [c["slug"] for c in omaa], "; kansas city area:", [c["slug"] for c in kca]); print("title:", meta["title"]); print("description:", meta["description"])
