@@ -442,6 +442,17 @@
    "lon": -94.820054,
    "x": 518.66,
    "y": 300.73
+  },
+  {
+   "name": "Topeka",
+   "state": "KS",
+   "slug": "topeka",
+   "gazetteer_name": "Topeka city",
+   "geoid": "2071000",
+   "lat": 39.034673,
+   "lon": -95.696191,
+   "x": 503.33,
+   "y": 297.36
   }
  ]
 }
