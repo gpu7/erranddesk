@@ -260,6 +260,17 @@
    "lon": -105.498936,
    "x": 344.43,
    "y": 169.99
+  },
+  {
+   "name": "Laramie",
+   "state": "WY",
+   "slug": "laramie",
+   "gazetteer_name": "Laramie city",
+   "geoid": "5645050",
+   "lat": 41.311544,
+   "lon": -105.606884,
+   "x": 335.87,
+   "y": 237.04
   }
  ]
 }
