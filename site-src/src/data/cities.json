@@ -420,6 +420,17 @@
    "lon": -94.690584,
    "x": 520.92,
    "y": 300.54
+  },
+  {
+   "name": "Kansas City",
+   "state": "KS",
+   "slug": "kansas-city",
+   "gazetteer_name": "Kansas City city",
+   "geoid": "2036000",
+   "lat": 39.122539,
+   "lon": -94.741781,
+   "x": 519.96,
+   "y": 295.21
   }
  ]
 }
