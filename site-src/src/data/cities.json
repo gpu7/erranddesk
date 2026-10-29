@@ -306,6 +306,17 @@
    "lon": -112.011759,
    "x": 226.19,
    "y": 236.55
+  },
+  {
+   "name": "West Jordan",
+   "state": "UT",
+   "slug": "west-jordan",
+   "gazetteer_name": "West Jordan city",
+   "geoid": "4982950",
+   "lat": 40.602666,
+   "lon": -112.001255,
+   "x": 226.04,
+   "y": 238.51
   }
  ]
 }
