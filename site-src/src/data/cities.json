@@ -295,6 +295,17 @@
    "lon": -111.930991,
    "x": 227.89,
    "y": 234.78
+  },
+  {
+   "name": "West Valley City",
+   "state": "UT",
+   "slug": "west-valley-city",
+   "gazetteer_name": "West Valley City city",
+   "geoid": "4983470",
+   "lat": 40.688493,
+   "lon": -112.011759,
+   "x": 226.19,
+   "y": 236.55
   }
  ]
 }
