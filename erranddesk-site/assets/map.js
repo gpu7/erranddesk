@@ -38,20 +38,32 @@
     var p = ppu(), u = 1 / p;
     dots.forEach(function (c) { c.setAttribute("r", (DOT_PX * u).toFixed(4)); c.style.strokeWidth = (1.5 * u).toFixed(4); });
     hits.forEach(function (c) { c.setAttribute("r", (HIT_PX * u).toFixed(4)); });
-    // Labels: show each one only where it fits on screen without overlapping a label already placed.
-    var placed = [];
+    // Labels: show each one only where it fits on screen without overlapping a label already placed
+    // or another city's dot. Try the right side of the dot first, then the left; hide it if neither is clear.
+    var placed = [], dotBoxes = dots.map(function (c) { return { el: c, r: c.getBoundingClientRect() }; });
+    function clear(r, own) {
+      return !placed.some(function (q) {
+        return r.left < q.right + 4 && r.right + 4 > q.left && r.top < q.bottom && r.bottom > q.top;
+      }) && !dotBoxes.some(function (d) {
+        return d.el !== own && r.left < d.r.right && r.right > d.r.left && r.top < d.r.bottom && r.bottom > d.r.top;
+      });
+    }
     labels.forEach(function (t) {
       t.style.display = "none";
       if (parseFloat(t.getAttribute("data-gap")) * p < MIN_GAP_PX) return;
+      var own = t.parentNode.querySelector(".dot"), x = parseFloat(t.getAttribute("data-x")), off = (DOT_PX + 3) * u;
       t.setAttribute("font-size", (FONT_PX * u).toFixed(4));
-      t.setAttribute("x", (parseFloat(t.getAttribute("data-x")) + (DOT_PX + 3) * u).toFixed(4));
       t.setAttribute("y", (parseFloat(t.getAttribute("data-y")) + 4 * u).toFixed(4));
       t.style.strokeWidth = (3 * u).toFixed(4);
       t.style.display = "";
-      var r = t.getBoundingClientRect(), hit = placed.some(function (q) {
-        return r.left < q.right + 4 && r.right + 4 > q.left && r.top < q.bottom && r.bottom > q.top;
+      var ok = [1, -1].some(function (side) {
+        t.setAttribute("x", (x + side * off).toFixed(4));
+        t.setAttribute("text-anchor", side > 0 ? "start" : "end");
+        var r = t.getBoundingClientRect();
+        if (clear(r, own)) { placed.push(r); return true; }
+        return false;
       });
-      if (hit) t.style.display = "none"; else placed.push(r);
+      if (!ok) t.style.display = "none";
     });
     svg.style.setProperty("--u", u);
     root.classList.toggle("is-zoomed", k > 1.0001);
