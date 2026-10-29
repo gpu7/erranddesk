@@ -238,6 +238,17 @@
    "lon": -104.799155,
    "x": 349.07,
    "y": 242.53
+  },
+  {
+   "name": "Casper",
+   "state": "WY",
+   "slug": "casper",
+   "gazetteer_name": "Casper city",
+   "geoid": "5613150",
+   "lat": 42.84212,
+   "lon": -106.321282,
+   "x": 327.65,
+   "y": 201.01
   }
  ]
 }
