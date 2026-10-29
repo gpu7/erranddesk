@@ -477,6 +477,17 @@
    "lon": -106.789695,
    "x": 292.69,
    "y": 439.2
+  },
+  {
+   "name": "Rio Rancho",
+   "state": "NM",
+   "slug": "rio-rancho",
+   "gazetteer_name": "Rio Rancho city",
+   "geoid": "3563460",
+   "lat": 35.28507,
+   "lon": -106.698867,
+   "x": 302.01,
+   "y": 372.21
   }
  ]
 }
