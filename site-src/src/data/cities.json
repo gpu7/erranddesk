@@ -5,7 +5,8 @@
   "UT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Utah (2025_gaz_place_49.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_49.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "NE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nebraska (2025_gaz_place_31.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_31.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "KS": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kansas (2025_gaz_place_20.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_20.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "NM": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Mexico (2025_gaz_place_35.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_35.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "NM": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Mexico (2025_gaz_place_35.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_35.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "AZ": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Arizona (2025_gaz_place_04.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_04.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -13,7 +14,8 @@
   "UT": "Utah",
   "NE": "Nebraska",
   "KS": "Kansas",
-  "NM": "New Mexico"
+  "NM": "New Mexico",
+  "AZ": "Arizona"
  },
  "cities": [
   {
@@ -510,6 +512,17 @@
    "lon": -104.529393,
    "x": 337.72,
    "y": 419.77
+  },
+  {
+   "name": "Phoenix",
+   "state": "AZ",
+   "slug": "phoenix",
+   "gazetteer_name": "Phoenix city",
+   "geoid": "0455000",
+   "lat": 33.572154,
+   "lon": -112.090132,
+   "x": 197.42,
+   "y": 396.93
   }
  ]
 }

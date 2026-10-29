@@ -21,6 +21,7 @@ const ut = states.find(f => f.properties.name === 'Utah');
 const ne = states.find(f => f.properties.name === 'Nebraska');
 const ks = states.find(f => f.properties.name === 'Kansas');
 const nm = states.find(f => f.properties.name === 'New Mexico');
+const az = states.find(f => f.properties.name === 'Arizona');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
 const map = {
@@ -40,6 +41,8 @@ const map = {
   kansas_bounds: bounds(ks),
   new_mexico: path(nm),
   new_mexico_bounds: bounds(nm),
+  arizona: path(az),
+  arizona_bounds: bounds(az),
 };
 fs.writeFileSync(here('../../src/data/us-map.json'), JSON.stringify(map, null, 1) + '\n');
 
