@@ -18,6 +18,7 @@
   var kcb = (svg.getAttribute("data-kc") || "").split(" ").map(Number);
   var nmb = (svg.getAttribute("data-nm") || "").split(" ").map(Number);
   var azb = (svg.getAttribute("data-az") || "").split(" ").map(Number);
+  var sdb = (svg.getAttribute("data-sd") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
   var dots = [].slice.call(svg.querySelectorAll(".dot"));
   var hits = [].slice.call(svg.querySelectorAll(".hit"));
@@ -42,9 +43,10 @@
     dots.forEach(function (c) { c.setAttribute("r", (DOT_PX * u).toFixed(4)); c.style.strokeWidth = (1.5 * u).toFixed(4); });
     hits.forEach(function (c) { c.setAttribute("r", (HIT_PX * u).toFixed(4)); });
     // Labels: show each one only where it fits on screen without overlapping a label already placed
-    // or another city's dot. Try the right side of the dot first, then the left; hide it if neither is clear.
-    var placed = [], dotBoxes = dots.map(function (c) { return { el: c, r: c.getBoundingClientRect() }; });
+    // or another city's dot, and stays inside the map box. Try the right side of the dot first, then the left; hide it if neither is clear.
+    var sr = svg.getBoundingClientRect(), placed = [], dotBoxes = dots.map(function (c) { return { el: c, r: c.getBoundingClientRect() }; });
     function clear(r, own) {
+      if (r.left < sr.left || r.right > sr.right || r.top < sr.top || r.bottom > sr.bottom) return false;
       return !placed.some(function (q) {
         return r.left < q.right + 4 && r.right + 4 > q.left && r.top < q.bottom && r.bottom > q.top;
       }) && !dotBoxes.some(function (d) {
@@ -107,6 +109,7 @@
     else if (a === "kc" && kcb.length === 4) fit(kcb[0], kcb[1], kcb[2], kcb[3]);
     else if (a === "nm" && nmb.length === 4) fit(nmb[0], nmb[1], nmb[2], nmb[3]);
     else if (a === "az" && azb.length === 4) fit(azb[0], azb[1], azb[2], azb[3]);
+    else if (a === "sd" && sdb.length === 4) fit(sdb[0], sdb[1], sdb[2], sdb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
     say("Zoom " + (W / vb.w).toFixed(1) + "x");
   });
