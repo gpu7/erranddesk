@@ -466,6 +466,17 @@
    "lon": -106.646809,
    "x": 302.5,
    "y": 376.42
+  },
+  {
+   "name": "Las Cruces",
+   "state": "NM",
+   "slug": "las-cruces",
+   "gazetteer_name": "Las Cruces city",
+   "geoid": "3539380",
+   "lat": 32.326444,
+   "lon": -106.789695,
+   "x": 292.69,
+   "y": 439.2
   }
  ]
 }
