@@ -45,6 +45,15 @@ def padbox(cs, mn=6):  # bounding box of cs, widened to at least mn viewBox unit
 slcb = padbox(slca) if len(slca) >= 2 else []
 slc_btn = '\n<button type="button" data-act="slc">Salt Lake area</button>' if slcb else ""
 slc_attr = f' data-slc="{" ".join(f(v) for v in slcb)}"' if slcb else ""
+oma = next((c for c in cities if c["slug"] == "omaha"), None)
+omaa = [c for c in cities if oma and math.hypot(c["x"] - oma["x"], c["y"] - oma["y"]) <= 9.5]
+# One Omaha city zooms to a small box around it; two or more nearby (e.g. Bellevue) to their padded bounding box.
+omab = padbox(omaa) if omaa else []
+oma_btn = '\n<button type="button" data-act="omaha">Omaha area</button>' if omab else ""
+oma_attr = f' data-omaha="{" ".join(f(v) for v in omab)}"' if omab else ""
+ne_btn = '\n<button type="button" data-act="ne">Zoom to Nebraska</button>' if "NE" in used else ""
+ne_attr = f' data-ne="{" ".join(f(v) for v in m["nebraska_bounds"])}"' if "NE" in used else ""
+ne_path = f'\n<path class="ne" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["nebraska"]}"/>' if "NE" in used else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -59,10 +68,19 @@ items = "\n".join(f'<h3 id="list-{STATES[st].lower()}">{STATES[st]}</h3>\n<ul cl
                   + "\n".join(f'<li><a href="/{c["slug"]}/">{e(c["name"])}, {STATES[st]}</a></li>' for c in cities if c["state"] == st)
                   + "\n</ul>" for st in used)
 lede_n = and_list([f"{count(st)} in {STATES[st]}" for st in used])
-meta = {"title": f"Errand Desk City Guides Map: {st_names}",
-        "description": f"Interactive U.S. map of our city guides in {st_names}. Zoom in and tap a dot to open that city's printing, fax, notary and passport guide.",
+plural = lambda n, one, many: f"{n} {one if n == 1 else many}"
+n_cities, n_states = plural(len(cities), "city", "cities"), plural(len(used), "state", "states")
+n_guides = plural(len(cities), "city guide", "city guides")
+# "31 cities: 20 in Colorado, ... and 1 in Nebraska"; with one state, "20 cities in Colorado" (no breakdown).
+summary = lambda noun: f"{noun} in {st_names}" if len(used) == 1 else f"{noun}: {lede_n}"
+# Title and description scale with the data: counts only, no city names. Use the first that fits.
+titles = [f"Errand Desk City Guides Map: {n_cities.title()} in {n_states.title()}", f"Errand Desk Map: {n_cities.title()} in {n_states.title()}"]
+descs = [f"Map of our {summary(n_guides)}. Select a city to open its printing, fax, notary and passport guide.",
+         f"Map of our {n_guides} in {n_states}: {st_names}. Select a city to open its printing, fax, notary and passport guide.",
+         f"Map of our {n_guides} in {n_states}. Select a city to open its printing, fax, notary and passport guide."]
+meta = {"title": next(t for t in titles if len(t) <= 60),
+        "description": next(d for d in descs if len(d) <= 155),
         "nav": "map", "lastmod": LASTMOD, "schema": "page"}
-assert len(meta["title"]) <= 60 and len(meta["description"]) <= 155
 vb = " ".join(str(v) for v in m["viewBox"])
 page = f"""<!--meta
 {json.dumps(meta)}
@@ -71,7 +89,7 @@ page = f"""<!--meta
 <article>
 <p class="meta">Map · Updated <time datetime="{LASTMOD}">Oct 29, 2026</time></p>
 <h1>Map of our city guides</h1>
-<p class="lede">Errand Desk has guides for {len(cities)} cities: {lede_n}. Each dot on the map is one city guide. Zoom in on a state and select a dot to open that city's page. The same guides are listed below the map, by state.</p>
+<p class="lede">Errand Desk has guides for {summary(n_cities)}. Each dot on the map is one city guide. Zoom in on a state and select a dot to open that city's page, or use the same guides in the list below the map, grouped by state.</p>
 
 <div class="usmap" id="usmap">
 <div class="usmap-tools" role="toolbar" aria-label="Map zoom" hidden>
@@ -80,15 +98,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>
-<button type="button" data-act="metro">Denver area</button>{slc_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}
+<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
@@ -104,4 +122,4 @@ page = f"""<!--meta
 </article>
 <script src="/assets/map.js?v={JS_V}" defer></script>"""
 (SRC / "pages" / "map.html").write_text(page + "\n")
-print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca])
+print("wrote src/pages/map.html:", len(cities), "dots; metro:", [c["slug"] for c in metro], "; salt lake area:", [c["slug"] for c in slca], "; omaha area:", [c["slug"] for c in omaa]); print("title:", meta["title"]); print("description:", meta["description"])
