@@ -488,6 +488,17 @@
    "lon": -106.698867,
    "x": 302.01,
    "y": 372.21
+  },
+  {
+   "name": "Santa Fe",
+   "state": "NM",
+   "slug": "santa-fe",
+   "gazetteer_name": "Santa Fe city",
+   "geoid": "3570500",
+   "lat": 35.661981,
+   "lon": -105.981815,
+   "x": 316,
+   "y": 365.06
   }
  ]
 }
