@@ -47,7 +47,7 @@ summary{cursor:pointer;font-weight:600}
 .usmap svg:active{cursor:grabbing}
 .usmap .nation{fill:#fff;stroke:#9aa5ae;stroke-width:.6;vector-effect:non-scaling-stroke}
 .usmap .borders{fill:none;stroke:#c3cbd2;stroke-width:.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.usmap .co{fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.usmap .co,.usmap .wy{fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke}
 .usmap .dot{fill:#c0392b;stroke:#fff;stroke-width:.5}
 .usmap .hit{fill:transparent}
 .usmap a:hover .dot,.usmap a:focus .dot{fill:#7b1d12}

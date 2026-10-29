@@ -8,6 +8,7 @@
   var status = root.querySelector(".usmap-status");
   var W = 975, H = 610, MAXK = 60, DOT_PX = 5, HIT_PX = 14, FONT_PX = 13, MIN_GAP_PX = 22;
   var cob = (svg.getAttribute("data-co") || "").split(" ").map(Number);
+  var wyb = (svg.getAttribute("data-wy") || "").split(" ").map(Number);
   var mb = (svg.getAttribute("data-metro") || "").split(" ").map(Number);
   var dots = [].slice.call(svg.querySelectorAll(".dot"));
   var hits = [].slice.call(svg.querySelectorAll(".hit"));
@@ -75,6 +76,7 @@
     else if (a === "out") zoomCenter(1 / 1.6);
     else if (a === "reset") { vb = { x: 0, y: 0, w: W, h: H }; render(); }
     else if (a === "co" && cob.length === 4) fit(cob[0], cob[1], cob[2], cob[3]);
+    else if (a === "wy" && wyb.length === 4) fit(wyb[0], wyb[1], wyb[2], wyb[3]);
     else if (a === "metro" && mb.length === 4) fit(mb[0], mb[1], mb[2], mb[3]);
     say("Zoom " + (W / vb.w).toFixed(1) + "x");
   });
