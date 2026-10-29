@@ -12,6 +12,8 @@
   var utb = (svg.getAttribute("data-ut") || "").split(" ").map(Number);
   var mb = (svg.getAttribute("data-metro") || "").split(" ").map(Number);
   var slb = (svg.getAttribute("data-slc") || "").split(" ").map(Number);
+  var neb = (svg.getAttribute("data-ne") || "").split(" ").map(Number);
+  var omb = (svg.getAttribute("data-omaha") || "").split(" ").map(Number);
   var dots = [].slice.call(svg.querySelectorAll(".dot"));
   var hits = [].slice.call(svg.querySelectorAll(".hit"));
   var labels = [].slice.call(svg.querySelectorAll(".lbl")).sort(function (a, b) {
@@ -82,6 +84,8 @@
     else if (a === "ut" && utb.length === 4) fit(utb[0], utb[1], utb[2], utb[3]);
     else if (a === "metro" && mb.length === 4) fit(mb[0], mb[1], mb[2], mb[3]);
     else if (a === "slc" && slb.length === 4) fit(slb[0], slb[1], slb[2], slb[3]);
+    else if (a === "ne" && neb.length === 4) fit(neb[0], neb[1], neb[2], neb[3]);
+    else if (a === "omaha" && omb.length === 4) fit(omb[0], omb[1], omb[2], omb[3]);
     say("Zoom " + (W / vb.w).toFixed(1) + "x");
   });
 

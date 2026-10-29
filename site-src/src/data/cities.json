@@ -2,12 +2,14 @@
  "_source": {
   "CO": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Colorado (2025_gaz_place_08.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_08.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Wyoming (2025_gaz_place_56.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_56.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "UT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Utah (2025_gaz_place_49.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_49.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "UT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Utah (2025_gaz_place_49.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_49.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "NE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nebraska (2025_gaz_place_31.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_31.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
   "WY": "Wyoming",
-  "UT": "Utah"
+  "UT": "Utah",
+  "NE": "Nebraska"
  },
  "cities": [
   {
@@ -339,6 +341,17 @@
    "lon": -113.576534,
    "x": 184.7,
    "y": 313.16
+  },
+  {
+   "name": "Omaha",
+   "state": "NE",
+   "slug": "omaha",
+   "gazetteer_name": "Omaha city",
+   "geoid": "3137000",
+   "lat": 41.262705,
+   "lon": -96.053475,
+   "x": 497.12,
+   "y": 246.36
   }
  ]
 }
