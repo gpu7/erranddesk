@@ -352,6 +352,17 @@
    "lon": -96.053475,
    "x": 497.12,
    "y": 246.36
+  },
+  {
+   "name": "Lincoln",
+   "state": "NE",
+   "slug": "lincoln",
+   "gazetteer_name": "Lincoln city",
+   "geoid": "3128000",
+   "lat": 40.810284,
+   "lon": -96.674856,
+   "x": 486.53,
+   "y": 256.67
   }
  ]
 }
