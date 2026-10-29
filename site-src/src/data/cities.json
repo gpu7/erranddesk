@@ -523,6 +523,17 @@
    "lon": -112.090132,
    "x": 197.42,
    "y": 396.93
+  },
+  {
+   "name": "Tucson",
+   "state": "AZ",
+   "slug": "tucson",
+   "gazetteer_name": "Tucson city",
+   "geoid": "0477000",
+   "lat": 32.153036,
+   "lon": -110.870773,
+   "x": 214.96,
+   "y": 432.64
   }
  ]
 }
