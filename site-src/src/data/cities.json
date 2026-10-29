@@ -499,6 +499,17 @@
    "lon": -105.981815,
    "x": 316,
    "y": 365.06
+  },
+  {
+   "name": "Roswell",
+   "state": "NM",
+   "slug": "roswell",
+   "gazetteer_name": "Roswell city",
+   "geoid": "3564930",
+   "lat": 33.373442,
+   "lon": -104.529393,
+   "x": 337.72,
+   "y": 419.77
   }
  ]
 }
