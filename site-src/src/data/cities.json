@@ -363,6 +363,17 @@
    "lon": -96.674856,
    "x": 486.53,
    "y": 256.67
+  },
+  {
+   "name": "Bellevue",
+   "state": "NE",
+   "slug": "bellevue",
+   "gazetteer_name": "Bellevue city",
+   "geoid": "3103950",
+   "lat": 41.144932,
+   "lon": -95.93856,
+   "x": 499.06,
+   "y": 249.05
   }
  ]
 }
