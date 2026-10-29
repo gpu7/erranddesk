@@ -271,6 +271,17 @@
    "lon": -105.606884,
    "x": 335.87,
    "y": 237.04
+  },
+  {
+   "name": "Rock Springs",
+   "state": "WY",
+   "slug": "rock-springs",
+   "gazetteer_name": "Rock Springs city",
+   "geoid": "5667235",
+   "lat": 41.594705,
+   "lon": -109.220921,
+   "x": 276.11,
+   "y": 223.31
   }
  ]
 }
