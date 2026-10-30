@@ -1152,6 +1152,17 @@
    "lon": -93.26832,
    "x": 541.81,
    "y": 161.33
+  },
+  {
+   "name": "St. Paul",
+   "state": "MN",
+   "slug": "st-paul",
+   "gazetteer_name": "St. Paul city",
+   "geoid": "2758000",
+   "lat": 44.948901,
+   "lon": -93.104063,
+   "x": 544.45,
+   "y": 161.58
   }
  ]
 }
