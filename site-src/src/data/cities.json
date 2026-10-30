@@ -670,6 +670,17 @@
    "lon": -101.277533,
    "x": 417.57,
    "y": 85.73
+  },
+  {
+   "name": "West Fargo",
+   "state": "ND",
+   "slug": "west-fargo",
+   "gazetteer_name": "West Fargo city",
+   "geoid": "3884780",
+   "lat": 46.85638,
+   "lon": -96.904809,
+   "x": 483.93,
+   "y": 119
   }
  ]
 }
