@@ -898,6 +898,17 @@
    "lon": -122.596567,
    "x": 81.41,
    "y": 87.99
+  },
+  {
+   "name": "Bellevue",
+   "state": "WA",
+   "slug": "bellevue-wa",
+   "gazetteer_name": "Bellevue city",
+   "geoid": "5305210",
+   "lat": 47.597837,
+   "lon": -122.15648,
+   "x": 100.18,
+   "y": 47.24
   }
  ]
 }
