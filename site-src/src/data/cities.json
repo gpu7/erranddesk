@@ -1174,6 +1174,17 @@
    "lon": -92.478592,
    "x": 555.26,
    "y": 182.49
+  },
+  {
+   "name": "Bloomington",
+   "state": "MN",
+   "slug": "bloomington",
+   "gazetteer_name": "Bloomington city",
+   "geoid": "2706616",
+   "lat": 44.829666,
+   "lon": -93.315217,
+   "x": 541.14,
+   "y": 164.39
   }
  ]
 }
