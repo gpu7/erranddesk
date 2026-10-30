@@ -1185,6 +1185,17 @@
    "lon": -93.315217,
    "x": 541.14,
    "y": 164.39
+  },
+  {
+   "name": "Duluth",
+   "state": "MN",
+   "slug": "duluth",
+   "gazetteer_name": "Duluth city",
+   "geoid": "2717000",
+   "lat": 46.774458,
+   "lon": -92.134135,
+   "x": 558.31,
+   "y": 119.69
   }
  ]
 }
