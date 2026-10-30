@@ -922,6 +922,17 @@
    "lon": -122.649971,
    "x": 79.97,
    "y": 89.94
+  },
+  {
+   "name": "Salem",
+   "state": "OR",
+   "slug": "salem",
+   "gazetteer_name": "Salem city",
+   "geoid": "4164900",
+   "lat": 44.9239,
+   "lon": -123.023007,
+   "x": 70.37,
+   "y": 101.65
   }
  ]
 }
