@@ -808,6 +808,17 @@
    "lon": -116.231596,
    "x": 169.56,
    "y": 157.94
+  },
+  {
+   "name": "Meridian",
+   "state": "ID",
+   "slug": "meridian",
+   "gazetteer_name": "Meridian city",
+   "geoid": "1652120",
+   "lat": 43.61149,
+   "lon": -116.400662,
+   "x": 166.92,
+   "y": 157.05
   }
  ]
 }
