@@ -841,6 +841,17 @@
    "lon": -116.659336,
    "x": 162.96,
    "y": 155.38
+  },
+  {
+   "name": "Idaho Falls",
+   "state": "ID",
+   "slug": "idaho-falls",
+   "gazetteer_name": "Idaho Falls city",
+   "geoid": "1639700",
+   "lat": 43.489616,
+   "lon": -112.03534,
+   "x": 236.54,
+   "y": 173.39
   }
  ]
 }
