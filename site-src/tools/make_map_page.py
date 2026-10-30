@@ -20,6 +20,8 @@ city_pages = {p.stem for p in (SRC / "pages").glob("*.html") if '"article"' in p
 if city_pages != {c["slug"] for c in cities}:
     raise SystemExit(f"city pages and map data differ: {sorted(city_pages ^ {c['slug'] for c in cities})}")
 cities = sorted(cities, key=lambda c: c["name"])
+_ov = [c for c in cities if c.get("coord_note")]
+OVN = "".join(" " + c["coord_note"] for c in _ov)
 # Label priority when labels would collide: the order of the home page's City guides list (largest cities first).
 import re
 home = (SRC / "pages" / "index.html").read_text()
@@ -201,7 +203,7 @@ page = f"""<!--meta
 {items}
 
 <h2 id="about-map">About this map</h2>
-<p class="small">State outlines: U.S. Census Bureau cartographic boundary files (2017, 1:10,000,000), via the <a href="https://github.com/topojson/us-atlas">us-atlas</a> project (ISC license), drawn in an Albers equal-area projection with Alaska and Hawaii shown as insets. City dots: the internal point of each city in the U.S. Census Bureau's <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html">2025 Gazetteer places file</a>. A dot marks the city, not a specific office. The map needs JavaScript to zoom; the list above works without it.</p>
+<p class="small">State outlines: U.S. Census Bureau cartographic boundary files (2017, 1:10,000,000), via the <a href="https://github.com/topojson/us-atlas">us-atlas</a> project (ISC license), drawn in an Albers equal-area projection with Alaska and Hawaii shown as insets. City dots: the internal point of each city in the U.S. Census Bureau's <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html">2025 Gazetteer places file</a>.{OVN} A dot marks the city, not a specific office. The map needs JavaScript to zoom; the list above works without it.</p>
 </article>
 <script src="/assets/map.js?v={JS_V}" defer></script>"""
 (SRC / "pages" / "map.html").write_text(page + "\n")
