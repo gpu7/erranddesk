@@ -944,6 +944,17 @@
    "lon": -123.119019,
    "x": 63.34,
    "y": 120.14
+  },
+  {
+   "name": "Gresham",
+   "state": "OR",
+   "slug": "gresham",
+   "gazetteer_name": "Gresham city",
+   "geoid": "4131250",
+   "lat": 45.502319,
+   "lon": -122.441609,
+   "x": 82.94,
+   "y": 91.61
   }
  ]
 }
