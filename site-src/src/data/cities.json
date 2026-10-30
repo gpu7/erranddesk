@@ -1049,6 +1049,17 @@
    "lon": -95.902316,
    "x": 499.8,
    "y": 363.96
+  },
+  {
+   "name": "Norman",
+   "state": "OK",
+   "slug": "norman",
+   "gazetteer_name": "Norman city",
+   "geoid": "4052500",
+   "lat": 35.240569,
+   "lon": -97.345299,
+   "x": 473.31,
+   "y": 384.1
   }
  ]
 }
