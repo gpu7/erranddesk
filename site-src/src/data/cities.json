@@ -705,6 +705,17 @@
    "lon": -114.026136,
    "x": 218.93,
    "y": 92.11
+  },
+  {
+   "name": "Great Falls",
+   "state": "MT",
+   "slug": "great-falls",
+   "gazetteer_name": "Great Falls city",
+   "geoid": "3032800",
+   "lat": 47.502518,
+   "lon": -111.29997,
+   "x": 263.01,
+   "y": 85.52
   }
  ]
 }
