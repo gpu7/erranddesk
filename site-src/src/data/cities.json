@@ -659,6 +659,17 @@
    "lon": -97.087328,
    "x": 481.36,
    "y": 94.99
+  },
+  {
+   "name": "Minot",
+   "state": "ND",
+   "slug": "minot",
+   "gazetteer_name": "Minot city",
+   "geoid": "3853380",
+   "lat": 48.236125,
+   "lon": -101.277533,
+   "x": 417.57,
+   "y": 85.73
   }
  ]
 }
