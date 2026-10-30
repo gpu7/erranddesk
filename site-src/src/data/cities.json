@@ -1071,6 +1071,17 @@
    "lon": -95.780996,
    "x": 502,
    "y": 366.05
+  },
+  {
+   "name": "Edmond",
+   "state": "OK",
+   "slug": "edmond",
+   "gazetteer_name": "Edmond city",
+   "geoid": "4023200",
+   "lat": 35.673807,
+   "lon": -97.413076,
+   "x": 472.21,
+   "y": 374.16
   }
  ]
 }
