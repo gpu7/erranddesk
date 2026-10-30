@@ -1095,6 +1095,17 @@
    "lon": -95.388806,
    "x": 510.05,
    "y": 508.66
+  },
+  {
+   "name": "San Antonio",
+   "state": "TX",
+   "slug": "san-antonio",
+   "gazetteer_name": "San Antonio city",
+   "geoid": "4865000",
+   "lat": 29.462809,
+   "lon": -98.524635,
+   "x": 448.15,
+   "y": 515.36
   }
  ]
 }
