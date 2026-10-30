@@ -727,6 +727,17 @@
    "lon": -111.053782,
    "x": 260.27,
    "y": 126.75
+  },
+  {
+   "name": "Butte-Silver Bow",
+   "state": "MT",
+   "slug": "butte",
+   "gazetteer_name": "Butte-Silver Bow (balance)",
+   "geoid": "3011397",
+   "lat": 45.896232,
+   "lon": -112.660071,
+   "x": 236,
+   "y": 117.77
   }
  ]
 }
