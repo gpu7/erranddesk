@@ -716,6 +716,17 @@
    "lon": -111.29997,
    "x": 263.01,
    "y": 85.52
+  },
+  {
+   "name": "Bozeman",
+   "state": "MT",
+   "slug": "bozeman",
+   "gazetteer_name": "Bozeman city",
+   "geoid": "3008950",
+   "lat": 45.683155,
+   "lon": -111.053782,
+   "x": 260.27,
+   "y": 126.75
   }
  ]
 }
