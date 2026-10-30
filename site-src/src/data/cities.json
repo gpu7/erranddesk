@@ -14,7 +14,8 @@
   "ID": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Idaho (2025_gaz_place_16.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_16.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Washington (2025_gaz_place_53.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_53.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "OR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oregon (2025_gaz_place_41.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_41.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs. Exception: San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain."
+  "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs. Exception: San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain.",
+  "OK": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oklahoma (2025_gaz_place_40.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_40.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -31,7 +32,8 @@
   "ID": "Idaho",
   "WA": "Washington",
   "OR": "Oregon",
-  "CA": "California"
+  "CA": "California",
+  "OK": "Oklahoma"
  },
  "cities": [
   {
@@ -1025,6 +1027,17 @@
    "lon": -119.793359,
    "x": 74.23,
    "y": 295.64
+  },
+  {
+   "name": "Oklahoma City",
+   "state": "OK",
+   "slug": "oklahoma-city",
+   "gazetteer_name": "Oklahoma City city",
+   "geoid": "4055000",
+   "lat": 35.467079,
+   "lon": -97.513657,
+   "x": 470.3,
+   "y": 378.87
   }
  ]
 }
