@@ -99,6 +99,15 @@ rnoa = [c for c in cities if rno and math.hypot(c["x"] - rno["x"], c["y"] - rno[
 rnob = padbox(rnoa) if len(rnoa) >= 2 else []
 rno_btn = '\n<button type="button" data-act="reno">Reno area</button>' if rnob else ""
 rno_attr = f' data-reno="{" ".join(f(v) for v in rnob)}"' if rnob else ""
+id_btn = '\n<button type="button" data-act="id">Zoom to Idaho</button>' if "ID" in used else ""
+id_attr = f' data-id="{" ".join(f(v) for v in m["idaho_bounds"])}"' if "ID" in used else ""
+id_path = f'\n<path class="id" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["idaho"]}"/>' if "ID" in used else ""
+boi = next((c for c in cities if c["slug"] == "boise"), None)
+boia = [c for c in cities if boi and math.hypot(c["x"] - boi["x"], c["y"] - boi["y"]) <= 9.5]
+# Boise and its Treasure Valley neighbors (Meridian, Nampa, Caldwell) share one padded box, like the Las Vegas area; shown once two or more are on the map.
+boib = padbox(boia) if len(boia) >= 2 else []
+boi_btn = '\n<button type="button" data-act="boi">Boise area</button>' if boib else ""
+boi_attr = f' data-boi="{" ".join(f(v) for v in boib)}"' if boib else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -143,15 +152,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}
-<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}
+<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}{id_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
