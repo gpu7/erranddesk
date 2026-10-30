@@ -979,6 +979,17 @@
    "lon": -118.410825,
    "x": 83.6,
    "y": 363.12
+  },
+  {
+   "name": "San Diego",
+   "state": "CA",
+   "slug": "san-diego",
+   "gazetteer_name": "San Diego city",
+   "geoid": "0666000",
+   "lat": 32.830391,
+   "lon": -117.120923,
+   "x": 101.06,
+   "y": 395.08
   }
  ]
 }
