@@ -876,6 +876,17 @@
    "lon": -117.433322,
    "x": 171,
    "y": 63.74
+  },
+  {
+   "name": "Tacoma",
+   "state": "WA",
+   "slug": "tacoma",
+   "gazetteer_name": "Tacoma city",
+   "geoid": "5370000",
+   "lat": 47.252199,
+   "lon": -122.459832,
+   "x": 93.54,
+   "y": 53.45
   }
  ]
 }
