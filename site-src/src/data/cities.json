@@ -784,6 +784,17 @@
    "lon": -119.849907,
    "x": 88.98,
    "y": 233.99
+  },
+  {
+   "name": "Sparks",
+   "state": "NV",
+   "slug": "sparks",
+   "gazetteer_name": "Sparks city",
+   "geoid": "3268400",
+   "lat": 39.574341,
+   "lon": -119.715154,
+   "x": 91.39,
+   "y": 234.01
   }
  ]
 }
