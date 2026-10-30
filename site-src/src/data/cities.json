@@ -751,6 +751,17 @@
    "lon": -115.264037,
    "x": 151.13,
    "y": 326.26
+  },
+  {
+   "name": "Henderson",
+   "state": "NV",
+   "slug": "henderson",
+   "gazetteer_name": "Henderson city",
+   "geoid": "3231900",
+   "lat": 36.008958,
+   "lon": -115.0268,
+   "x": 154.32,
+   "y": 332.16
   }
  ]
 }
