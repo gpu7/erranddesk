@@ -1128,6 +1128,17 @@
    "lon": -97.348573,
    "x": 472.45,
    "y": 440.3
+  },
+  {
+   "name": "Austin",
+   "state": "TX",
+   "slug": "austin",
+   "gazetteer_name": "Austin city",
+   "geoid": "4805000",
+   "lat": 30.298622,
+   "lon": -97.754134,
+   "x": 463.72,
+   "y": 496.73
   }
  ]
 }
