@@ -887,6 +887,17 @@
    "lon": -122.459832,
    "x": 93.54,
    "y": 53.45
+  },
+  {
+   "name": "Vancouver",
+   "state": "WA",
+   "slug": "vancouver",
+   "gazetteer_name": "Vancouver city",
+   "geoid": "5374060",
+   "lat": 45.637156,
+   "lon": -122.596567,
+   "x": 81.41,
+   "y": 87.99
   }
  ]
 }
