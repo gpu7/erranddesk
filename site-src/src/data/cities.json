@@ -1163,6 +1163,17 @@
    "lon": -93.104063,
    "x": 544.45,
    "y": 161.58
+  },
+  {
+   "name": "Rochester",
+   "state": "MN",
+   "slug": "rochester",
+   "gazetteer_name": "Rochester city",
+   "geoid": "2754880",
+   "lat": 44.014299,
+   "lon": -92.478592,
+   "x": 555.26,
+   "y": 182.49
   }
  ]
 }
