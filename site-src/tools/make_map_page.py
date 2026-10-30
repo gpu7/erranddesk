@@ -143,6 +143,12 @@ ok_path = f'\n<path class="ok" style="fill:#e3eef6;stroke:var(--accent);stroke-w
 tx_btn = '\n<button type="button" data-act="tx">Zoom to Texas</button>' if "TX" in used else ""
 tx_attr = f' data-tx="{" ".join(f(v) for v in m["texas_bounds"])}"' if "TX" in used else ""
 tx_path = f'\n<path class="tx" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["texas"]}"/>' if "TX" in used else ""
+dfw = next((c for c in cities if c["slug"] == "dallas"), None)
+dfwa = [c for c in cities if dfw and math.hypot(c["x"] - dfw["x"], c["y"] - dfw["y"]) <= 12]
+# Dallas and Fort Worth (about 11 map units apart, wider than the 9.5 used for other areas) share one padded box; shown once both are on the map.
+dfwb = padbox(dfwa) if len(dfwa) >= 2 else []
+dfw_btn = '\n<button type="button" data-act="dfw">Dallas–Fort Worth area</button>' if dfwb else ""
+dfw_attr = f' data-dfw="{" ".join(f(v) for v in dfwb)}"' if dfwb else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -189,10 +195,10 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
