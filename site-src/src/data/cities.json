@@ -694,6 +694,17 @@
    "lon": -108.552475,
    "x": 299.84,
    "y": 130.13
+  },
+  {
+   "name": "Missoula",
+   "state": "MT",
+   "slug": "missoula",
+   "gazetteer_name": "Missoula city",
+   "geoid": "3050200",
+   "lat": 46.874359,
+   "lon": -114.026136,
+   "x": 218.93,
+   "y": 92.11
   }
  ]
 }
