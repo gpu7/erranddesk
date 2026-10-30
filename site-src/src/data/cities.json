@@ -865,6 +865,17 @@
    "lon": -122.351538,
    "x": 97.42,
    "y": 45.95
+  },
+  {
+   "name": "Spokane",
+   "state": "WA",
+   "slug": "spokane",
+   "gazetteer_name": "Spokane city",
+   "geoid": "5367000",
+   "lat": 47.666935,
+   "lon": -117.433322,
+   "x": 171,
+   "y": 63.74
   }
  ]
 }
