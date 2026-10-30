@@ -955,6 +955,17 @@
    "lon": -122.441609,
    "x": 82.94,
    "y": 91.61
+  },
+  {
+   "name": "Hillsboro",
+   "state": "OR",
+   "slug": "hillsboro",
+   "gazetteer_name": "Hillsboro city",
+   "geoid": "4134100",
+   "lat": 45.526798,
+   "lon": -122.935395,
+   "x": 75.55,
+   "y": 88.9
   }
  ]
 }
