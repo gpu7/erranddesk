@@ -648,6 +648,17 @@
    "lon": -100.768568,
    "x": 423.71,
    "y": 118.14
+  },
+  {
+   "name": "Grand Forks",
+   "state": "ND",
+   "slug": "grand-forks",
+   "gazetteer_name": "Grand Forks city",
+   "geoid": "3832060",
+   "lat": 47.919595,
+   "lon": -97.087328,
+   "x": 481.36,
+   "y": 94.99
   }
  ]
 }
