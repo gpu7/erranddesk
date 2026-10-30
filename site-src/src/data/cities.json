@@ -1117,6 +1117,17 @@
    "lon": -96.766513,
    "x": 483.49,
    "y": 440.16
+  },
+  {
+   "name": "Fort Worth",
+   "state": "TX",
+   "slug": "fort-worth",
+   "gazetteer_name": "Fort Worth city",
+   "geoid": "4827000",
+   "lat": 32.781954,
+   "lon": -97.348573,
+   "x": 472.45,
+   "y": 440.3
   }
  ]
 }
