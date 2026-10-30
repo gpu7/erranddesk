@@ -762,6 +762,17 @@
    "lon": -115.0268,
    "x": 154.32,
    "y": 332.16
+  },
+  {
+   "name": "North Las Vegas",
+   "state": "NV",
+   "slug": "north-las-vegas",
+   "gazetteer_name": "North Las Vegas city",
+   "geoid": "3251800",
+   "lat": 36.289865,
+   "lon": -115.089181,
+   "x": 154.49,
+   "y": 325.63
   }
  ]
 }
