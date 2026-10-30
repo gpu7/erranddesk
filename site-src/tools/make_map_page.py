@@ -84,6 +84,21 @@ nd_path = f'\n<path class="nd" style="fill:#e3eef6;stroke:var(--accent);stroke-w
 mt_btn = '\n<button type="button" data-act="mt">Zoom to Montana</button>' if "MT" in used else ""
 mt_attr = f' data-mt="{" ".join(f(v) for v in m["montana_bounds"])}"' if "MT" in used else ""
 mt_path = f'\n<path class="mt" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["montana"]}"/>' if "MT" in used else ""
+nv_btn = '\n<button type="button" data-act="nv">Zoom to Nevada</button>' if "NV" in used else ""
+nv_attr = f' data-nv="{" ".join(f(v) for v in m["nevada_bounds"])}"' if "NV" in used else ""
+nv_path = f'\n<path class="nv" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["nevada"]}"/>' if "NV" in used else ""
+lv = next((c for c in cities if c["slug"] == "las-vegas"), None)
+lva = [c for c in cities if lv and math.hypot(c["x"] - lv["x"], c["y"] - lv["y"]) <= 9.5]
+# Las Vegas and its Clark County neighbors (Henderson, North Las Vegas) share one padded box, like the Phoenix area; shown once two or more are on the map.
+lvb = padbox(lva) if len(lva) >= 2 else []
+lv_btn = '\n<button type="button" data-act="lv">Las Vegas area</button>' if lvb else ""
+lv_attr = f' data-lv="{" ".join(f(v) for v in lvb)}"' if lvb else ""
+rno = next((c for c in cities if c["slug"] == "reno"), None)
+rnoa = [c for c in cities if rno and math.hypot(c["x"] - rno["x"], c["y"] - rno["y"]) <= 9.5]
+# Reno and Sparks share one padded box; shown once both are on the map.
+rnob = padbox(rnoa) if len(rnoa) >= 2 else []
+rno_btn = '\n<button type="button" data-act="reno">Reno area</button>' if rnob else ""
+rno_attr = f' data-reno="{" ".join(f(v) for v in rnob)}"' if rnob else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -128,15 +143,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}
-<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}
+<button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{kc_attr}{phx_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>

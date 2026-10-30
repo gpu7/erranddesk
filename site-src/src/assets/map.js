@@ -21,7 +21,10 @@
   var sdb = (svg.getAttribute("data-sd") || "").split(" ").map(Number);
   var ndb = (svg.getAttribute("data-nd") || "").split(" ").map(Number);
   var mtb = (svg.getAttribute("data-mt") || "").split(" ").map(Number);
+  var nvb = (svg.getAttribute("data-nv") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
+  var lvb = (svg.getAttribute("data-lv") || "").split(" ").map(Number);
+  var rnb = (svg.getAttribute("data-reno") || "").split(" ").map(Number);
   var dots = [].slice.call(svg.querySelectorAll(".dot"));
   var hits = [].slice.call(svg.querySelectorAll(".hit"));
   var labels = [].slice.call(svg.querySelectorAll(".lbl")).sort(function (a, b) {
@@ -114,7 +117,10 @@
     else if (a === "sd" && sdb.length === 4) fit(sdb[0], sdb[1], sdb[2], sdb[3]);
     else if (a === "nd" && ndb.length === 4) fit(ndb[0], ndb[1], ndb[2], ndb[3]);
     else if (a === "mt" && mtb.length === 4) fit(mtb[0], mtb[1], mtb[2], mtb[3]);
+    else if (a === "nv" && nvb.length === 4) fit(nvb[0], nvb[1], nvb[2], nvb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
+    else if (a === "lv" && lvb.length === 4) fit(lvb[0], lvb[1], lvb[2], lvb[3]);
+    else if (a === "reno" && rnb.length === 4) fit(rnb[0], rnb[1], rnb[2], rnb[3]);
     say("Zoom " + (W / vb.w).toFixed(1) + "x");
   });
 

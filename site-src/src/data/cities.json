@@ -9,7 +9,8 @@
   "AZ": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Arizona (2025_gaz_place_04.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_04.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "SD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, South Dakota (2025_gaz_place_46.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_46.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "ND": "U.S. Census Bureau, 2025 Gazetteer Files, Places, North Dakota (2025_gaz_place_38.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_38.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "MT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Montana (2025_gaz_place_30.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_30.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "MT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Montana (2025_gaz_place_30.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_30.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "NV": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nevada (2025_gaz_place_32.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_32.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -21,7 +22,8 @@
   "AZ": "Arizona",
   "SD": "South Dakota",
   "ND": "North Dakota",
-  "MT": "Montana"
+  "MT": "Montana",
+  "NV": "Nevada"
  },
  "cities": [
   {
@@ -738,6 +740,17 @@
    "lon": -112.660071,
    "x": 236,
    "y": 117.77
+  },
+  {
+   "name": "Las Vegas",
+   "state": "NV",
+   "slug": "las-vegas",
+   "gazetteer_name": "Las Vegas city",
+   "geoid": "3240000",
+   "lat": 36.233499,
+   "lon": -115.264037,
+   "x": 151.13,
+   "y": 326.26
   }
  ]
 }
