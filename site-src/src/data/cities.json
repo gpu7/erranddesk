@@ -13,7 +13,8 @@
   "NV": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Nevada (2025_gaz_place_32.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_32.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "ID": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Idaho (2025_gaz_place_16.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_16.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Washington (2025_gaz_place_53.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_53.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "OR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oregon (2025_gaz_place_41.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_41.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "OR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oregon (2025_gaz_place_41.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_41.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -29,7 +30,8 @@
   "NV": "Nevada",
   "ID": "Idaho",
   "WA": "Washington",
-  "OR": "Oregon"
+  "OR": "Oregon",
+  "CA": "California"
  },
  "cities": [
   {
@@ -966,6 +968,17 @@
    "lon": -122.935395,
    "x": 75.55,
    "y": 88.9
+  },
+  {
+   "name": "Los Angeles",
+   "state": "CA",
+   "slug": "los-angeles",
+   "gazetteer_name": "Los Angeles city",
+   "geoid": "0644000",
+   "lat": 34.019394,
+   "lon": -118.410825,
+   "x": 83.6,
+   "y": 363.12
   }
  ]
 }
