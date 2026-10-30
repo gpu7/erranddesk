@@ -990,6 +990,17 @@
    "lon": -117.120923,
    "x": 101.06,
    "y": 395.08
+  },
+  {
+   "name": "San Jose",
+   "state": "CA",
+   "slug": "san-jose",
+   "gazetteer_name": "San Jose city",
+   "geoid": "0668000",
+   "lat": 37.296011,
+   "lon": -121.814552,
+   "x": 42.24,
+   "y": 274.92
   }
  ]
 }
