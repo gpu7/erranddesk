@@ -14,7 +14,7 @@
   "ID": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Idaho (2025_gaz_place_16.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_16.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Washington (2025_gaz_place_53.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_53.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "OR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oregon (2025_gaz_place_41.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_41.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs. Exception: San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain."
  },
  "states": {
   "CO": "Colorado",
@@ -1001,6 +1001,19 @@
    "lon": -121.814552,
    "x": 42.24,
    "y": 274.92
+  },
+  {
+   "name": "San Francisco",
+   "state": "CA",
+   "slug": "san-francisco",
+   "gazetteer_name": "San Francisco city",
+   "geoid": "0667000",
+   "lat": 37.775,
+   "lon": -122.4194444,
+   "x": 34.84,
+   "y": 261.43,
+   "coord_source": "San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain.",
+   "coord_note": "San Francisco is the exception: its Census internal point falls in the ocean, because the city takes in about 185 square miles of water reaching out to the Farallon Islands, so its dot uses the U.S. Geological Survey's Geographic Names Information System coordinate for San Francisco (feature 277593, from the <a href=\"https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip\">California names file</a>)."
   }
  ]
 }
