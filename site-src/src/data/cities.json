@@ -1106,6 +1106,17 @@
    "lon": -98.524635,
    "x": 448.15,
    "y": 515.36
+  },
+  {
+   "name": "Dallas",
+   "state": "TX",
+   "slug": "dallas",
+   "gazetteer_name": "Dallas city",
+   "geoid": "4819000",
+   "lat": 32.793333,
+   "lon": -96.766513,
+   "x": 483.49,
+   "y": 440.16
   }
  ]
 }
