@@ -830,6 +830,17 @@
    "lon": -116.56389,
    "x": 164.19,
    "y": 157.04
+  },
+  {
+   "name": "Caldwell",
+   "state": "ID",
+   "slug": "caldwell",
+   "gazetteer_name": "Caldwell city",
+   "geoid": "1612250",
+   "lat": 43.64588,
+   "lon": -116.659336,
+   "x": 162.96,
+   "y": 155.38
   }
  ]
 }
