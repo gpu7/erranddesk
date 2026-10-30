@@ -1014,6 +1014,17 @@
    "y": 261.43,
    "coord_source": "San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain.",
    "coord_note": "San Francisco is the exception: its Census internal point falls in the ocean, because the city takes in about 185 square miles of water reaching out to the Farallon Islands, so its dot uses the U.S. Geological Survey's Geographic Names Information System coordinate for San Francisco (feature 277593, from the <a href=\"https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip\">California names file</a>)."
+  },
+  {
+   "name": "Fresno",
+   "state": "CA",
+   "slug": "fresno",
+   "gazetteer_name": "Fresno city",
+   "geoid": "0627000",
+   "lat": 36.782684,
+   "lon": -119.793359,
+   "x": 74.23,
+   "y": 295.64
   }
  ]
 }
