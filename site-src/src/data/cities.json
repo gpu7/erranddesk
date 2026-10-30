@@ -933,6 +933,17 @@
    "lon": -123.023007,
    "x": 70.37,
    "y": 101.65
+  },
+  {
+   "name": "Eugene",
+   "state": "OR",
+   "slug": "eugene",
+   "gazetteer_name": "Eugene city",
+   "geoid": "4123850",
+   "lat": 44.056848,
+   "lon": -123.119019,
+   "x": 63.34,
+   "y": 120.14
   }
  ]
 }
