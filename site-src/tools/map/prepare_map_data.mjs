@@ -30,6 +30,7 @@ const idk = states.find(f => f.properties.name === 'Idaho');
 const wak = states.find(f => f.properties.name === 'Washington');
 const ork = states.find(f => f.properties.name === 'Oregon');
 const cak = states.find(f => f.properties.name === 'California');
+const okk = states.find(f => f.properties.name === 'Oklahoma');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
 const map = {
@@ -67,6 +68,8 @@ const map = {
   oregon_bounds: bounds(ork),
   california: path(cak),
   california_bounds: bounds(cak),
+  oklahoma: path(okk),
+  oklahoma_bounds: bounds(okk),
 };
 fs.writeFileSync(here('../../src/data/us-map.json'), JSON.stringify(map, null, 1) + '\n');
 

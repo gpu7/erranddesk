@@ -137,6 +137,9 @@ baya = [c for c in cities if sfo and math.hypot(c["x"] - sfo["x"], c["y"] - sfo[
 bayb = padbox(baya) if len(baya) >= 2 else []
 bay_btn = '\n<button type="button" data-act="bay">Bay Area</button>' if bayb else ""
 bay_attr = f' data-bay="{" ".join(f(v) for v in bayb)}"' if bayb else ""
+ok_btn = '\n<button type="button" data-act="ok">Zoom to Oklahoma</button>' if "OK" in used else ""
+ok_attr = f' data-ok="{" ".join(f(v) for v in m["oklahoma_bounds"])}"' if "OK" in used else ""
+ok_path = f'\n<path class="ok" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["oklahoma"]}"/>' if "OK" in used else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
 
@@ -183,15 +186,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}{id_path}{wa_path}{or_path}{ca_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}{id_path}{wa_path}{or_path}{ca_path}{ok_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
