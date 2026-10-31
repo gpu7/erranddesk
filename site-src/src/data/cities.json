@@ -1551,6 +1551,17 @@
    "lon": -90.21285,
    "x": 608.34,
    "y": 447.75
+  },
+  {
+   "name": "Gulfport",
+   "state": "MS",
+   "slug": "gulfport",
+   "gazetteer_name": "Gulfport city",
+   "geoid": "2829700",
+   "lat": 30.419487,
+   "lon": -89.069022,
+   "x": 633.25,
+   "y": 489.37
   }
  ]
 }
