@@ -1494,6 +1494,17 @@
    "lon": -87.684939,
    "x": 637.38,
    "y": 227.13
+  },
+  {
+   "name": "Aurora",
+   "state": "IL",
+   "slug": "aurora-il",
+   "gazetteer_name": "Aurora city",
+   "geoid": "1703012",
+   "lat": 41.763455,
+   "lon": -88.290099,
+   "x": 627.4,
+   "y": 229.66
   }
  ]
 }
