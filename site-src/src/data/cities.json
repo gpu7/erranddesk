@@ -1380,6 +1380,17 @@
    "lon": -89.934502,
    "x": 616.92,
    "y": 498.82
+  },
+  {
+   "name": "Baton Rouge",
+   "state": "LA",
+   "slug": "baton-rouge",
+   "gazetteer_name": "Baton Rouge city",
+   "geoid": "2205000",
+   "lat": 30.442174,
+   "lon": -91.130894,
+   "x": 593.04,
+   "y": 491.35
   }
  ]
 }
