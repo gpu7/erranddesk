@@ -18,7 +18,8 @@
   "OK": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oklahoma (2025_gaz_place_40.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_40.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "TX": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Texas (2025_gaz_place_48.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_48.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Minnesota (2025_gaz_place_27.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_27.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "IA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Iowa (2025_gaz_place_19.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_19.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "IA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Iowa (2025_gaz_place_19.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_19.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "MO": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Missouri (2025_gaz_place_29.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_29.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -39,7 +40,8 @@
   "OK": "Oklahoma",
   "TX": "Texas",
   "MN": "Minnesota",
-  "IA": "Iowa"
+  "IA": "Iowa",
+  "MO": "Missouri"
  },
  "cities": [
   {
@@ -1253,6 +1255,17 @@
    "lon": -93.601074,
    "x": 538.34,
    "y": 235.14
+  },
+  {
+   "name": "Kansas City",
+   "state": "MO",
+   "slug": "kansas-city-mo",
+   "gazetteer_name": "Kansas City city",
+   "geoid": "2938000",
+   "lat": 39.125155,
+   "lon": -94.550313,
+   "x": 523.3,
+   "y": 295.1
   }
  ]
 }
