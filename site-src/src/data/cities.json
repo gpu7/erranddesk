@@ -1231,6 +1231,17 @@
    "lon": -90.603948,
    "x": 588.89,
    "y": 237.05
+  },
+  {
+   "name": "Sioux City",
+   "state": "IA",
+   "slug": "sioux-city",
+   "gazetteer_name": "Sioux City city",
+   "geoid": "1973335",
+   "lat": 42.49538,
+   "lon": -96.389495,
+   "x": 491.55,
+   "y": 218.17
   }
  ]
 }
