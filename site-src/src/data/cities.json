@@ -1299,6 +1299,17 @@
    "lon": -92.326387,
    "x": 562.21,
    "y": 298.13
+  },
+  {
+   "name": "Independence",
+   "state": "MO",
+   "slug": "independence",
+   "gazetteer_name": "Independence city",
+   "geoid": "2935000",
+   "lat": 39.085469,
+   "lon": -94.352082,
+   "x": 526.77,
+   "y": 295.95
   }
  ]
 }
