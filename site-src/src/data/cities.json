@@ -1630,6 +1630,17 @@
    "lon": -83.94927,
    "x": 716.69,
    "y": 353.68
+  },
+  {
+   "name": "Chattanooga",
+   "state": "TN",
+   "slug": "chattanooga",
+   "gazetteer_name": "Chattanooga city",
+   "geoid": "4714000",
+   "lat": 35.065958,
+   "lon": -85.248386,
+   "x": 695.56,
+   "y": 377.08
   }
  ]
 }
