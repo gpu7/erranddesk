@@ -38,6 +38,7 @@
   var lab = (svg.getAttribute("data-la") || "").split(" ").map(Number);
   var swb = (svg.getAttribute("data-swla") || "").split(" ").map(Number);
   var wib = (svg.getAttribute("data-wi") || "").split(" ").map(Number);
+  var sewb = (svg.getAttribute("data-sewi") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
   var lvb = (svg.getAttribute("data-lv") || "").split(" ").map(Number);
   var rnb = (svg.getAttribute("data-reno") || "").split(" ").map(Number);
@@ -154,6 +155,7 @@
     else if (a === "la" && lab.length === 4) fit(lab[0], lab[1], lab[2], lab[3]);
     else if (a === "swla" && swb.length === 4) fit(swb[0], swb[1], swb[2], swb[3]);
     else if (a === "wi" && wib.length === 4) fit(wib[0], wib[1], wib[2], wib[3]);
+    else if (a === "sewi" && sewb.length === 4) fit(sewb[0], sewb[1], sewb[2], sewb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
     else if (a === "lv" && lvb.length === 4) fit(lvb[0], lvb[1], lvb[2], lvb[3]);
     else if (a === "reno" && rnb.length === 4) fit(rnb[0], rnb[1], rnb[2], rnb[3]);
