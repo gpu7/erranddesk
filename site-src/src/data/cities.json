@@ -20,7 +20,8 @@
   "MN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Minnesota (2025_gaz_place_27.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_27.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "IA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Iowa (2025_gaz_place_19.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_19.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MO": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Missouri (2025_gaz_place_29.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_29.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "AR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Arkansas (2025_gaz_place_05.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_05.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "AR": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Arkansas (2025_gaz_place_05.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_05.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "LA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Louisiana (2025_gaz_place_22.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_22.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -43,7 +44,8 @@
   "MN": "Minnesota",
   "IA": "Iowa",
   "MO": "Missouri",
-  "AR": "Arkansas"
+  "AR": "Arkansas",
+  "LA": "Louisiana"
  },
  "cities": [
   {
@@ -1367,6 +1369,17 @@
    "lon": -90.679033,
    "x": 594.98,
    "y": 368.3
+  },
+  {
+   "name": "New Orleans",
+   "state": "LA",
+   "slug": "new-orleans",
+   "gazetteer_name": "New Orleans city",
+   "geoid": "2255000",
+   "lat": 30.05342,
+   "lon": -89.934502,
+   "x": 616.92,
+   "y": 498.82
   }
  ]
 }
