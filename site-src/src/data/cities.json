@@ -1448,6 +1448,17 @@
    "lon": -89.429856,
    "x": 606.22,
    "y": 200.93
+  },
+  {
+   "name": "Green Bay",
+   "state": "WI",
+   "slug": "green-bay",
+   "gazetteer_name": "Green Bay city",
+   "geoid": "5531000",
+   "lat": 44.521542,
+   "lon": -87.986568,
+   "x": 627.18,
+   "y": 166.56
   }
  ]
 }
