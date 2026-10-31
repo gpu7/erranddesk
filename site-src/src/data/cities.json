@@ -25,7 +25,8 @@
   "WI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Wisconsin (2025_gaz_place_55.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_55.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "IL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Illinois (2025_gaz_place_17.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_17.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MS": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Mississippi (2025_gaz_place_28.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_28.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "TN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Tennessee (2025_gaz_place_47.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_47.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "TN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Tennessee (2025_gaz_place_47.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_47.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "KY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kentucky (2025_gaz_place_21.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_21.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -53,7 +54,8 @@
   "WI": "Wisconsin",
   "IL": "Illinois",
   "MS": "Mississippi",
-  "TN": "Tennessee"
+  "TN": "Tennessee",
+  "KY": "Kentucky"
  },
  "cities": [
   {
@@ -1652,6 +1654,17 @@
    "lon": -87.345216,
    "x": 654.03,
    "y": 346.81
+  },
+  {
+   "name": "Louisville",
+   "state": "KY",
+   "slug": "louisville",
+   "gazetteer_name": "Louisville/Jefferson County metro government (balance)",
+   "geoid": "2148006",
+   "lat": 38.165376,
+   "lon": -85.647377,
+   "x": 680.55,
+   "y": 307.33
   }
  ]
 }
