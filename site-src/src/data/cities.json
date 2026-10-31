@@ -1676,6 +1676,17 @@
    "lon": -84.458272,
    "x": 701.76,
    "y": 307.75
+  },
+  {
+   "name": "Bowling Green",
+   "state": "KY",
+   "slug": "bowling-green",
+   "gazetteer_name": "Bowling Green city",
+   "geoid": "2108902",
+   "lat": 36.976832,
+   "lon": -86.433661,
+   "x": 669.47,
+   "y": 335.88
   }
  ]
 }
