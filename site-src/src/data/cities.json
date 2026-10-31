@@ -1356,6 +1356,17 @@
    "lon": -94.155062,
    "x": 531.49,
    "y": 362.18
+  },
+  {
+   "name": "Jonesboro",
+   "state": "AR",
+   "slug": "jonesboro",
+   "gazetteer_name": "Jonesboro city",
+   "geoid": "0535710",
+   "lat": 35.819755,
+   "lon": -90.679033,
+   "x": 594.98,
+   "y": 368.3
   }
  ]
 }
