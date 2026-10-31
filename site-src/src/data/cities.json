@@ -1641,6 +1641,17 @@
    "lon": -85.248386,
    "x": 695.56,
    "y": 377.08
+  },
+  {
+   "name": "Clarksville",
+   "state": "TN",
+   "slug": "clarksville",
+   "gazetteer_name": "Clarksville city",
+   "geoid": "4715160",
+   "lat": 36.56643,
+   "lon": -87.345216,
+   "x": 654.03,
+   "y": 346.81
   }
  ]
 }
