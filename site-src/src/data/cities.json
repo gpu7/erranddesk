@@ -1413,6 +1413,17 @@
    "lon": -92.028058,
    "x": 575.77,
    "y": 497.54
+  },
+  {
+   "name": "Lake Charles",
+   "state": "LA",
+   "slug": "lake-charles",
+   "gazetteer_name": "Lake Charles city",
+   "geoid": "2241155",
+   "lat": 30.19902,
+   "lon": -93.210835,
+   "x": 552.63,
+   "y": 498.51
   }
  ]
 }
