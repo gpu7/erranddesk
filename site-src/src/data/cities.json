@@ -1470,6 +1470,17 @@
    "lon": -87.879996,
    "x": 632.66,
    "y": 210.33
+  },
+  {
+   "name": "Racine",
+   "state": "WI",
+   "slug": "racine",
+   "gazetteer_name": "Racine city",
+   "geoid": "5566000",
+   "lat": 42.725569,
+   "lon": -87.814224,
+   "x": 633.47,
+   "y": 207.1
   }
  ]
 }
