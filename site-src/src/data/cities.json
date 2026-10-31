@@ -1505,6 +1505,17 @@
    "lon": -88.290099,
    "x": 627.4,
    "y": 229.66
+  },
+  {
+   "name": "Naperville",
+   "state": "IL",
+   "slug": "naperville",
+   "gazetteer_name": "Naperville city",
+   "geoid": "1751622",
+   "lat": 41.749173,
+   "lon": -88.162019,
+   "x": 629.57,
+   "y": 229.81
   }
  ]
 }
