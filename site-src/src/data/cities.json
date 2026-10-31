@@ -1266,6 +1266,17 @@
    "lon": -94.550313,
    "x": 523.3,
    "y": 295.1
+  },
+  {
+   "name": "St. Louis",
+   "state": "MO",
+   "slug": "st-louis",
+   "gazetteer_name": "St. Louis city",
+   "geoid": "2965000",
+   "lat": 38.635699,
+   "lon": -90.244582,
+   "x": 598.98,
+   "y": 303.45
   }
  ]
 }
