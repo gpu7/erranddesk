@@ -1242,6 +1242,17 @@
    "lon": -96.389495,
    "x": 491.55,
    "y": 218.17
+  },
+  {
+   "name": "Ankeny",
+   "state": "IA",
+   "slug": "ankeny",
+   "gazetteer_name": "Ankeny city",
+   "geoid": "1902305",
+   "lat": 41.731281,
+   "lon": -93.601074,
+   "x": 538.34,
+   "y": 235.14
   }
  ]
 }
