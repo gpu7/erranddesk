@@ -1665,6 +1665,17 @@
    "lon": -85.647377,
    "x": 680.55,
    "y": 307.33
+  },
+  {
+   "name": "Lexington",
+   "state": "KY",
+   "slug": "lexington",
+   "gazetteer_name": "Lexington-Fayette urban county",
+   "geoid": "2146027",
+   "lat": 38.040678,
+   "lon": -84.458272,
+   "x": 701.76,
+   "y": 307.75
   }
  ]
 }
