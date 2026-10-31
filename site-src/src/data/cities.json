@@ -1573,6 +1573,17 @@
    "lon": -89.977669,
    "x": 609,
    "y": 387.38
+  },
+  {
+   "name": "Hattiesburg",
+   "state": "MS",
+   "slug": "hattiesburg",
+   "gazetteer_name": "Hattiesburg city",
+   "geoid": "2831020",
+   "lat": 31.307305,
+   "lon": -89.317434,
+   "x": 626.99,
+   "y": 469.56
   }
  ]
 }
