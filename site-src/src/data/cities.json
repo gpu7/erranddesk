@@ -1687,6 +1687,17 @@
    "lon": -86.433661,
    "x": 669.47,
    "y": 335.88
+  },
+  {
+   "name": "Owensboro",
+   "state": "KY",
+   "slug": "owensboro",
+   "gazetteer_name": "Owensboro city",
+   "geoid": "2158620",
+   "lat": 37.757172,
+   "lon": -87.117398,
+   "x": 655.58,
+   "y": 319.27
   }
  ]
 }
