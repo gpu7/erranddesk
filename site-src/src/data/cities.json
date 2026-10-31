@@ -1516,6 +1516,17 @@
    "lon": -88.162019,
    "x": 629.57,
    "y": 229.81
+  },
+  {
+   "name": "Joliet",
+   "state": "IL",
+   "slug": "joliet",
+   "gazetteer_name": "Joliet city",
+   "geoid": "1738570",
+   "lat": 41.516866,
+   "lon": -88.147963,
+   "x": 630.24,
+   "y": 235.08
   }
  ]
 }
