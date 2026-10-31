@@ -1323,6 +1323,17 @@
    "lon": -92.358556,
    "x": 565.35,
    "y": 394.77
+  },
+  {
+   "name": "Fayetteville",
+   "state": "AR",
+   "slug": "fayetteville",
+   "gazetteer_name": "Fayetteville city",
+   "geoid": "0523290",
+   "lat": 36.071455,
+   "lon": -94.166564,
+   "x": 531.33,
+   "y": 364.93
   }
  ]
 }
