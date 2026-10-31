@@ -1584,6 +1584,17 @@
    "lon": -89.317434,
    "x": 626.99,
    "y": 469.56
+  },
+  {
+   "name": "Biloxi",
+   "state": "MS",
+   "slug": "biloxi",
+   "gazetteer_name": "Biloxi city",
+   "geoid": "2806220",
+   "lat": 30.426663,
+   "lon": -88.935762,
+   "x": 635.83,
+   "y": 489.01
   }
  ]
 }
