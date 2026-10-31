@@ -1459,6 +1459,17 @@
    "lon": -87.986568,
    "x": 627.18,
    "y": 166.56
+  },
+  {
+   "name": "Kenosha",
+   "state": "WI",
+   "slug": "kenosha",
+   "gazetteer_name": "Kenosha city",
+   "geoid": "5539225",
+   "lat": 42.587526,
+   "lon": -87.879996,
+   "x": 632.66,
+   "y": 210.33
   }
  ]
 }
