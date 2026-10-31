@@ -1277,6 +1277,17 @@
    "lon": -90.244582,
    "x": 598.98,
    "y": 303.45
+  },
+  {
+   "name": "Springfield",
+   "state": "MO",
+   "slug": "springfield",
+   "gazetteer_name": "Springfield city",
+   "geoid": "2970000",
+   "lat": 37.194157,
+   "lon": -93.292642,
+   "x": 546.48,
+   "y": 338.84
   }
  ]
 }
