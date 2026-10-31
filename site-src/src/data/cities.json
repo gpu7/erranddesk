@@ -1608,6 +1608,17 @@
    "lon": -86.785002,
    "x": 664.98,
    "y": 354.85
+  },
+  {
+   "name": "Memphis",
+   "state": "TN",
+   "slug": "memphis",
+   "gazetteer_name": "Memphis city",
+   "geoid": "4748000",
+   "lat": 35.109164,
+   "lon": -89.968511,
+   "x": 608.94,
+   "y": 383.76
   }
  ]
 }
