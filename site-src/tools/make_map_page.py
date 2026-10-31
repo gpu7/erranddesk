@@ -183,6 +183,11 @@ swl_attr = f' data-swla="{" ".join(f(v) for v in swlb)}"' if swlb else ""
 la_path = f'\n<path class="la" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["louisiana"]}"/>' if "LA" in used else ""
 wi_btn = '\n<button type="button" data-act="wi">Zoom to Wisconsin</button>' if "WI" in used else ""
 wi_attr = f' data-wi="{" ".join(f(v) for v in m["wisconsin_bounds"])}"' if "WI" in used else ""
+sew = [c for c in cities if c["slug"] in ("milwaukee", "racine", "kenosha")]
+# Milwaukee, Racine and Kenosha (Racine-Kenosha about 3.3 map units apart) share one padded box so all three labels show; shown once all three are on the map.
+sewb = padbox(sew) if len(sew) == 3 else []
+sew_btn = '\n<button type="button" data-act="sewi">Southeast Wisconsin area</button>' if sewb else ""
+sew_attr = f' data-sewi="{" ".join(f(v) for v in sewb)}"' if sewb else ""
 wi_path = f'\n<path class="wi" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["wisconsin"]}"/>' if "WI" in used else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
@@ -230,10 +235,10 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
