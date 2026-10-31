@@ -1391,6 +1391,17 @@
    "lon": -91.130894,
    "x": 593.04,
    "y": 491.35
+  },
+  {
+   "name": "Shreveport",
+   "state": "LA",
+   "slug": "shreveport",
+   "gazetteer_name": "Shreveport city",
+   "geoid": "2270000",
+   "lat": 32.466879,
+   "lon": -93.792193,
+   "x": 540.05,
+   "y": 447.18
   }
  ]
 }
