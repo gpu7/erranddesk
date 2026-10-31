@@ -1402,6 +1402,17 @@
    "lon": -93.792193,
    "x": 540.05,
    "y": 447.18
+  },
+  {
+   "name": "Lafayette",
+   "state": "LA",
+   "slug": "lafayette",
+   "gazetteer_name": "Lafayette city",
+   "geoid": "2240735",
+   "lat": 30.2056,
+   "lon": -92.028058,
+   "x": 575.77,
+   "y": 497.54
   }
  ]
 }
