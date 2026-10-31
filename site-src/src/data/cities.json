@@ -1345,6 +1345,17 @@
    "lon": -94.370883,
    "x": 527.91,
    "y": 381.53
+  },
+  {
+   "name": "Springdale",
+   "state": "AR",
+   "slug": "springdale",
+   "gazetteer_name": "Springdale city",
+   "geoid": "0566080",
+   "lat": 36.191438,
+   "lon": -94.155062,
+   "x": 531.49,
+   "y": 362.18
   }
  ]
 }
