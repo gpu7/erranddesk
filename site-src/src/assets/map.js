@@ -31,6 +31,7 @@
   var mnb = (svg.getAttribute("data-mn") || "").split(" ").map(Number);
   var iab = (svg.getAttribute("data-ia") || "").split(" ").map(Number);
   var mob = (svg.getAttribute("data-mo") || "").split(" ").map(Number);
+  var arb = (svg.getAttribute("data-ar") || "").split(" ").map(Number);
   var dfb = (svg.getAttribute("data-dfw") || "").split(" ").map(Number);
   var atb = (svg.getAttribute("data-atx") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
@@ -142,6 +143,7 @@
     else if (a === "mn" && mnb.length === 4) fit(mnb[0], mnb[1], mnb[2], mnb[3]);
     else if (a === "ia" && iab.length === 4) fit(iab[0], iab[1], iab[2], iab[3]);
     else if (a === "mo" && mob.length === 4) fit(mob[0], mob[1], mob[2], mob[3]);
+    else if (a === "ar" && arb.length === 4) fit(arb[0], arb[1], arb[2], arb[3]);
     else if (a === "dfw" && dfb.length === 4) fit(dfb[0], dfb[1], dfb[2], dfb[3]);
     else if (a === "atx" && atb.length === 4) fit(atb[0], atb[1], atb[2], atb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
