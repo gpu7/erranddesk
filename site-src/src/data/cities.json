@@ -1437,6 +1437,17 @@
    "lon": -87.966695,
    "x": 630.31,
    "y": 199.63
+  },
+  {
+   "name": "Madison",
+   "state": "WI",
+   "slug": "madison",
+   "gazetteer_name": "Madison city",
+   "geoid": "5548000",
+   "lat": 43.087815,
+   "lon": -89.429856,
+   "x": 606.22,
+   "y": 200.93
   }
  ]
 }
