@@ -1220,6 +1220,17 @@
    "lon": -91.67917,
    "x": 570.37,
    "y": 228.68
+  },
+  {
+   "name": "Davenport",
+   "state": "IA",
+   "slug": "davenport",
+   "gazetteer_name": "Davenport city",
+   "geoid": "1919000",
+   "lat": 41.55682,
+   "lon": -90.603948,
+   "x": 588.89,
+   "y": 237.05
   }
  ]
 }
