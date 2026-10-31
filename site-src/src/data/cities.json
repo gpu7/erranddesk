@@ -1334,6 +1334,17 @@
    "lon": -94.166564,
    "x": 531.33,
    "y": 364.93
+  },
+  {
+   "name": "Fort Smith",
+   "state": "AR",
+   "slug": "fort-smith",
+   "gazetteer_name": "Fort Smith city",
+   "geoid": "0524550",
+   "lat": 35.349276,
+   "lon": -94.370883,
+   "x": 527.91,
+   "y": 381.53
   }
  ]
 }
