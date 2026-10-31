@@ -1288,6 +1288,17 @@
    "lon": -93.292642,
    "x": 546.48,
    "y": 338.84
+  },
+  {
+   "name": "Columbia",
+   "state": "MO",
+   "slug": "columbia",
+   "gazetteer_name": "Columbia city",
+   "geoid": "2915670",
+   "lat": 38.94729,
+   "lon": -92.326387,
+   "x": 562.21,
+   "y": 298.13
   }
  ]
 }
