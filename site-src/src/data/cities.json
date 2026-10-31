@@ -17,7 +17,8 @@
   "CA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, California (2025_gaz_place_06.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_06.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs. Exception: San Francisco city: the Census internal point (37.727239, -123.032229) falls offshore because the city boundary takes in about 185 square miles of water reaching out to the Farallon Islands (Gazetteer AWATER_SQMI 185.214), so lat/lon are the USGS Geographic Names Information System (GNIS) primary coordinate for feature 277593, San Francisco (Populated Place, prim_lat_dec 37.775, prim_long_dec -122.4194444), from DomesticNames_CA.txt, https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip, downloaded 2026-10-29. U.S. government work, public domain.",
   "OK": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Oklahoma (2025_gaz_place_40.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_40.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "TX": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Texas (2025_gaz_place_48.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_48.txt, downloaded 2026-10-29. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "MN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Minnesota (2025_gaz_place_27.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_27.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "MN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Minnesota (2025_gaz_place_27.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_27.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "IA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Iowa (2025_gaz_place_19.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_19.txt, downloaded 2026-10-30. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -37,7 +38,8 @@
   "CA": "California",
   "OK": "Oklahoma",
   "TX": "Texas",
-  "MN": "Minnesota"
+  "MN": "Minnesota",
+  "IA": "Iowa"
  },
  "cities": [
   {
@@ -1196,6 +1198,17 @@
    "lon": -92.134135,
    "x": 558.31,
    "y": 119.69
+  },
+  {
+   "name": "Des Moines",
+   "state": "IA",
+   "slug": "des-moines",
+   "gazetteer_name": "Des Moines city",
+   "geoid": "1921000",
+   "lat": 41.57259,
+   "lon": -93.610243,
+   "x": 538.27,
+   "y": 238.77
   }
  ]
 }
