@@ -1698,6 +1698,17 @@
    "lon": -87.117398,
    "x": 655.58,
    "y": 319.27
+  },
+  {
+   "name": "Covington",
+   "state": "KY",
+   "slug": "covington",
+   "gazetteer_name": "Covington city",
+   "geoid": "2117848",
+   "lat": 39.035109,
+   "lon": -84.519648,
+   "x": 697.93,
+   "y": 285.27
   }
  ]
 }
