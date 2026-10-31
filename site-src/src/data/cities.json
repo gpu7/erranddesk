@@ -1527,6 +1527,17 @@
    "lon": -88.147963,
    "x": 630.24,
    "y": 235.08
+  },
+  {
+   "name": "Rockford",
+   "state": "IL",
+   "slug": "rockford",
+   "gazetteer_name": "Rockford city",
+   "geoid": "1765000",
+   "lat": 42.2593,
+   "lon": -89.063478,
+   "x": 613.62,
+   "y": 219.36
   }
  ]
 }
