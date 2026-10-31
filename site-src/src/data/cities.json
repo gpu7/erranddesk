@@ -1562,6 +1562,17 @@
    "lon": -89.069022,
    "x": 633.25,
    "y": 489.37
+  },
+  {
+   "name": "Southaven",
+   "state": "MS",
+   "slug": "southaven",
+   "gazetteer_name": "Southaven city",
+   "geoid": "2869280",
+   "lat": 34.951005,
+   "lon": -89.977669,
+   "x": 609,
+   "y": 387.38
   }
  ]
 }
