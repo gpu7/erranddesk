@@ -1209,6 +1209,17 @@
    "lon": -93.610243,
    "x": 538.27,
    "y": 238.77
+  },
+  {
+   "name": "Cedar Rapids",
+   "state": "IA",
+   "slug": "cedar-rapids",
+   "gazetteer_name": "Cedar Rapids city",
+   "geoid": "1912000",
+   "lat": 41.96419,
+   "lon": -91.67917,
+   "x": 570.37,
+   "y": 228.68
   }
  ]
 }
