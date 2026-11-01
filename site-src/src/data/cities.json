@@ -27,7 +27,8 @@
   "MS": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Mississippi (2025_gaz_place_28.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_28.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "TN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Tennessee (2025_gaz_place_47.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_47.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "KY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kentucky (2025_gaz_place_21.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_21.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "AL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Alabama (2025_gaz_place_01.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_01.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "AL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Alabama (2025_gaz_place_01.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_01.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "IN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Indiana (2025_gaz_place_18.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_18.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -57,7 +58,8 @@
   "MS": "Mississippi",
   "TN": "Tennessee",
   "KY": "Kentucky",
-  "AL": "Alabama"
+  "AL": "Alabama",
+  "IN": "Indiana"
  },
  "cities": [
   {
@@ -1766,6 +1768,17 @@
    "lon": -87.5283,
    "x": 657.53,
    "y": 423.03
+  },
+  {
+   "name": "Indianapolis",
+   "state": "IN",
+   "slug": "indianapolis",
+   "gazetteer_name": "Indianapolis city (balance)",
+   "geoid": "1836003",
+   "lat": 39.776664,
+   "lon": -86.145935,
+   "x": 667.97,
+   "y": 271.55
   }
  ]
 }
