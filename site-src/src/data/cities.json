@@ -1722,6 +1722,17 @@
    "lon": -86.67667,
    "x": 670.24,
    "y": 388.24
+  },
+  {
+   "name": "Mobile",
+   "state": "AL",
+   "slug": "mobile",
+   "gazetteer_name": "Mobile city",
+   "geoid": "0150000",
+   "lat": 30.668246,
+   "lon": -88.107853,
+   "x": 651.49,
+   "y": 482.27
   }
  ]
 }
