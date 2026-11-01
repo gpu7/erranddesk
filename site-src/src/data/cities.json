@@ -1847,6 +1847,17 @@
    "lon": -85.65557,
    "x": 668.48,
    "y": 198.27
+  },
+  {
+   "name": "Warren",
+   "state": "MI",
+   "slug": "warren",
+   "gazetteer_name": "Warren city",
+   "geoid": "2684000",
+   "lat": 42.492904,
+   "lon": -83.025001,
+   "x": 713.04,
+   "y": 203.54
   }
  ]
 }
