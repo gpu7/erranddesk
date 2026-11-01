@@ -1790,6 +1790,17 @@
    "lon": -85.142791,
    "x": 681.77,
    "y": 239.84
+  },
+  {
+   "name": "Evansville",
+   "state": "IN",
+   "slug": "evansville",
+   "gazetteer_name": "Evansville city",
+   "geoid": "1822000",
+   "lat": 37.987737,
+   "lon": -87.534705,
+   "x": 647.73,
+   "y": 314.68
   }
  ]
 }
