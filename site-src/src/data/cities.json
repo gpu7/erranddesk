@@ -1915,6 +1915,17 @@
    "lon": -84.505829,
    "x": 697.88,
    "y": 282.85
+  },
+  {
+   "name": "Toledo",
+   "state": "OH",
+   "slug": "toledo",
+   "gazetteer_name": "Toledo city",
+   "geoid": "3977000",
+   "lat": 41.664071,
+   "lon": -83.581861,
+   "x": 706.34,
+   "y": 223.55
   }
  ]
 }
