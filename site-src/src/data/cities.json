@@ -1904,6 +1904,17 @@
    "lon": -81.679435,
    "x": 738.66,
    "y": 223.26
+  },
+  {
+   "name": "Cincinnati",
+   "state": "OH",
+   "slug": "cincinnati",
+   "gazetteer_name": "Cincinnati city",
+   "geoid": "3915000",
+   "lat": 39.140183,
+   "lon": -84.505829,
+   "x": 697.88,
+   "y": 282.85
   }
  ]
 }
