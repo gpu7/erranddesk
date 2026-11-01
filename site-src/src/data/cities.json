@@ -1869,6 +1869,17 @@
    "lon": -83.030316,
    "x": 712.68,
    "y": 201.56
+  },
+  {
+   "name": "Ann Arbor",
+   "state": "MI",
+   "slug": "ann-arbor",
+   "gazetteer_name": "Ann Arbor city",
+   "geoid": "2603000",
+   "lat": 42.276147,
+   "lon": -83.73086,
+   "x": 702.05,
+   "y": 210.01
   }
  ]
 }
