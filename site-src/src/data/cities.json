@@ -1744,6 +1744,17 @@
    "lon": -86.797036,
    "x": 670.61,
    "y": 415.1
+  },
+  {
+   "name": "Montgomery",
+   "state": "AL",
+   "slug": "montgomery",
+   "gazetteer_name": "Montgomery city",
+   "geoid": "0151000",
+   "lat": 32.348503,
+   "lon": -86.267307,
+   "x": 683.26,
+   "y": 440.88
   }
  ]
 }
