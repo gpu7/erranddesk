@@ -1779,6 +1779,17 @@
    "lon": -86.145935,
    "x": 667.97,
    "y": 271.55
+  },
+  {
+   "name": "Fort Wayne",
+   "state": "IN",
+   "slug": "fort-wayne",
+   "gazetteer_name": "Fort Wayne city",
+   "geoid": "1825000",
+   "lat": 41.088193,
+   "lon": -85.142791,
+   "x": 681.77,
+   "y": 239.84
   }
  ]
 }
