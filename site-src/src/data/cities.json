@@ -1893,6 +1893,17 @@
    "lon": -82.985594,
    "x": 721.52,
    "y": 260.26
+  },
+  {
+   "name": "Cleveland",
+   "state": "OH",
+   "slug": "cleveland",
+   "gazetteer_name": "Cleveland city",
+   "geoid": "3916000",
+   "lat": 41.478462,
+   "lon": -81.679435,
+   "x": 738.66,
+   "y": 223.26
   }
  ]
 }
