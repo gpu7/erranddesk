@@ -1733,6 +1733,17 @@
    "lon": -88.107853,
    "x": 651.49,
    "y": 482.27
+  },
+  {
+   "name": "Birmingham",
+   "state": "AL",
+   "slug": "birmingham",
+   "gazetteer_name": "Birmingham city",
+   "geoid": "0107000",
+   "lat": 33.527174,
+   "lon": -86.797036,
+   "x": 670.61,
+   "y": 415.1
   }
  ]
 }
