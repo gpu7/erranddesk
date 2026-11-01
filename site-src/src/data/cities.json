@@ -1812,6 +1812,17 @@
    "lon": -86.148369,
    "x": 667.48,
    "y": 267.26
+  },
+  {
+   "name": "Fishers",
+   "state": "IN",
+   "slug": "fishers",
+   "gazetteer_name": "Fishers city",
+   "geoid": "1823278",
+   "lat": 39.96183,
+   "lon": -85.968364,
+   "x": 670.57,
+   "y": 267.02
   }
  ]
 }
