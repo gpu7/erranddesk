@@ -1836,6 +1836,17 @@
    "lon": -83.102237,
    "x": 712.11,
    "y": 206.2
+  },
+  {
+   "name": "Grand Rapids",
+   "state": "MI",
+   "slug": "grand-rapids",
+   "gazetteer_name": "Grand Rapids city",
+   "geoid": "2634000",
+   "lat": 42.961156,
+   "lon": -85.65557,
+   "x": 668.48,
+   "y": 198.27
   }
  ]
 }
