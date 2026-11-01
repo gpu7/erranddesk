@@ -1801,6 +1801,17 @@
    "lon": -87.534705,
    "x": 647.73,
    "y": 314.68
+  },
+  {
+   "name": "Carmel",
+   "state": "IN",
+   "slug": "carmel",
+   "gazetteer_name": "Carmel city",
+   "geoid": "1810342",
+   "lat": 39.965479,
+   "lon": -86.148369,
+   "x": 667.48,
+   "y": 267.26
   }
  ]
 }
