@@ -1755,6 +1755,17 @@
    "lon": -86.267307,
    "x": 683.26,
    "y": 440.88
+  },
+  {
+   "name": "Tuscaloosa",
+   "state": "AL",
+   "slug": "tuscaloosa",
+   "gazetteer_name": "Tuscaloosa city",
+   "geoid": "0177256",
+   "lat": 33.234404,
+   "lon": -87.5283,
+   "x": 657.53,
+   "y": 423.03
   }
  ]
 }
