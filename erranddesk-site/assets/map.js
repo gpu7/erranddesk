@@ -45,6 +45,7 @@
   var tnb = (svg.getAttribute("data-tn") || "").split(" ").map(Number);
   var memb = (svg.getAttribute("data-mem") || "").split(" ").map(Number);
   var kyb = (svg.getAttribute("data-ky") || "").split(" ").map(Number);
+  var alb = (svg.getAttribute("data-al") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
   var lvb = (svg.getAttribute("data-lv") || "").split(" ").map(Number);
   var rnb = (svg.getAttribute("data-reno") || "").split(" ").map(Number);
@@ -168,6 +169,7 @@
     else if (a === "tn" && tnb.length === 4) fit(tnb[0], tnb[1], tnb[2], tnb[3]);
     else if (a === "mem" && memb.length === 4) fit(memb[0], memb[1], memb[2], memb[3]);
     else if (a === "ky" && kyb.length === 4) fit(kyb[0], kyb[1], kyb[2], kyb[3]);
+    else if (a === "al" && alb.length === 4) fit(alb[0], alb[1], alb[2], alb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
     else if (a === "lv" && lvb.length === 4) fit(lvb[0], lvb[1], lvb[2], lvb[3]);
     else if (a === "reno" && rnb.length === 4) fit(rnb[0], rnb[1], rnb[2], rnb[3]);
