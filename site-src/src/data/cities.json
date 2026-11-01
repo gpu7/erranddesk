@@ -29,7 +29,8 @@
   "KY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Kentucky (2025_gaz_place_21.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_21.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "AL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Alabama (2025_gaz_place_01.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_01.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "IN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Indiana (2025_gaz_place_18.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_18.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "MI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Michigan (2025_gaz_place_26.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_26.txt, downloaded 2026-11-01. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "MI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Michigan (2025_gaz_place_26.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_26.txt, downloaded 2026-11-01. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "OH": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Ohio (2025_gaz_place_39.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_39.txt, downloaded 2026-11-01. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -61,7 +62,8 @@
   "KY": "Kentucky",
   "AL": "Alabama",
   "IN": "Indiana",
-  "MI": "Michigan"
+  "MI": "Michigan",
+  "OH": "Ohio"
  },
  "cities": [
   {
@@ -1880,6 +1882,17 @@
    "lon": -83.73086,
    "x": 702.05,
    "y": 210.01
+  },
+  {
+   "name": "Columbus",
+   "state": "OH",
+   "slug": "columbus",
+   "gazetteer_name": "Columbus city",
+   "geoid": "3918000",
+   "lat": 39.985531,
+   "lon": -82.985594,
+   "x": 721.52,
+   "y": 260.26
   }
  ]
 }
