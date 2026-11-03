@@ -2029,6 +2029,17 @@
    "lon": -82.073422,
    "x": 759.2,
    "y": 407.98
+  },
+  {
+   "name": "Macon",
+   "state": "GA",
+   "slug": "macon",
+   "gazetteer_name": "Macon-Bibb County",
+   "geoid": "1349008",
+   "lat": 32.80899,
+   "lon": -83.69406,
+   "x": 730.63,
+   "y": 424.78
   }
  ]
 }
