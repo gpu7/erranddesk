@@ -2075,6 +2075,17 @@
    "lon": -80.906099,
    "x": 778.48,
    "y": 389.41
+  },
+  {
+   "name": "North Charleston",
+   "state": "SC",
+   "slug": "north-charleston",
+   "gazetteer_name": "North Charleston city",
+   "geoid": "4550875",
+   "lat": 32.917881,
+   "lon": -80.065,
+   "x": 798.25,
+   "y": 412.15
   }
  ]
 }
