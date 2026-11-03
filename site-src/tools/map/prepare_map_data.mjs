@@ -47,6 +47,7 @@ const ind = states.find(f => f.properties.name === 'Indiana');
 const mich = states.find(f => f.properties.name === 'Michigan');
 const ohio = states.find(f => f.properties.name === 'Ohio');
 const florida = states.find(f => f.properties.name === 'Florida');
+const georgia = states.find(f => f.properties.name === 'Georgia');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
 const map = {
@@ -118,6 +119,8 @@ const map = {
   ohio_bounds: bounds(ohio),
   florida: path(florida),
   florida_bounds: bounds(florida),
+  georgia: path(georgia),
+  georgia_bounds: bounds(georgia),
 };
 fs.writeFileSync(here('../../src/data/us-map.json'), JSON.stringify(map, null, 1) + '\n');
 

@@ -31,7 +31,8 @@
   "IN": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Indiana (2025_gaz_place_18.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_18.txt, downloaded 2026-10-31. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Michigan (2025_gaz_place_26.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_26.txt, downloaded 2026-11-01. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "OH": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Ohio (2025_gaz_place_39.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_39.txt, downloaded 2026-11-01. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "FL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Florida (2025_gaz_place_12.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_12.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "FL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Florida (2025_gaz_place_12.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_12.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "GA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Georgia (2025_gaz_place_13.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_13.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -65,7 +66,8 @@
   "IN": "Indiana",
   "MI": "Michigan",
   "OH": "Ohio",
-  "FL": "Florida"
+  "FL": "Florida",
+  "GA": "Georgia"
  },
  "cities": [
   {
@@ -1994,6 +1996,17 @@
    "lon": -80.388261,
    "x": 813.15,
    "y": 539.47
+  },
+  {
+   "name": "Atlanta",
+   "state": "GA",
+   "slug": "atlanta",
+   "gazetteer_name": "Atlanta city",
+   "geoid": "1304000",
+   "lat": 33.762909,
+   "lon": -84.422675,
+   "x": 714.28,
+   "y": 404.88
   }
  ]
 }
