@@ -1972,6 +1972,17 @@
    "lon": -82.479673,
    "x": 769.03,
    "y": 530.52
+  },
+  {
+   "name": "Orlando",
+   "state": "FL",
+   "slug": "orlando",
+   "gazetteer_name": "Orlando city",
+   "geoid": "1253000",
+   "lat": 28.472818,
+   "lon": -81.320242,
+   "x": 790.34,
+   "y": 515.84
   }
  ]
 }
