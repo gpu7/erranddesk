@@ -2007,6 +2007,17 @@
    "lon": -84.422675,
    "x": 714.28,
    "y": 404.88
+  },
+  {
+   "name": "Columbus",
+   "state": "GA",
+   "slug": "columbus-ga",
+   "gazetteer_name": "Columbus city",
+   "geoid": "1319000",
+   "lat": 32.510191,
+   "lon": -84.874946,
+   "x": 709.22,
+   "y": 434.3
   }
  ]
 }
