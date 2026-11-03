@@ -2086,6 +2086,17 @@
    "lon": -80.065,
    "x": 798.25,
    "y": 412.15
+  },
+  {
+   "name": "Mount Pleasant",
+   "state": "SC",
+   "slug": "mount-pleasant",
+   "gazetteer_name": "Mount Pleasant town",
+   "geoid": "4548535",
+   "lat": 32.808382,
+   "lon": -79.865038,
+   "x": 802.4,
+   "y": 413.98
   }
  ]
 }
