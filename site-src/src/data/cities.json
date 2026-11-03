@@ -2040,6 +2040,17 @@
    "lon": -83.69406,
    "x": 730.63,
    "y": 424.78
+  },
+  {
+   "name": "Savannah",
+   "state": "GA",
+   "slug": "savannah",
+   "gazetteer_name": "Savannah city",
+   "geoid": "1369000",
+   "lat": 32.012457,
+   "lon": -81.194157,
+   "x": 780.36,
+   "y": 436
   }
  ]
 }
