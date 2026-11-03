@@ -237,6 +237,12 @@ oh_attr = f' data-oh="{" ".join(f(v) for v in m["ohio_bounds"])}"' if "OH" in us
 oh_path = f'\n<path class="oh" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["ohio"]}"/>' if "OH" in used else ""
 fl_btn = '\n<button type="button" data-act="fl">Zoom to Florida</button>' if "FL" in used else ""
 fl_attr = f' data-fl="{" ".join(f(v) for v in m["florida_bounds"])}"' if "FL" in used else ""
+sfl = [c for c in cities if c["slug"] in ("miami", "port-st-lucie")]
+# Miami and Port St. Lucie share one padded box so both labels show at 390 px (the Port St. Lucie label is hidden in the Florida view at 390 px); shown once both are on the map.
+sflb = padbox(sfl) if len(sfl) == 2 else []
+if sflb: sflb[2] += 6  # room east of Miami and Port St. Lucie so their right-side labels fit
+sfl_btn = '\n<button type="button" data-act="sfl">South Florida</button>' if sflb else ""
+sfl_attr = f' data-sfl="{" ".join(f(v) for v in sflb)}"' if sflb else ""
 fl_path = f'\n<path class="fl" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["florida"]}"/>' if "FL" in used else ""
 JS_V = hashlib.sha256((SRC / "assets" / "map.js").read_bytes()).hexdigest()[:10]
 e = lambda s: html.escape(s, quote=True)
@@ -284,10 +290,10 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}{sfl_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{sfl_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
