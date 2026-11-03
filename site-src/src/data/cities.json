@@ -2018,6 +2018,17 @@
    "lon": -84.874946,
    "x": 709.22,
    "y": 434.3
+  },
+  {
+   "name": "Augusta",
+   "state": "GA",
+   "slug": "augusta",
+   "gazetteer_name": "Augusta-Richmond County consolidated government (balance)",
+   "geoid": "1304204",
+   "lat": 33.365531,
+   "lon": -82.073422,
+   "x": 759.2,
+   "y": 407.98
   }
  ]
 }
