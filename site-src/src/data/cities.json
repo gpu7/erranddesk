@@ -2064,6 +2064,17 @@
    "lon": -79.972896,
    "x": 800.31,
    "y": 413.88
+  },
+  {
+   "name": "Columbia",
+   "state": "SC",
+   "slug": "columbia-sc",
+   "gazetteer_name": "Columbia city",
+   "geoid": "4516000",
+   "lat": 34.040519,
+   "lon": -80.906099,
+   "x": 778.48,
+   "y": 389.41
   }
  ]
 }
