@@ -1983,6 +1983,17 @@
    "lon": -81.320242,
    "x": 790.34,
    "y": 515.84
+  },
+  {
+   "name": "Port St. Lucie",
+   "state": "FL",
+   "slug": "port-st-lucie",
+   "gazetteer_name": "Port St. Lucie city",
+   "geoid": "1258715",
+   "lat": 27.280554,
+   "lon": -80.388261,
+   "x": 813.15,
+   "y": 539.47
   }
  ]
 }
