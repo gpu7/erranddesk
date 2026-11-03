@@ -2097,6 +2097,17 @@
    "lon": -79.865038,
    "x": 802.4,
    "y": 413.98
+  },
+  {
+   "name": "Rock Hill",
+   "state": "SC",
+   "slug": "rock-hill",
+   "gazetteer_name": "Rock Hill city",
+   "geoid": "4561405",
+   "lat": 34.938216,
+   "lon": -81.019177,
+   "x": 773.17,
+   "y": 369.46
   }
  ]
 }
