@@ -2314,6 +2314,17 @@
    "lon": -75.478393,
    "x": 845.82,
    "y": 223.97
+  },
+  {
+   "name": "Reading",
+   "state": "PA",
+   "slug": "reading",
+   "gazetteer_name": "Reading city",
+   "geoid": "4263624",
+   "lat": 40.33922,
+   "lon": -75.926277,
+   "x": 839.57,
+   "y": 231.29
   }
  ]
 }
