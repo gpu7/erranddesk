@@ -2463,6 +2463,17 @@
    "lon": -74.172574,
    "x": 866.89,
    "y": 216.14
+  },
+  {
+   "name": "Jersey City",
+   "state": "NJ",
+   "slug": "jersey-city",
+   "gazetteer_name": "Jersey City city",
+   "geoid": "3436000",
+   "lat": 40.711417,
+   "lon": -74.06476,
+   "x": 868.75,
+   "y": 216
   }
  ]
 }
