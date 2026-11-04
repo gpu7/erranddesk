@@ -2610,6 +2610,17 @@
    "lon": -72.681579,
    "x": 885.81,
    "y": 187.04
+  },
+  {
+   "name": "Waterbury",
+   "state": "CT",
+   "slug": "waterbury",
+   "gazetteer_name": "Waterbury city",
+   "geoid": "0980000",
+   "lat": 41.5585,
+   "lon": -73.036685,
+   "x": 881.16,
+   "y": 193.08
   }
  ]
 }
