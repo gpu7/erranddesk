@@ -2360,6 +2360,17 @@
    "lon": -77.411952,
    "x": 818.64,
    "y": 256.7
+  },
+  {
+   "name": "Gaithersburg",
+   "state": "MD",
+   "slug": "gaithersburg",
+   "gazetteer_name": "Gaithersburg city",
+   "geoid": "2431175",
+   "lat": 39.148601,
+   "lon": -77.195131,
+   "x": 823.63,
+   "y": 262.44
   }
  ]
 }
