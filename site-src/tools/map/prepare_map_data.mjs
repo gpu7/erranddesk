@@ -52,6 +52,7 @@ const south_carolina = states.find(f => f.properties.name === 'South Carolina');
 const north_carolina = states.find(f => f.properties.name === 'North Carolina');
 const virginia = states.find(f => f.properties.name === 'Virginia');
 const west_virginia = states.find(f => f.properties.name === 'West Virginia');
+const pennsylvania = states.find(f => f.properties.name === 'Pennsylvania');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
 const map = {
@@ -133,6 +134,8 @@ const map = {
   virginia_bounds: bounds(virginia),
   west_virginia: path(west_virginia),
   west_virginia_bounds: bounds(west_virginia),
+  pennsylvania: path(pennsylvania),
+  pennsylvania_bounds: bounds(pennsylvania),
 };
 fs.writeFileSync(here('../../src/data/us-map.json'), JSON.stringify(map, null, 1) + '\n');
 
