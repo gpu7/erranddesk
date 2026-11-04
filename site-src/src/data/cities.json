@@ -2235,6 +2235,17 @@
    "lon": -81.632324,
    "x": 750.24,
    "y": 293.98
+  },
+  {
+   "name": "Huntington",
+   "state": "WV",
+   "slug": "huntington",
+   "gazetteer_name": "Huntington city",
+   "geoid": "5439460",
+   "lat": 38.410651,
+   "lon": -82.434689,
+   "x": 736.05,
+   "y": 294.65
   }
  ]
 }
