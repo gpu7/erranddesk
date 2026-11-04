@@ -2143,6 +2143,17 @@
    "lon": -79.823624,
    "x": 790.44,
    "y": 339.77
+  },
+  {
+   "name": "Durham",
+   "state": "NC",
+   "slug": "durham",
+   "gazetteer_name": "Durham city",
+   "geoid": "3719000",
+   "lat": 35.977928,
+   "lon": -78.898109,
+   "x": 807.48,
+   "y": 339.48
   }
  ]
 }
