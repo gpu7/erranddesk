@@ -2257,6 +2257,17 @@
    "lon": -79.946856,
    "x": 774.59,
    "y": 260.15
+  },
+  {
+   "name": "Parkersburg",
+   "state": "WV",
+   "slug": "parkersburg",
+   "gazetteer_name": "Parkersburg city",
+   "geoid": "5462140",
+   "lat": 39.261278,
+   "lon": -81.54335,
+   "x": 748.62,
+   "y": 273.08
   }
  ]
 }
