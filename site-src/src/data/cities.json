@@ -2303,6 +2303,17 @@
    "lon": -79.975676,
    "x": 771.02,
    "y": 242.12
+  },
+  {
+   "name": "Allentown",
+   "state": "PA",
+   "slug": "allentown",
+   "gazetteer_name": "Allentown city",
+   "geoid": "4202000",
+   "lat": 40.593648,
+   "lon": -75.478393,
+   "x": 845.82,
+   "y": 223.97
   }
  ]
 }
