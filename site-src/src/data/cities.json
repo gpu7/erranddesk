@@ -38,7 +38,8 @@
   "VA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Virginia (2025_gaz_place_51.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_51.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "WV": "U.S. Census Bureau, 2025 Gazetteer Files, Places, West Virginia (2025_gaz_place_54.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_54.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "PA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Pennsylvania (2025_gaz_place_42.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_42.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "MD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maryland (2025_gaz_place_24.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_24.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "MD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maryland (2025_gaz_place_24.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_24.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "DE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Delaware (2025_gaz_place_10.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_10.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -79,7 +80,8 @@
   "VA": "Virginia",
   "WV": "West Virginia",
   "PA": "Pennsylvania",
-  "MD": "Maryland"
+  "MD": "Maryland",
+  "DE": "Delaware"
  },
  "cities": [
   {
@@ -2393,6 +2395,17 @@
    "lon": -76.738834,
    "x": 832.32,
    "y": 265.21
+  },
+  {
+   "name": "Wilmington",
+   "state": "DE",
+   "slug": "wilmington",
+   "gazetteer_name": "Wilmington city",
+   "geoid": "1077580",
+   "lat": 39.735651,
+   "lon": -75.532104,
+   "x": 849.12,
+   "y": 243.36
   }
  ]
 }
