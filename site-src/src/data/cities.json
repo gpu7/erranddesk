@@ -2496,6 +2496,17 @@
    "lon": -74.193503,
    "x": 866.85,
    "y": 217.51
+  },
+  {
+   "name": "Trenton",
+   "state": "NJ",
+   "slug": "trenton",
+   "gazetteer_name": "Trenton city",
+   "geoid": "3474000",
+   "lat": 40.223841,
+   "lon": -74.763624,
+   "x": 859.61,
+   "y": 229.57
   }
  ]
 }
