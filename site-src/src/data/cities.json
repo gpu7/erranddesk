@@ -2417,6 +2417,17 @@
    "lon": -75.521659,
    "x": 852.12,
    "y": 256.19
+  },
+  {
+   "name": "Newark",
+   "state": "DE",
+   "slug": "newark",
+   "gazetteer_name": "Newark city",
+   "geoid": "1050670",
+   "lat": 39.677649,
+   "lon": -75.757479,
+   "x": 845.6,
+   "y": 245.48
   }
  ]
 }
