@@ -2211,6 +2211,17 @@
    "lon": -76.244641,
    "x": 850.38,
    "y": 308.99
+  },
+  {
+   "name": "Newport News",
+   "state": "VA",
+   "slug": "newport-news",
+   "gazetteer_name": "Newport News city",
+   "geoid": "5156000",
+   "lat": 37.076136,
+   "lon": -76.52198,
+   "x": 844.79,
+   "y": 306.58
   }
  ]
 }
