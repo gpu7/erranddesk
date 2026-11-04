@@ -2268,6 +2268,17 @@
    "lon": -81.54335,
    "x": 748.62,
    "y": 273.08
+  },
+  {
+   "name": "Wheeling",
+   "state": "WV",
+   "slug": "wheeling",
+   "gazetteer_name": "Wheeling city",
+   "geoid": "5486452",
+   "lat": 40.073755,
+   "lon": -80.696025,
+   "x": 760.2,
+   "y": 252.41
   }
  ]
 }
