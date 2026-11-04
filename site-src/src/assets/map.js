@@ -57,6 +57,7 @@
   var scb = (svg.getAttribute("data-sc") || "").split(" ").map(Number);
   var chsb = (svg.getAttribute("data-chs") || "").split(" ").map(Number);
   var ncb = (svg.getAttribute("data-nc") || "").split(" ").map(Number);
+  var vab = (svg.getAttribute("data-va") || "").split(" ").map(Number);
   var trib = (svg.getAttribute("data-tri") || "").split(" ").map(Number);
   var triadb = (svg.getAttribute("data-triad") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
@@ -194,6 +195,7 @@
     else if (a === "sc" && scb.length === 4) fit(scb[0], scb[1], scb[2], scb[3]);
     else if (a === "chs" && chsb.length === 4) fit(chsb[0], chsb[1], chsb[2], chsb[3]);
     else if (a === "nc" && ncb.length === 4) fit(ncb[0], ncb[1], ncb[2], ncb[3]);
+    else if (a === "va" && vab.length === 4) fit(vab[0], vab[1], vab[2], vab[3]);
     else if (a === "tri" && trib.length === 4) fit(trib[0], trib[1], trib[2], trib[3]);
     else if (a === "triad" && triadb.length === 4) fit(triadb[0], triadb[1], triadb[2], triadb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
