@@ -2132,6 +2132,17 @@
    "lon": -78.641042,
    "x": 812.68,
    "y": 341.92
+  },
+  {
+   "name": "Greensboro",
+   "state": "NC",
+   "slug": "greensboro",
+   "gazetteer_name": "Greensboro city",
+   "geoid": "3728000",
+   "lat": 36.09485,
+   "lon": -79.823624,
+   "x": 790.44,
+   "y": 339.77
   }
  ]
 }
