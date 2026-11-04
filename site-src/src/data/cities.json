@@ -2200,6 +2200,17 @@
    "lon": -77.476009,
    "x": 826,
    "y": 299.74
+  },
+  {
+   "name": "Norfolk",
+   "state": "VA",
+   "slug": "norfolk",
+   "gazetteer_name": "Norfolk city",
+   "geoid": "5157000",
+   "lat": 36.923015,
+   "lon": -76.244641,
+   "x": 850.38,
+   "y": 308.99
   }
  ]
 }
