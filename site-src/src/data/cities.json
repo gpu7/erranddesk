@@ -34,7 +34,8 @@
   "FL": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Florida (2025_gaz_place_12.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_12.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "GA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Georgia (2025_gaz_place_13.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_13.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "SC": "U.S. Census Bureau, 2025 Gazetteer Files, Places, South Carolina (2025_gaz_place_45.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_45.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "NC": "U.S. Census Bureau, 2025 Gazetteer Files, Places, North Carolina (2025_gaz_place_37.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_37.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "NC": "U.S. Census Bureau, 2025 Gazetteer Files, Places, North Carolina (2025_gaz_place_37.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_37.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "VA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Virginia (2025_gaz_place_51.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_51.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -71,7 +72,8 @@
   "FL": "Florida",
   "GA": "Georgia",
   "SC": "South Carolina",
-  "NC": "North Carolina"
+  "NC": "North Carolina",
+  "VA": "Virginia"
  },
  "cities": [
   {
@@ -2165,6 +2167,17 @@
    "lon": -80.260829,
    "x": 782.58,
    "y": 340.92
+  },
+  {
+   "name": "Virginia Beach",
+   "state": "VA",
+   "slug": "virginia-beach",
+   "gazetteer_name": "Virginia Beach city",
+   "geoid": "5182000",
+   "lat": 36.779525,
+   "lon": -76.029142,
+   "x": 854.85,
+   "y": 311.41
   }
  ]
 }
