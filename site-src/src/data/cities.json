@@ -2439,6 +2439,17 @@
    "lon": -75.717504,
    "x": 847.41,
    "y": 250.58
+  },
+  {
+   "name": "Milford",
+   "state": "DE",
+   "slug": "milford",
+   "gazetteer_name": "Milford city",
+   "geoid": "1047420",
+   "lat": 38.909787,
+   "lon": -75.422301,
+   "x": 855.04,
+   "y": 261.43
   }
  ]
 }
