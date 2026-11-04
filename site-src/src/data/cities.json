@@ -2577,6 +2577,17 @@
    "lon": -73.195757,
    "x": 880.57,
    "y": 201.97
+  },
+  {
+   "name": "Stamford",
+   "state": "CT",
+   "slug": "stamford",
+   "gazetteer_name": "Stamford city",
+   "geoid": "0973000",
+   "lat": 41.079611,
+   "lon": -73.54608,
+   "x": 875.38,
+   "y": 205.76
   }
  ]
 }
