@@ -2292,6 +2292,17 @@
    "lon": -75.133346,
    "x": 854.49,
    "y": 235.75
+  },
+  {
+   "name": "Pittsburgh",
+   "state": "PA",
+   "slug": "pittsburgh",
+   "gazetteer_name": "Pittsburgh city",
+   "geoid": "4261000",
+   "lat": 40.439936,
+   "lon": -79.975676,
+   "x": 771.02,
+   "y": 242.12
   }
  ]
 }
