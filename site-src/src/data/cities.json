@@ -2349,6 +2349,17 @@
    "lon": -76.610476,
    "x": 832.91,
    "y": 257.01
+  },
+  {
+   "name": "Frederick",
+   "state": "MD",
+   "slug": "frederick",
+   "gazetteer_name": "Frederick city",
+   "geoid": "2430325",
+   "lat": 39.436891,
+   "lon": -77.411952,
+   "x": 818.64,
+   "y": 256.7
   }
  ]
 }
