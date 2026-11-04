@@ -2178,6 +2178,17 @@
    "lon": -76.029142,
    "x": 854.85,
    "y": 311.41
+  },
+  {
+   "name": "Chesapeake",
+   "state": "VA",
+   "slug": "chesapeake",
+   "gazetteer_name": "Chesapeake city",
+   "geoid": "5116000",
+   "lat": 36.679376,
+   "lon": -76.301788,
+   "x": 850.52,
+   "y": 314.67
   }
  ]
 }
