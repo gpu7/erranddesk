@@ -2542,6 +2542,17 @@
    "lon": -73.867446,
    "x": 870.79,
    "y": 210.01
+  },
+  {
+   "name": "Rochester",
+   "state": "NY",
+   "slug": "rochester-ny",
+   "gazetteer_name": "Rochester city",
+   "geoid": "3663000",
+   "lat": 43.169927,
+   "lon": -77.616891,
+   "x": 798.74,
+   "y": 173.62
   }
  ]
 }
