@@ -2371,6 +2371,17 @@
    "lon": -77.195131,
    "x": 823.63,
    "y": 262.44
+  },
+  {
+   "name": "Rockville",
+   "state": "MD",
+   "slug": "rockville",
+   "gazetteer_name": "Rockville city",
+   "geoid": "2467675",
+   "lat": 39.083666,
+   "lon": -77.155585,
+   "x": 824.6,
+   "y": 263.76
   }
  ]
 }
