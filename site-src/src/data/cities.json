@@ -41,7 +41,8 @@
   "MD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maryland (2025_gaz_place_24.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_24.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "DE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Delaware (2025_gaz_place_10.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_10.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "NJ": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Jersey (2025_gaz_place_34.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_34.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "NY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New York (2025_gaz_place_36.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_36.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "NY": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New York (2025_gaz_place_36.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_36.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "CT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Connecticut (2025_gaz_place_09.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_09.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -85,7 +86,8 @@
   "MD": "Maryland",
   "DE": "Delaware",
   "NJ": "New Jersey",
-  "NY": "New York"
+  "NY": "New York",
+  "CT": "Connecticut"
  },
  "cities": [
   {
@@ -2564,6 +2566,17 @@
    "lon": -76.143554,
    "x": 823.12,
    "y": 171.65
+  },
+  {
+   "name": "Bridgeport",
+   "state": "CT",
+   "slug": "bridgeport",
+   "gazetteer_name": "Bridgeport city",
+   "geoid": "0908000",
+   "lat": 41.187393,
+   "lon": -73.195757,
+   "x": 880.57,
+   "y": 201.97
   }
  ]
 }
