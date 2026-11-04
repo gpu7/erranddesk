@@ -56,6 +56,7 @@
   var gab = (svg.getAttribute("data-ga") || "").split(" ").map(Number);
   var scb = (svg.getAttribute("data-sc") || "").split(" ").map(Number);
   var chsb = (svg.getAttribute("data-chs") || "").split(" ").map(Number);
+  var ncb = (svg.getAttribute("data-nc") || "").split(" ").map(Number);
   var phxb = (svg.getAttribute("data-phx") || "").split(" ").map(Number);
   var lvb = (svg.getAttribute("data-lv") || "").split(" ").map(Number);
   var rnb = (svg.getAttribute("data-reno") || "").split(" ").map(Number);
@@ -190,6 +191,7 @@
     else if (a === "ga" && gab.length === 4) fit(gab[0], gab[1], gab[2], gab[3]);
     else if (a === "sc" && scb.length === 4) fit(scb[0], scb[1], scb[2], scb[3]);
     else if (a === "chs" && chsb.length === 4) fit(chsb[0], chsb[1], chsb[2], chsb[3]);
+    else if (a === "nc" && ncb.length === 4) fit(ncb[0], ncb[1], ncb[2], ncb[3]);
     else if (a === "phx" && phxb.length === 4) fit(phxb[0], phxb[1], phxb[2], phxb[3]);
     else if (a === "lv" && lvb.length === 4) fit(lvb[0], lvb[1], lvb[2], lvb[3]);
     else if (a === "reno" && rnb.length === 4) fit(rnb[0], rnb[1], rnb[2], rnb[3]);
