@@ -2246,6 +2246,17 @@
    "lon": -82.434689,
    "x": 736.05,
    "y": 294.65
+  },
+  {
+   "name": "Morgantown",
+   "state": "WV",
+   "slug": "morgantown",
+   "gazetteer_name": "Morgantown city",
+   "geoid": "5455756",
+   "lat": 39.637487,
+   "lon": -79.946856,
+   "x": 774.59,
+   "y": 260.15
   }
  ]
 }
