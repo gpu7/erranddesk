@@ -2588,6 +2588,17 @@
    "lon": -73.54608,
    "x": 875.38,
    "y": 205.76
+  },
+  {
+   "name": "New Haven",
+   "state": "CT",
+   "slug": "new-haven",
+   "gazetteer_name": "New Haven city",
+   "geoid": "0952000",
+   "lat": 41.310809,
+   "lon": -72.924953,
+   "x": 884.35,
+   "y": 198.13
   }
  ]
 }
