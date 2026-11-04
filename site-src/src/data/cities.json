@@ -2531,6 +2531,17 @@
    "lon": -78.859686,
    "x": 779.78,
    "y": 183.65
+  },
+  {
+   "name": "Yonkers",
+   "state": "NY",
+   "slug": "yonkers",
+   "gazetteer_name": "Yonkers city",
+   "geoid": "3684000",
+   "lat": 40.945862,
+   "lon": -73.867446,
+   "x": 870.79,
+   "y": 210.01
   }
  ]
 }
