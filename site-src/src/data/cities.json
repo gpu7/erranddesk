@@ -2520,6 +2520,17 @@
    "lon": -73.938677,
    "x": 871.1,
    "y": 216.59
+  },
+  {
+   "name": "Buffalo",
+   "state": "NY",
+   "slug": "buffalo",
+   "gazetteer_name": "Buffalo city",
+   "geoid": "3611000",
+   "lat": 42.892492,
+   "lon": -78.859686,
+   "x": 779.78,
+   "y": 183.65
   }
  ]
 }
