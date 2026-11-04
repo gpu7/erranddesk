@@ -2189,6 +2189,17 @@
    "lon": -76.301788,
    "x": 850.52,
    "y": 314.67
+  },
+  {
+   "name": "Richmond",
+   "state": "VA",
+   "slug": "richmond",
+   "gazetteer_name": "Richmond city",
+   "geoid": "5167000",
+   "lat": 37.531399,
+   "lon": -77.476009,
+   "x": 826,
+   "y": 299.74
   }
  ]
 }
