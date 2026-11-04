@@ -2121,6 +2121,17 @@
    "lon": -80.83099,
    "x": 775.62,
    "y": 362.8
+  },
+  {
+   "name": "Raleigh",
+   "state": "NC",
+   "slug": "raleigh",
+   "gazetteer_name": "Raleigh city",
+   "geoid": "3755000",
+   "lat": 35.831868,
+   "lon": -78.641042,
+   "x": 812.68,
+   "y": 341.92
   }
  ]
 }
