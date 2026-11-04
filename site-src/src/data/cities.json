@@ -2553,6 +2553,17 @@
    "lon": -77.616891,
    "x": 798.74,
    "y": 173.62
+  },
+  {
+   "name": "Syracuse",
+   "state": "NY",
+   "slug": "syracuse",
+   "gazetteer_name": "Syracuse city",
+   "geoid": "3673000",
+   "lat": 43.040998,
+   "lon": -76.143554,
+   "x": 823.12,
+   "y": 171.65
   }
  ]
 }
