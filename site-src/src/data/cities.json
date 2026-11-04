@@ -2474,6 +2474,17 @@
    "lon": -74.06476,
    "x": 868.75,
    "y": 216
+  },
+  {
+   "name": "Paterson",
+   "state": "NJ",
+   "slug": "paterson",
+   "gazetteer_name": "Paterson city",
+   "geoid": "3457000",
+   "lat": 40.914766,
+   "lon": -74.162829,
+   "x": 866.06,
+   "y": 211.85
   }
  ]
 }
