@@ -2428,6 +2428,17 @@
    "lon": -75.757479,
    "x": 845.6,
    "y": 245.48
+  },
+  {
+   "name": "Middletown",
+   "state": "DE",
+   "slug": "middletown",
+   "gazetteer_name": "Middletown town",
+   "geoid": "1047030",
+   "lat": 39.443394,
+   "lon": -75.717504,
+   "x": 847.41,
+   "y": 250.58
   }
  ]
 }
