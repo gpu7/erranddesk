@@ -54,6 +54,7 @@ const virginia = states.find(f => f.properties.name === 'Virginia');
 const west_virginia = states.find(f => f.properties.name === 'West Virginia');
 const maryland = states.find(f => f.properties.name === 'Maryland');
 const delaware = states.find(f => f.properties.name === 'Delaware');
+const newjersey = states.find(f => f.properties.name === 'New Jersey');
 const pennsylvania = states.find(f => f.properties.name === 'Pennsylvania');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
@@ -140,6 +141,8 @@ const map = {
   maryland_bounds: bounds(maryland),
   delaware: path(delaware),
   delaware_bounds: bounds(delaware),
+  newjersey: path(newjersey),
+  newjersey_bounds: bounds(newjersey),
   pennsylvania: path(pennsylvania),
   pennsylvania_bounds: bounds(pennsylvania),
 };

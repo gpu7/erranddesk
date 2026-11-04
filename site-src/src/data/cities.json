@@ -39,7 +39,8 @@
   "WV": "U.S. Census Bureau, 2025 Gazetteer Files, Places, West Virginia (2025_gaz_place_54.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_54.txt, downloaded 2026-11-03. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "PA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Pennsylvania (2025_gaz_place_42.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_42.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MD": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maryland (2025_gaz_place_24.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_24.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "DE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Delaware (2025_gaz_place_10.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_10.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "DE": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Delaware (2025_gaz_place_10.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_10.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "NJ": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Jersey (2025_gaz_place_34.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_34.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -81,7 +82,8 @@
   "WV": "West Virginia",
   "PA": "Pennsylvania",
   "MD": "Maryland",
-  "DE": "Delaware"
+  "DE": "Delaware",
+  "NJ": "New Jersey"
  },
  "cities": [
   {
@@ -2450,6 +2452,17 @@
    "lon": -75.422301,
    "x": 855.04,
    "y": 261.43
+  },
+  {
+   "name": "Newark",
+   "state": "NJ",
+   "slug": "newark-nj",
+   "gazetteer_name": "Newark city",
+   "geoid": "3451000",
+   "lat": 40.72422,
+   "lon": -74.172574,
+   "x": 866.89,
+   "y": 216.14
   }
  ]
 }
