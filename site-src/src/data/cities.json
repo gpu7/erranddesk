@@ -2485,6 +2485,17 @@
    "lon": -74.162829,
    "x": 866.06,
    "y": 211.85
+  },
+  {
+   "name": "Elizabeth",
+   "state": "NJ",
+   "slug": "elizabeth",
+   "gazetteer_name": "Elizabeth city",
+   "geoid": "3421000",
+   "lat": 40.666367,
+   "lon": -74.193503,
+   "x": 866.85,
+   "y": 217.51
   }
  ]
 }
