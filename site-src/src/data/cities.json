@@ -2154,6 +2154,17 @@
    "lon": -78.898109,
    "x": 807.48,
    "y": 339.48
+  },
+  {
+   "name": "Winston-Salem",
+   "state": "NC",
+   "slug": "winston-salem",
+   "gazetteer_name": "Winston-Salem city",
+   "geoid": "3775000",
+   "lat": 36.102863,
+   "lon": -80.260829,
+   "x": 782.58,
+   "y": 340.92
   }
  ]
 }
