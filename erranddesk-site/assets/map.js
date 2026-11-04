@@ -61,6 +61,8 @@
   var wvb = (svg.getAttribute("data-wv") || "").split(" ").map(Number);
   var mdb = (svg.getAttribute("data-md") || "").split(" ").map(Number);
   var deb = (svg.getAttribute("data-de") || "").split(" ").map(Number);
+  var nccb = (svg.getAttribute("data-ncc") || "").split(" ").map(Number);
+  var kasb = (svg.getAttribute("data-kas") || "").split(" ").map(Number);
   var pab = (svg.getAttribute("data-pa") || "").split(" ").map(Number);
   var trib = (svg.getAttribute("data-tri") || "").split(" ").map(Number);
   var triadb = (svg.getAttribute("data-triad") || "").split(" ").map(Number);
@@ -204,6 +206,8 @@
     else if (a === "wv" && wvb.length === 4) fit(wvb[0], wvb[1], wvb[2], wvb[3]);
     else if (a === "md" && mdb.length === 4) fit(mdb[0], mdb[1], mdb[2], mdb[3]);
     else if (a === "de" && deb.length === 4) fit(deb[0], deb[1], deb[2], deb[3]);
+    else if (a === "ncc" && nccb.length === 4) fit(nccb[0], nccb[1], nccb[2], nccb[3]);
+    else if (a === "kas" && kasb.length === 4) fit(kasb[0], kasb[1], kasb[2], kasb[3]);
     else if (a === "pa" && pab.length === 4) fit(pab[0], pab[1], pab[2], pab[3]);
     else if (a === "tri" && trib.length === 4) fit(trib[0], trib[1], trib[2], trib[3]);
     else if (a === "triad" && triadb.length === 4) fit(triadb[0], triadb[1], triadb[2], triadb[3]);
