@@ -2599,6 +2599,17 @@
    "lon": -72.924953,
    "x": 884.35,
    "y": 198.13
+  },
+  {
+   "name": "Hartford",
+   "state": "CT",
+   "slug": "hartford",
+   "gazetteer_name": "Hartford city",
+   "geoid": "0937000",
+   "lat": 41.765933,
+   "lon": -72.681579,
+   "x": 885.81,
+   "y": 187.04
   }
  ]
 }
