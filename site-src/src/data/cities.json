@@ -3009,6 +3009,17 @@
    "lon": -157.956907,
    "x": 264.87,
    "y": 547.03
+  },
+  {
+   "name": "Waipahu",
+   "state": "HI",
+   "slug": "waipahu",
+   "gazetteer_name": "Waipahu CDP",
+   "geoid": "1579700",
+   "lat": 21.384938,
+   "lon": -158.010993,
+   "x": 263.72,
+   "y": 547.42
   }
  ]
 }
