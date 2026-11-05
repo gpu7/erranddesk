@@ -2873,6 +2873,17 @@
    "lon": -70.172095,
    "x": 912.34,
    "y": 125.19
+  },
+  {
+   "name": "Bangor",
+   "state": "ME",
+   "slug": "bangor",
+   "gazetteer_name": "Bangor city",
+   "geoid": "2302795",
+   "lat": 44.829625,
+   "lon": -68.788767,
+   "x": 929.18,
+   "y": 102.85
   }
  ]
 }
