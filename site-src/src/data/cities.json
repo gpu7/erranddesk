@@ -2667,6 +2667,17 @@
    "lon": -71.373323,
    "x": 906.46,
    "y": 179.15
+  },
+  {
+   "name": "East Providence",
+   "state": "RI",
+   "slug": "east-providence",
+   "gazetteer_name": "East Providence city",
+   "geoid": "4422960",
+   "lat": 41.800433,
+   "lon": -71.359258,
+   "x": 907.12,
+   "y": 180.73
   }
  ]
 }
