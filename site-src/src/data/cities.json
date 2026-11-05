@@ -2941,6 +2941,17 @@
    "lon": -147.651745,
    "x": 118.07,
    "y": 514.93
+  },
+  {
+   "name": "Wasilla",
+   "state": "AK",
+   "slug": "wasilla",
+   "gazetteer_name": "Wasilla city",
+   "geoid": "0283080",
+   "lat": 61.581136,
+   "lon": -149.46079,
+   "x": 113.75,
+   "y": 541.28
   }
  ]
 }
