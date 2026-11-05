@@ -2952,6 +2952,17 @@
    "lon": -149.46079,
    "x": 113.75,
    "y": 541.28
+  },
+  {
+   "name": "Sitka",
+   "state": "AK",
+   "slug": "sitka",
+   "gazetteer_name": "Sitka city and borough",
+   "geoid": "0270540",
+   "lat": 57.193204,
+   "lon": -135.367396,
+   "x": 175.6,
+   "y": 565.69
   }
  ]
 }
