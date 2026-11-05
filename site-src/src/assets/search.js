@@ -20,8 +20,7 @@
     "to", "too", "under", "until", "up", "very", "was", "we", "were", "what", "when",
     "where", "which", "while", "who", "whom", "why", "with", "you", "your"
   ];
-  var STOP = Object.create(null);
-  STOP_LIST.forEach(function (w) { STOP[w] = 1; });
+  var STOP = new Set(STOP_LIST);
 
   function tokenize(text) {
     var t = String(text || "").toLowerCase().replace(/['’]/g, "");
@@ -29,18 +28,18 @@
   }
 
   function termsOf(query) {
-    var seen = Object.create(null), out = [];
+    var seen = new Set(), out = [];
     tokenize(query).forEach(function (tok) {
-      if (tok.length < 2 || STOP[tok] || seen[tok]) return;
-      seen[tok] = 1;
+      if (tok.length < 2 || STOP.has(tok) || seen.has(tok)) return;
+      seen.add(tok);
       out.push(tok);
     });
     return out.slice(0, 8);
   }
 
   function lookupKeys(term) {
-    var keys = Object.create(null);
-    function add(k) { if (k && k.length > 1) keys[k] = 1; }
+    var keys = new Set();
+    function add(k) { if (k && k.length > 1) keys.add(k); }
     add(term);
     if (term.length > 4 && term.slice(-3) === "ing") {
       var ing = term.slice(0, -3);
@@ -67,7 +66,16 @@
         add(term + last + "ed");
       }
     }
-    return Object.keys(keys);
+    var out = [];
+    keys.forEach(function (k) { out.push(k); });
+    return out;
+  }
+
+  function ownPosting(post, key) {
+    if (!post || typeof key !== "string") return null;
+    if (!Object.prototype.hasOwnProperty.call(post, key)) return null;
+    var list = post[key];
+    return Array.isArray(list) ? list : null;
   }
 
   function eqLoose(a, b) {
@@ -80,7 +88,7 @@
   function hitsFor(post, term) {
     var map = new Map();
     lookupKeys(term).forEach(function (key) {
-      var list = post[key];
+      var list = ownPosting(post, key);
       if (!list) return;
       var exact = key === term;
       for (var i = 0; i < list.length; i++) {
@@ -239,10 +247,10 @@
       for (var s = 0; s < occ.length; s++) {
         var cand = Math.max(0, occ[s].start - 50);
         var candEnd = Math.min(text.length, cand + windowLen);
-        var seen = Object.create(null), n = 0, first = 1e9;
+        var seen = new Set(), n = 0, first = 1e9;
         for (var i = 0; i < occ.length; i++) {
           if (occ[i].start >= cand && occ[i].end <= candEnd + 12) {
-            if (!seen[occ[i].term]) { seen[occ[i].term] = 1; n++; }
+            if (!seen.has(occ[i].term)) { seen.add(occ[i].term); n++; }
             if (occ[i].start < first) first = occ[i].start;
           }
         }

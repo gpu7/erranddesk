@@ -277,6 +277,43 @@ if (!upper.results.length || upper.results[0].url !== "/guides/apostille/") {
   failed++;
   console.log("FAIL case", upper.results.slice(0, 2));
 }
+const protoBefore = Object.getOwnPropertyNames(Object.prototype).sort().join("\n");
+const hostile = [
+  "__proto__", "constructor", "prototype", "constructor.prototype",
+  "__proto__,constructor", '{"__proto__":{"polluted":true}}',
+  "hasOwnProperty", "toString", "valueOf",
+  "__proto__=polluted", "constructor[prototype]",
+  "<script>alert(1)</script>", "javascript:alert(1)"
+];
+for (const q of hostile) {
+  let out;
+  try { out = s.search(index, q); }
+  catch (err) { failed++; console.log("FAIL hostile throw", q, err); continue; }
+  if (!out || !out.kind || out.kind === "error") {
+    failed++;
+    console.log("FAIL hostile kind", q, out && out.kind);
+  }
+  const badUrl = (out.results || []).some(r => !s.safeUrl(r.url));
+  if (badUrl) { failed++; console.log("FAIL hostile url", q); }
+}
+if (s.termsOf("__proto__").join(",") !== "proto") {
+  failed++;
+  console.log("FAIL proto token", s.termsOf("__proto__"));
+}
+if (s.termsOf("constructor prototype").join(",") !== "constructor,prototype") {
+  failed++;
+  console.log("FAIL property tokens", s.termsOf("constructor prototype"));
+}
+const protoAfter = Object.getOwnPropertyNames(Object.prototype).sort().join("\n");
+if (protoBefore !== protoAfter || ({}).polluted) {
+  failed++;
+  console.log("FAIL prototype changed");
+}
+const still = s.search(index, "denver");
+if (!still.results.length || still.results[0].url !== "/denver/") {
+  failed++;
+  console.log("FAIL ranking after hostile queries", still.results && still.results[0]);
+}
 if (failed) process.exit(1);
 console.log("node checks ok");
 """
