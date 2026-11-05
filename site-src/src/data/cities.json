@@ -2702,6 +2702,17 @@
    "lon": -71.807783,
    "x": 897.14,
    "y": 172.28
+  },
+  {
+   "name": "Springfield",
+   "state": "MA",
+   "slug": "springfield-ma",
+   "gazetteer_name": "Springfield city",
+   "geoid": "2567000",
+   "lat": 42.115454,
+   "lon": -72.539978,
+   "x": 886.17,
+   "y": 178.72
   }
  ]
 }
