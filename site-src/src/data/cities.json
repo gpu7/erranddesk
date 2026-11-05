@@ -2748,6 +2748,17 @@
    "lon": -71.444131,
    "x": 898.83,
    "y": 154.95
+  },
+  {
+   "name": "Nashua",
+   "state": "NH",
+   "slug": "nashua",
+   "gazetteer_name": "Nashua city",
+   "geoid": "3350260",
+   "lat": 42.749074,
+   "lon": -71.490544,
+   "x": 899.46,
+   "y": 160.35
   }
  ]
 }
