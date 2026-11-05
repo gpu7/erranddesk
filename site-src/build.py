@@ -7,9 +7,8 @@ src/pages/guides/fax-prices.html -> /guides/fax-prices/, src/pages/guides/index.
 Config: site.config.json (base_url, default_lastmod, cf_analytics_token). Env SITE_BASE_URL overrides base_url.
 Also writes public/sitemap.xml, public/robots.txt and public/assets/search-index.json,
 and copies src/static/* (icons, og-image.png) to the site root.
-Search: every non-noindex page is indexed from its own title, path and body. The header
-form submits to /search/, which loads the index in the browser. Other pages do not link
-the index file.
+Search: every non-noindex page is indexed from its own title, path and body. The search
+form is added only on / and /search/. Other pages do not link the index or the search stylesheet.
 SEO: every page gets Open Graph + Twitter card tags. JSON-LD: WebSite on the home page; Article + BreadcrumbList
 on guides, plus FAQPage built from the page's own <details><summary> FAQ text so markup can't drift from content."""
 import argparse, hashlib, html as htmlmod, json, os, re, shutil, sys
@@ -33,6 +32,7 @@ ANALYTICS = (f"<script defer src=\"https://static.cloudflareinsights.com/beacon.
 layout = (SRC / "layout.html").read_text()
 CSS_V = hashlib.sha256((SRC / "assets" / "style.css").read_bytes()).hexdigest()[:10]
 layout = layout.replace('href="/assets/style.css"', f'href="/assets/style.css?v={CSS_V}"')  # cache-busting so assets can be cached for a year
+SEARCH_CSS_V = hashlib.sha256((SRC / "assets" / "search.css").read_bytes()).hexdigest()[:10]
 SEARCH_FORM = (
     '<form class="site-search" action="/search/" method="get" role="search">'
     '<label for="q">Search</label>'
@@ -40,7 +40,16 @@ SEARCH_FORM = (
     '<button type="submit">Search</button>'
     '</form>'
 )
-layout = layout.replace("{{search_form}}", SEARCH_FORM)
+BRAND = '<a class="brand" href="/">Errand Desk <span class="tag">plain answers for paperwork errands</span></a>'
+
+def with_search_form(html):
+    """Put the search field under the tagline. Used for / and /search/ only."""
+    if html.count(BRAND) != 1: raise SystemExit("expected one brand link when adding search")
+    html = html.replace(BRAND, '<div class="mast">\n      ' + BRAND + '\n      ' + SEARCH_FORM + '\n    </div>', 1)
+    link = f'<link rel="stylesheet" href="/assets/style.css?v={CSS_V}">'
+    extra = f'<link rel="stylesheet" href="/assets/search.css?v={SEARCH_CSS_V}">'
+    if link not in html: raise SystemExit("stylesheet link missing")
+    return html.replace(link, link + "\n" + extra, 1)
 
 SITE_NAME = "Errand Desk"
 OG_IMAGE = BASE + "og-image.png"
@@ -117,13 +126,7 @@ def page_path(page):
 
 if OUT.exists(): shutil.rmtree(OUT)
 shutil.copytree(SRC / "assets", OUT / "assets")
-for f in sorted((SRC / "static").glob("*")):
-    if f.name == "404.html":
-        text = f.read_text().replace("{{search_form}}", SEARCH_FORM)
-        text = re.sub(r'href="/assets/style\.css(?:\?v=[0-9a-fA-F]+)?"', f'href="/assets/style.css?v={CSS_V}"', text, count=1)
-        (OUT / f.name).write_text(text)
-    else:
-        shutil.copy(f, OUT / f.name)
+for f in (SRC / "static").glob("*"): shutil.copy(f, OUT / f.name)
 pages = []
 for page in sorted((SRC / "pages").rglob("*.html")):
     raw = page.read_text()
@@ -159,6 +162,7 @@ for path, meta, body in pages:
         .replace("{{nav_map}}", ' aria-current="page"' if meta.get("nav") == "map" else "")
         .replace("{{analytics}}", ANALYTICS)
         .replace("{{content}}", content))
+    if path in ("", "search/"): html = with_search_form(html)
     dest.write_text(html); print("built", dest.relative_to(OUT))
     if not meta.get("noindex"):
         urls.append((url, lastmod))

@@ -43,9 +43,9 @@ The builder also writes `sitemap.xml` (every page without `"noindex": true`), `r
 
 ## Search
 
-The header form on every page (including the 404) submits to `/search/?q=`. That page loads `assets/search.js` and `assets/search-index.json` in the browser. Other pages do not link the index. The index is built from each public page's title, canonical path, description and visible text, so a new or edited page is included on the next build. There is no search backend.
+The home page and `/search/` have a search form under the tagline. It submits to `/search/?q=`. That page loads `assets/search.js` and `assets/search-index.json` in the browser. City, guide, map, about, and 404 pages do not include the form, and they do not link the index. The index is still built from every public page's title, canonical path, description and visible text, so a new or edited page is included on the next build. There is no search backend.
 
-`search.js` and `search-index.json` are fingerprinted with `?v=` like the stylesheet. On upload, set Content-Type `text/javascript` and `application/json`. A long cache is safe because the query string changes when the file changes. HTML, the sitemap and `robots.txt` stay on the short cache.
+`search.css`, `search.js`, and `search-index.json` are fingerprinted with `?v=`. Only the home page and `/search/` link `search.css`. The shared `style.css` is unchanged, so other pages keep their existing HTML. On upload, set Content-Type `text/css`, `text/javascript`, and `application/json`. A long cache is safe because the query string changes when the file changes. HTML, the sitemap and `robots.txt` stay on the short cache.
 
 Page `schema` values:
 - `website`: WebSite JSON-LD
@@ -69,7 +69,7 @@ To add a nav item, add a `{{nav_<key>}}` token in `layout.html` and the matching
 ## Deploy
 
 After a PR that changes `erranddesk-site/` is merged to `main`:
-1. Upload `erranddesk-site/` to the site's S3 bucket with explicit Content-Type and Cache-Control headers. HTML and sitemap get 5 minutes; CSS, icons and PNGs get one year, immutable; og-image.png gets one day. `assets/search.js` (`text/javascript`) and `assets/search-index.json` (`application/json`) are fingerprinted with `?v=` and can use the long cache. Don't use `--delete`.
+1. Upload `erranddesk-site/` to the site's S3 bucket with explicit Content-Type and Cache-Control headers. HTML and sitemap get 5 minutes; CSS, icons and PNGs get one year, immutable; og-image.png gets one day. `assets/search.css` (`text/css`), `assets/search.js` (`text/javascript`) and `assets/search-index.json` (`application/json`) are fingerprinted with `?v=` and can use the long cache. Don't use `--delete`.
 2. Invalidate `/*` on the CloudFront distribution and wait for it to complete.
 3. Spot-check the live site with curl: status codes, titles, sitemap, og-image, http→https and 404.
 

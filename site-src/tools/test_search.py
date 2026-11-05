@@ -74,11 +74,16 @@ def tail_block(html):
     return html.split('<footer class="site-footer">', 1)[1]
 
 
-def git_file(path):
-    r = subprocess.run(["git", "show", f"HEAD:erranddesk-site/{path}"], cwd=ROOT, capture_output=True)
+def origin_bytes(path):
+    r = subprocess.run(["git", "show", f"origin/main:erranddesk-site/{path}"], cwd=ROOT, capture_output=True)
     if r.returncode != 0:
         return None
-    return r.stdout.decode()
+    return r.stdout
+
+
+def origin_file(path):
+    raw = origin_bytes(path)
+    return None if raw is None else raw.decode()
 
 
 def check_synthetic():
@@ -135,41 +140,49 @@ def check_site(out):
         assert token not in index["post"]
     home = (out / "index.html").read_text()
     assert "search-index" not in home and "search.js" not in home
+    assert "/assets/search.css?v=" in home
+    assert home.count('<form class="site-search"') == 1
     assert home.index("plain answers for paperwork errands") < home.index('<form class="site-search"')
     form_at = home.index('<form class="site-search"')
     assert home.index("<nav", form_at) > form_at
     assert 'action="/search/"' in home and 'method="get"' in home and 'type="submit"' in home
     assert '<label for="q">Search</label>' in home and 'id="q"' in home
-    assert home.index('<form class="site-search"') - home.index("plain answers for paperwork errands") < 180
-    # The form is not inside the brand link.
+    assert home.index('<form class="site-search"') - home.index("plain answers for paperwork errands") < 220
     brand = home.index('<a class="brand"')
     brand_end = home.index("</a>", brand)
     assert form_at > brand_end
-    page = (out / "denver" / "index.html").read_text()
-    assert "search-index" not in page and "search.js" not in page
+    # Home keeps its title, description, canonical, JSON-LD, main column and footer.
+    # The only head addition is the search stylesheet, and the header gains the form.
+    published_home = origin_file("index.html")
+    assert main_block(published_home) == main_block(home)
+    assert tail_block(published_home) == tail_block(home)
+    home_head = re.sub(r'\n<link rel="stylesheet" href="/assets/search.css\?v=[0-9a-f]+">', "", head_block(home))
+    assert head_block(published_home) == home_head
     search_html = (out / "search" / "index.html").read_text()
+    assert search_html.count('<form class="site-search"') == 1
     assert "/assets/search.js?v=" in search_html and "/assets/search-index.json?v=" in search_html
+    assert "/assets/search.css?v=" in search_html
     assert 'rel="canonical" href="https://erranddesk.com/search/"' in search_html
     assert "<title>Search Errand Desk</title>" in search_html
     assert "application/ld+json" not in search_html
-    not_found = (out / "404.html").read_text()
-    assert 'name="robots" content="noindex"' in not_found
-    assert "<title>Page not found | Errand Desk</title>" in not_found
-    assert '<form class="site-search"' in not_found and "search-index" not in not_found
-    # Existing pages: titles, canonicals, JSON-LD, main column and footer stay put.
-    # The header gains the search form and the stylesheet hash changes.
-    for rel in sorted(p.relative_to(out).as_posix() for p in out.rglob("index.html")):
-        if rel == "search/index.html":
+    # Every previously published page, including 404, stays byte-identical.
+    # style.css is unchanged, so its fingerprint does not rewrite those pages.
+    for rel in sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()):
+        if rel in ("index.html", "search/index.html", "sitemap.xml") or rel.startswith("assets/search"):
             continue
-        old = git_file(rel)
+        old = origin_bytes(rel)
         assert old is not None, rel
-        new = (out / rel).read_text()
-        assert main_block(old) == main_block(new), rel
-        assert head_block(old) == head_block(new), rel
-        assert tail_block(old) == tail_block(new), rel
-    old_404 = git_file("404.html")
-    assert main_block(old_404) == main_block(not_found)
-    assert "<title>Page not found | Errand Desk</title>" in old_404
+        assert old == (out / rel).read_bytes(), rel
+    for rel in ("denver/index.html", "about/index.html", "map/index.html", "guides/scanning/index.html",
+                "guides/apostille/index.html", "guides/money-orders/index.html", "guides/notary-options/index.html",
+                "aurora-il/index.html", "404.html"):
+        text = (out / rel).read_text()
+        assert "site-search" not in text and "search.css" not in text and "search.js" not in text, rel
+    assert "Aurora, Illinois Birth Certificates and Errands" in (out / "aurora-il/index.html").read_text()
+    assert "email or USB" in (out / "guides/scanning/index.html").read_text()
+    assert "which documents go to your state" in (out / "guides/apostille/index.html").read_text()
+    assert "Cost and Limit" in (out / "guides/money-orders/index.html").read_text()
+    assert 'href="/guides/free-notary/"' in (out / "guides/notary-options/index.html").read_text()
     broken = []
     for html_path in out.rglob("*.html"):
         text = html_path.read_text()
