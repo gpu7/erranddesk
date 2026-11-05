@@ -2634,6 +2634,17 @@
    "lon": -71.418784,
    "x": 906.02,
    "y": 180.49
+  },
+  {
+   "name": "Cranston",
+   "state": "RI",
+   "slug": "cranston",
+   "gazetteer_name": "Cranston city",
+   "geoid": "4419180",
+   "lat": 41.769734,
+   "lon": -71.485049,
+   "x": 905.26,
+   "y": 181.95
   }
  ]
 }
