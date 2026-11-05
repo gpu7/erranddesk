@@ -71,6 +71,7 @@
   var nhb = (svg.getAttribute("data-nh") || "").split(" ").map(Number);
   var vtb = (svg.getAttribute("data-vt") || "").split(" ").map(Number);
   var meb = (svg.getAttribute("data-me") || "").split(" ").map(Number);
+  var akb = (svg.getAttribute("data-ak") || "").split(" ").map(Number);
   var chtb = (svg.getAttribute("data-cht") || "").split(" ").map(Number);
   var pspb = (svg.getAttribute("data-psp") || "").split(" ").map(Number);
   var leab = (svg.getAttribute("data-lea") || "").split(" ").map(Number);
@@ -232,6 +233,7 @@
     else if (a === "nh" && nhb.length === 4) fit(nhb[0], nhb[1], nhb[2], nhb[3]);
     else if (a === "vt" && vtb.length === 4) fit(vtb[0], vtb[1], vtb[2], vtb[3]);
     else if (a === "me" && meb.length === 4) fit(meb[0], meb[1], meb[2], meb[3]);
+    else if (a === "ak" && akb.length === 4) fit(akb[0], akb[1], akb[2], akb[3]);
     else if (a === "cht" && chtb.length === 4) fit(chtb[0], chtb[1], chtb[2], chtb[3]);
     else if (a === "psp" && pspb.length === 4) fit(pspb[0], pspb[1], pspb[2], pspb[3]);
     else if (a === "lea" && leab.length === 4) fit(leab[0], leab[1], leab[2], leab[3]);
