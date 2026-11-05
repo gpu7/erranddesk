@@ -2930,6 +2930,17 @@
    "lon": -134.178445,
    "x": 177.73,
    "y": 555.25
+  },
+  {
+   "name": "Fairbanks",
+   "state": "AK",
+   "slug": "fairbanks",
+   "gazetteer_name": "Fairbanks city",
+   "geoid": "0224230",
+   "lat": 64.836531,
+   "lon": -147.651745,
+   "x": 118.07,
+   "y": 514.93
   }
  ]
 }
