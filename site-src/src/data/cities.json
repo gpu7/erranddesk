@@ -2713,6 +2713,17 @@
    "lon": -72.539978,
    "x": 886.17,
    "y": 178.72
+  },
+  {
+   "name": "Cambridge",
+   "state": "MA",
+   "slug": "cambridge",
+   "gazetteer_name": "Cambridge city",
+   "geoid": "2511000",
+   "lat": 42.376043,
+   "lon": -71.11868,
+   "x": 907.62,
+   "y": 166.99
   }
  ]
 }
