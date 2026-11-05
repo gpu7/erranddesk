@@ -333,6 +333,11 @@ nh_path = f'\n<path class="nh" style="fill:#e3eef6;stroke:var(--accent);stroke-w
 vt_btn = '\n<button type="button" data-act="vt">Zoom to Vermont</button>' if "VT" in used else ""
 vt_attr = f' data-vt="{" ".join(f(v) for v in m["vermont_bounds"])}"' if "VT" in used else ""
 vt_path = f'\n<path class="vt" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["vermont"]}"/>' if "VT" in used else ""
+cht = [c for c in cities if c["slug"] in ("burlington", "south-burlington", "winooski", "essex-junction")]
+# Chittenden County cluster: Burlington, South Burlington, Winooski, Essex Junction — dense at statewide VT zoom.
+chtb = padbox(cht) if len(cht) == 4 else []
+cht_btn = '\n<button type="button" data-act="cht">Chittenden / Burlington area</button>' if chtb else ""
+cht_attr = f' data-cht="{" ".join(f(v) for v in chtb)}"' if chtb else ""
 bos = [c for c in cities if c["slug"] in ("boston", "cambridge")]
 # Boston and Cambridge share one padded box so both labels show at phone width; shown once both are on the map.
 bosb = padbox(bos) if len(bos) == 2 else []
@@ -384,10 +389,10 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}{sfl_btn}{ga_btn}{sc_btn}{chs_btn}{nc_btn}{tri_btn}{triad_btn}{va_btn}{hr_btn}{wv_btn}{md_btn}{de_btn}{nj_btn}{nnj_btn}{ny_btn}{ct_btn}{sct_btn}{ri_btn}{ma_btn}{nh_btn}{vt_btn}{bos_btn}{nycm_btn}{upny_btn}{ncc_btn}{kas_btn}{pa_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}{sfl_btn}{ga_btn}{sc_btn}{chs_btn}{nc_btn}{tri_btn}{triad_btn}{va_btn}{hr_btn}{wv_btn}{md_btn}{de_btn}{nj_btn}{nnj_btn}{ny_btn}{ct_btn}{sct_btn}{ri_btn}{ma_btn}{nh_btn}{vt_btn}{cht_btn}{bos_btn}{nycm_btn}{upny_btn}{ncc_btn}{kas_btn}{pa_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{sfl_attr}{ga_attr}{sc_attr}{chs_attr}{nc_attr}{tri_attr}{triad_attr}{va_attr}{hr_attr}{wv_attr}{md_attr}{de_attr}{nj_attr}{nnj_attr}{ny_attr}{ct_attr}{sct_attr}{ri_attr}{ma_attr}{nh_attr}{vt_attr}{bos_attr}{nycm_attr}{upny_attr}{ncc_attr}{kas_attr}{pa_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{sfl_attr}{ga_attr}{sc_attr}{chs_attr}{nc_attr}{tri_attr}{triad_attr}{va_attr}{hr_attr}{wv_attr}{md_attr}{de_attr}{nj_attr}{nnj_attr}{ny_attr}{ct_attr}{sct_attr}{ri_attr}{ma_attr}{nh_attr}{vt_attr}{cht_attr}{bos_attr}{nycm_attr}{upny_attr}{ncc_attr}{kas_attr}{pa_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
