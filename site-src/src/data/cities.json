@@ -2759,6 +2759,17 @@
    "lon": -71.490544,
    "x": 899.46,
    "y": 160.35
+  },
+  {
+   "name": "Concord",
+   "state": "NH",
+   "slug": "concord",
+   "gazetteer_name": "Concord city",
+   "geoid": "3314200",
+   "lat": 43.232493,
+   "lon": -71.561252,
+   "x": 895.53,
+   "y": 149.98
   }
  ]
 }
