@@ -2781,6 +2781,17 @@
    "lon": -70.883623,
    "x": 906.57,
    "y": 148.12
+  },
+  {
+   "name": "Rochester",
+   "state": "NH",
+   "slug": "rochester-nh",
+   "gazetteer_name": "Rochester city",
+   "geoid": "3365140",
+   "lat": 43.298493,
+   "lon": -70.977005,
+   "x": 904.42,
+   "y": 146.05
   }
  ]
 }
