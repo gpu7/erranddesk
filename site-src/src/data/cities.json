@@ -2884,6 +2884,17 @@
    "lon": -68.788767,
    "x": 929.18,
    "y": 102.85
+  },
+  {
+   "name": "South Portland",
+   "state": "ME",
+   "slug": "south-portland",
+   "gazetteer_name": "South Portland city",
+   "geoid": "2371990",
+   "lat": 43.631402,
+   "lon": -70.285989,
+   "x": 913.34,
+   "y": 135.74
   }
  ]
 }
