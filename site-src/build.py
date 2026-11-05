@@ -5,12 +5,17 @@ optional schema: "website" | "article" | "collection" | "page").
 URL scheme: src/pages/index.html -> /, src/pages/about.html -> /about/,
 src/pages/guides/fax-prices.html -> /guides/fax-prices/, src/pages/guides/index.html -> /guides/.
 Config: site.config.json (base_url, default_lastmod, cf_analytics_token). Env SITE_BASE_URL overrides base_url.
-Also writes public/sitemap.xml and public/robots.txt, and copies src/static/* (icons, og-image.png) to the site root.
+Also writes public/sitemap.xml, public/robots.txt and public/assets/search-index.json,
+and copies src/static/* (icons, og-image.png) to the site root.
+Search: every non-noindex page is indexed from its own title, path and body. The search
+form is added only on / and /search/. Other pages do not link the index or the search stylesheet.
 SEO: every page gets Open Graph + Twitter card tags. JSON-LD: WebSite on the home page; Article + BreadcrumbList
 on guides, plus FAQPage built from the page's own <details><summary> FAQ text so markup can't drift from content."""
-import argparse, hashlib, html as htmlmod, json, os, re, shutil
+import argparse, hashlib, html as htmlmod, json, os, re, shutil, sys
 from pathlib import Path
 from xml.sax.saxutils import escape
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import searchindex
 ROOT = Path(__file__).resolve().parent
 ap = argparse.ArgumentParser(description="Build the Errand Desk static site.")
 ap.add_argument("--out", help="output directory (default: public/ next to build.py). It is deleted and rebuilt.")
@@ -27,6 +32,24 @@ ANALYTICS = (f"<script defer src=\"https://static.cloudflareinsights.com/beacon.
 layout = (SRC / "layout.html").read_text()
 CSS_V = hashlib.sha256((SRC / "assets" / "style.css").read_bytes()).hexdigest()[:10]
 layout = layout.replace('href="/assets/style.css"', f'href="/assets/style.css?v={CSS_V}"')  # cache-busting so assets can be cached for a year
+SEARCH_CSS_V = hashlib.sha256((SRC / "assets" / "search.css").read_bytes()).hexdigest()[:10]
+SEARCH_FORM = (
+    '<form class="site-search" action="/search/" method="get" role="search">'
+    '<label for="q">Search</label>'
+    '<input id="q" name="q" type="search" maxlength="120" autocomplete="off" autocapitalize="off" enterkeyhint="search" placeholder="City or topic">'
+    '<button type="submit">Search</button>'
+    '</form>'
+)
+BRAND = '<a class="brand" href="/">Errand Desk <span class="tag">plain answers for paperwork errands</span></a>'
+
+def with_search_form(html):
+    """Put the search field under the tagline. Used for / and /search/ only."""
+    if html.count(BRAND) != 1: raise SystemExit("expected one brand link when adding search")
+    html = html.replace(BRAND, '<div class="mast">\n      ' + BRAND + '\n      ' + SEARCH_FORM + '\n    </div>', 1)
+    link = f'<link rel="stylesheet" href="/assets/style.css?v={CSS_V}">'
+    extra = f'<link rel="stylesheet" href="/assets/search.css?v={SEARCH_CSS_V}">'
+    if link not in html: raise SystemExit("stylesheet link missing")
+    return html.replace(link, link + "\n" + extra, 1)
 
 SITE_NAME = "Errand Desk"
 OG_IMAGE = BASE + "og-image.png"
@@ -95,23 +118,39 @@ def jsonld(meta, body, url, lastmod):
     data = data.replace("</", "<\\/")  # never close the script element early
     return f'<script type="application/ld+json">\n{data}\n</script>\n'
 
+def page_path(page):
+    rel = page.relative_to(SRC / "pages").with_suffix("")
+    if str(rel) == "index": return ""
+    if rel.name == "index": return f"{rel.parent.as_posix()}/"
+    return f"{rel.as_posix()}/"
+
 if OUT.exists(): shutil.rmtree(OUT)
 shutil.copytree(SRC / "assets", OUT / "assets")
 for f in (SRC / "static").glob("*"): shutil.copy(f, OUT / f.name)
-urls = []
+pages = []
 for page in sorted((SRC / "pages").rglob("*.html")):
     raw = page.read_text()
     m = re.match(r"\s*<!--meta\s*(\{.*?\})\s*-->", raw, re.S)
     meta = json.loads(m.group(1)); body = raw[m.end():].strip()
-    rel = page.relative_to(SRC / "pages").with_suffix("")
-    path = "" if str(rel) == "index" else (f"{rel.parent.as_posix()}/" if rel.name == "index" else f"{rel.as_posix()}/")
+    path = page_path(page)
+    pages.append((path, meta, body))
+index_pages = [{"url": "/" + path, "title": meta["title"], "description": meta["description"], "body": body}
+               for path, meta, body in pages if not meta.get("noindex")]
+index_blob = searchindex.dumps(searchindex.build_index(index_pages)).encode("utf-8")
+(OUT / "assets" / "search-index.json").write_bytes(index_blob)
+INDEX_V = hashlib.sha256(index_blob).hexdigest()[:10]
+JS_V = hashlib.sha256((SRC / "assets" / "search.js").read_bytes()).hexdigest()[:10]
+urls = []
+for path, meta, body in pages:
     dest = OUT / path / "index.html"
     dest.parent.mkdir(parents=True, exist_ok=True)
     url, lastmod = BASE + path, meta.get("lastmod", cfg["default_lastmod"])
+    content = (body.replace("{{search_script}}", f"/assets/search.js?v={JS_V}")
+                    .replace("{{search_index}}", f"/assets/search-index.json?v={INDEX_V}"))
     html = (layout.replace("{{title}}", meta["title"]).replace("{{description}}", meta["description"])
         .replace("{{canonical}}", url)
         .replace("{{social}}", social_tags(meta, url))
-        .replace("{{jsonld}}", jsonld(meta, body, url, lastmod))
+        .replace("{{jsonld}}", jsonld(meta, content, url, lastmod))
         .replace("{{nav_fax}}", ' aria-current="page"' if meta.get("nav") == "fax" else "")
         .replace("{{nav_notary}}", ' aria-current="page"' if meta.get("nav") == "notary" else "")
         .replace("{{nav_passport}}", ' aria-current="page"' if meta.get("nav") == "passport" else "")
@@ -122,10 +161,12 @@ for page in sorted((SRC / "pages").rglob("*.html")):
         .replace("{{nav_about}}", ' aria-current="page"' if meta.get("nav") == "about" else "")
         .replace("{{nav_map}}", ' aria-current="page"' if meta.get("nav") == "map" else "")
         .replace("{{analytics}}", ANALYTICS)
-        .replace("{{content}}", body))
+        .replace("{{content}}", content))
+    if path in ("", "search/"): html = with_search_form(html)
     dest.write_text(html); print("built", dest.relative_to(OUT))
     if not meta.get("noindex"):
         urls.append((url, lastmod))
+print(f"built assets/search-index.json ({len(index_blob)} bytes, {len(index_pages)} pages)")
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 sm += [f"  <url><loc>{escape(u)}</loc><lastmod>{d}</lastmod></url>" for u, d in urls]
 sm.append("</urlset>")
