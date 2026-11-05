@@ -2724,6 +2724,17 @@
    "lon": -71.11868,
    "x": 907.62,
    "y": 166.99
+  },
+  {
+   "name": "Lowell",
+   "state": "MA",
+   "slug": "lowell",
+   "gazetteer_name": "Lowell city",
+   "geoid": "2537000",
+   "lat": 42.638995,
+   "lon": -71.32102,
+   "x": 902.82,
+   "y": 162.06
   }
  ]
 }
