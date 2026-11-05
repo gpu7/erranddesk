@@ -63,6 +63,7 @@ const newhampshire = states.find(f => f.properties.name === 'New Hampshire');
 const vermont = states.find(f => f.properties.name === 'Vermont');
 const maine = states.find(f => f.properties.name === 'Maine');
 const alaska = states.find(f => f.properties.name === 'Alaska');
+const hawaii = states.find(f => f.properties.name === 'Hawaii');
 const pennsylvania = states.find(f => f.properties.name === 'Pennsylvania');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
@@ -167,6 +168,8 @@ const map = {
   maine_bounds: bounds(maine),
   alaska: path(alaska),
   alaska_bounds: bounds(alaska),
+  hawaii: path(hawaii),
+  hawaii_bounds: bounds(hawaii),
   pennsylvania: path(pennsylvania),
   pennsylvania_bounds: bounds(pennsylvania),
 };

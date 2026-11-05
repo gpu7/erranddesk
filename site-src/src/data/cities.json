@@ -48,7 +48,8 @@
   "NH": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Hampshire (2025_gaz_place_33.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_33.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "VT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Vermont (2025_gaz_place_50.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_50.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "ME": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maine (2025_gaz_place_23.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_23.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "AK": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Alaska (2025_gaz_place_02.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_02.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "AK": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Alaska (2025_gaz_place_02.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_02.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "HI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Hawaii (2025_gaz_place_15.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_15.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -99,7 +100,8 @@
   "NH": "New Hampshire",
   "VT": "Vermont",
   "ME": "Maine",
-  "AK": "Alaska"
+  "AK": "Alaska",
+  "HI": "Hawaii"
  },
  "cities": [
   {
@@ -2963,6 +2965,17 @@
    "lon": -135.367396,
    "x": 175.6,
    "y": 565.69
+  },
+  {
+   "name": "Honolulu",
+   "state": "HI",
+   "slug": "honolulu",
+   "gazetteer_name": "Urban Honolulu CDP",
+   "geoid": "1571550",
+   "lat": 21.324347,
+   "lon": -157.84764,
+   "x": 267.19,
+   "y": 548.8
   }
  ]
 }
