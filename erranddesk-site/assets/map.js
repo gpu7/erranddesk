@@ -67,6 +67,7 @@
   var ctb = (svg.getAttribute("data-ct") || "").split(" ").map(Number);
   var sctb = (svg.getAttribute("data-sct") || "").split(" ").map(Number);
   var rib = (svg.getAttribute("data-ri") || "").split(" ").map(Number);
+  var mab = (svg.getAttribute("data-ma") || "").split(" ").map(Number);
   var nycmb = (svg.getAttribute("data-nycm") || "").split(" ").map(Number);
   var upnyb = (svg.getAttribute("data-upny") || "").split(" ").map(Number);
   var nccb = (svg.getAttribute("data-ncc") || "").split(" ").map(Number);
@@ -220,6 +221,7 @@
     else if (a === "ct" && ctb.length === 4) fit(ctb[0], ctb[1], ctb[2], ctb[3]);
     else if (a === "sct" && sctb.length === 4) fit(sctb[0], sctb[1], sctb[2], sctb[3]);
     else if (a === "ri" && rib.length === 4) fit(rib[0], rib[1], rib[2], rib[3]);
+    else if (a === "ma" && mab.length === 4) fit(mab[0], mab[1], mab[2], mab[3]);
     else if (a === "nycm" && nycmb.length === 4) fit(nycmb[0], nycmb[1], nycmb[2], nycmb[3]);
     else if (a === "upny" && upnyb.length === 4) fit(upnyb[0], upnyb[1], upnyb[2], upnyb[3]);
     else if (a === "ncc" && nccb.length === 4) fit(nccb[0], nccb[1], nccb[2], nccb[3]);
