@@ -2895,6 +2895,17 @@
    "lon": -70.285989,
    "x": 913.34,
    "y": 135.74
+  },
+  {
+   "name": "Auburn",
+   "state": "ME",
+   "slug": "auburn",
+   "gazetteer_name": "Auburn city",
+   "geoid": "2302060",
+   "lat": 44.084537,
+   "lon": -70.249649,
+   "x": 911.15,
+   "y": 125.64
   }
  ]
 }
