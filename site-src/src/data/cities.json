@@ -2816,6 +2816,17 @@
    "lon": -73.181103,
    "x": 863.18,
    "y": 129.89
+  },
+  {
+   "name": "Rutland",
+   "state": "VT",
+   "slug": "rutland",
+   "gazetteer_name": "Rutland city",
+   "geoid": "5061225",
+   "lat": 43.60967,
+   "lon": -72.977788,
+   "x": 870.89,
+   "y": 147.39
   }
  ]
 }
