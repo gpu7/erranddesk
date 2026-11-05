@@ -2645,6 +2645,17 @@
    "lon": -71.485049,
    "x": 905.26,
    "y": 181.95
+  },
+  {
+   "name": "Warwick",
+   "state": "RI",
+   "slug": "warwick",
+   "gazetteer_name": "Warwick city",
+   "geoid": "4474300",
+   "lat": 41.703085,
+   "lon": -71.42031,
+   "x": 906.7,
+   "y": 183.15
   }
  ]
 }
