@@ -2919,6 +2919,17 @@
    "lon": -149.284329,
    "x": 114.64,
    "y": 544.47
+  },
+  {
+   "name": "Juneau",
+   "state": "AK",
+   "slug": "juneau",
+   "gazetteer_name": "Juneau city and borough",
+   "geoid": "0236400",
+   "lat": 58.37291,
+   "lon": -134.178445,
+   "x": 177.73,
+   "y": 555.25
   }
  ]
 }
