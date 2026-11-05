@@ -333,6 +333,9 @@ nh_path = f'\n<path class="nh" style="fill:#e3eef6;stroke:var(--accent);stroke-w
 vt_btn = '\n<button type="button" data-act="vt">Zoom to Vermont</button>' if "VT" in used else ""
 vt_attr = f' data-vt="{" ".join(f(v) for v in m["vermont_bounds"])}"' if "VT" in used else ""
 vt_path = f'\n<path class="vt" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["vermont"]}"/>' if "VT" in used else ""
+me_btn = '\n<button type="button" data-act="me">Zoom to Maine</button>' if "ME" in used else ""
+me_attr = f' data-me="{" ".join(f(v) for v in m["maine_bounds"])}"' if "ME" in used else ""
+me_path = f'\n<path class="me" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m["maine"]}"/>' if "ME" in used else ""
 cht = [c for c in cities if c["slug"] in ("burlington", "south-burlington", "winooski", "essex-junction")]
 # Chittenden County cluster: Burlington, South Burlington, Winooski, Essex Junction — dense at statewide VT zoom.
 chtb = padbox(cht) if len(cht) == 4 else []
@@ -351,11 +354,14 @@ dup_names = {c["name"] for c in cities if sum(o["name"] == c["name"] for o in ci
 dots = []
 for c in cities:
     name = e(c["name"])
+    _pri = pri[c["slug"]]
+    _lbl = name + ", " + c["state"] if c["name"] in dup_names else name
     dots.append(f'<a href="/{c["slug"]}/" aria-label="{name}, {STATES[c["state"]]} city guide"><title>{name}, {c["state"]}</title>'
                 f'<circle class="hit" cx="{f(c["x"])}" cy="{f(c["y"])}" r="4"/>'
                 f'<circle class="dot" cx="{f(c["x"])}" cy="{f(c["y"])}" r="2.5"/>'
-                f'<text class="lbl" data-x="{f(c["x"])}" data-y="{f(c["y"])}" data-gap="{f(gap(c))}" data-pri="{pri[c['slug']]}" style="display:none">{name + ", " + c["state"] if c["name"] in dup_names else name}</text></a>')
-items = "\n".join(f'<h3 id="list-{STATES[st].lower().replace(' ', '-')}">{STATES[st]}</h3>\n<ul class="city-list">\n'
+                f'<text class="lbl" data-x="{f(c["x"])}" data-y="{f(c["y"])}" data-gap="{f(gap(c))}" data-pri="{_pri}" style="display:none">{_lbl}</text></a>')
+_list_id = lambda st: STATES[st].lower().replace(" ", "-")
+items = "\n".join(f'<h3 id="list-{_list_id(st)}">{STATES[st]}</h3>\n<ul class="city-list">\n'
                   + "\n".join(f'<li><a href="/{c["slug"]}/">{e(c["name"])}, {STATES[st]}</a></li>' for c in cities if c["state"] == st)
                   + "\n</ul>" for st in used)
 lede_n = and_list([f"{count(st)} in {STATES[st]}" for st in used])
@@ -389,15 +395,15 @@ page = f"""<!--meta
 <button type="button" data-act="reset">Reset</button>
 <button type="button" data-act="co">Zoom to Colorado</button>
 <button type="button" data-act="wy">Zoom to Wyoming</button>
-<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}{sfl_btn}{ga_btn}{sc_btn}{chs_btn}{nc_btn}{tri_btn}{triad_btn}{va_btn}{hr_btn}{wv_btn}{md_btn}{de_btn}{nj_btn}{nnj_btn}{ny_btn}{ct_btn}{sct_btn}{ri_btn}{ma_btn}{nh_btn}{vt_btn}{cht_btn}{bos_btn}{nycm_btn}{upny_btn}{ncc_btn}{kas_btn}{pa_btn}
+<button type="button" data-act="ut">Zoom to Utah</button>{ne_btn}{ks_btn}{nm_btn}{az_btn}{sd_btn}{nd_btn}{mt_btn}{nv_btn}{id_btn}{wa_btn}{or_btn}{ca_btn}{ok_btn}{tx_btn}{dfw_btn}{atx_btn}{mn_btn}{ia_btn}{mo_btn}{ar_btn}{nwa_btn}{la_btn}{swl_btn}{wi_btn}{sew_btn}{il_btn}{chi_btn}{ms_btn}{tn_btn}{mem_btn}{ky_btn}{al_btn}{in_btn}{indy_btn}{mi_btn}{det_btn}{oh_btn}{fl_btn}{sfl_btn}{ga_btn}{sc_btn}{chs_btn}{nc_btn}{tri_btn}{triad_btn}{va_btn}{hr_btn}{wv_btn}{md_btn}{de_btn}{nj_btn}{nnj_btn}{ny_btn}{ct_btn}{sct_btn}{ri_btn}{ma_btn}{nh_btn}{vt_btn}{me_btn}{cht_btn}{bos_btn}{nycm_btn}{upny_btn}{ncc_btn}{kas_btn}{pa_btn}
 <button type="button" data-act="metro">Denver area</button>{slc_btn}{oma_btn}{kc_btn}{phx_btn}{lv_btn}{rno_btn}{boi_btn}{sea_btn}{pdx_btn}{bay_btn}
 </div>
-<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{sfl_attr}{ga_attr}{sc_attr}{chs_attr}{nc_attr}{tri_attr}{triad_attr}{va_attr}{hr_attr}{wv_attr}{md_attr}{de_attr}{nj_attr}{nnj_attr}{ny_attr}{ct_attr}{sct_attr}{ri_attr}{ma_attr}{nh_attr}{vt_attr}{cht_attr}{bos_attr}{nycm_attr}{upny_attr}{ncc_attr}{kas_attr}{pa_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
+<svg viewBox="{vb}" data-co="{' '.join(f(v) for v in m['colorado_bounds'])}" data-wy="{' '.join(f(v) for v in m['wyoming_bounds'])}" data-ut="{' '.join(f(v) for v in m['utah_bounds'])}" data-metro="{' '.join(f(v) for v in mb)}"{slc_attr}{ne_attr}{oma_attr}{ks_attr}{nm_attr}{az_attr}{sd_attr}{nd_attr}{mt_attr}{nv_attr}{id_attr}{wa_attr}{or_attr}{ca_attr}{ok_attr}{tx_attr}{dfw_attr}{atx_attr}{mn_attr}{ia_attr}{mo_attr}{ar_attr}{nwa_attr}{la_attr}{swl_attr}{wi_attr}{sew_attr}{il_attr}{chi_attr}{ms_attr}{tn_attr}{mem_attr}{ky_attr}{al_attr}{in_attr}{indy_attr}{mi_attr}{det_attr}{oh_attr}{fl_attr}{sfl_attr}{ga_attr}{sc_attr}{chs_attr}{nc_attr}{tri_attr}{triad_attr}{va_attr}{hr_attr}{wv_attr}{md_attr}{de_attr}{nj_attr}{nnj_attr}{ny_attr}{ct_attr}{sct_attr}{ri_attr}{ma_attr}{nh_attr}{vt_attr}{me_attr}{cht_attr}{bos_attr}{nycm_attr}{upny_attr}{ncc_attr}{kas_attr}{pa_attr}{kc_attr}{phx_attr}{lv_attr}{rno_attr}{boi_attr}{sea_attr}{pdx_attr}{bay_attr} role="group" aria-label="Map of the United States with a dot for each city guide in {st_names}">
 <path class="nation" d="{m['nation']}"/>
 <path class="borders" d="{m['borders']}"/>
 <path class="co" d="{m['colorado']}"/>
 <path class="wy" d="{m['wyoming']}"/>
-<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}{id_path}{wa_path}{or_path}{ca_path}{ok_path}{tx_path}{mn_path}{ia_path}{mo_path}{ar_path}{la_path}{wi_path}{il_path}{ms_path}{tn_path}{ky_path}{al_path}{in_path}{mi_path}{oh_path}{fl_path}{ga_path}{sc_path}{nc_path}{va_path}{wv_path}{md_path}{de_path}{nj_path}{ny_path}{ct_path}{ri_path}{ma_path}{nh_path}{vt_path}{pa_path}
+<path class="ut" style="fill:#e3eef6;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke" d="{m['utah']}"/>{ne_path}{ks_path}{nm_path}{az_path}{sd_path}{nd_path}{mt_path}{nv_path}{id_path}{wa_path}{or_path}{ca_path}{ok_path}{tx_path}{mn_path}{ia_path}{mo_path}{ar_path}{la_path}{wi_path}{il_path}{ms_path}{tn_path}{ky_path}{al_path}{in_path}{mi_path}{oh_path}{fl_path}{ga_path}{sc_path}{nc_path}{va_path}{wv_path}{md_path}{de_path}{nj_path}{ny_path}{ct_path}{ri_path}{ma_path}{nh_path}{vt_path}{me_path}{pa_path}
 <g class="cities">
 {chr(10).join(dots)}
 </g>
