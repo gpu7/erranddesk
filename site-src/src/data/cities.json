@@ -46,7 +46,8 @@
   "RI": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Rhode Island (2025_gaz_place_44.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_44.txt, downloaded 2026-11-04. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "MA": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Massachusetts (2025_gaz_place_25.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_25.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
   "NH": "U.S. Census Bureau, 2025 Gazetteer Files, Places, New Hampshire (2025_gaz_place_33.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_33.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
-  "VT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Vermont (2025_gaz_place_50.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_50.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
+  "VT": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Vermont (2025_gaz_place_50.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_50.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs.",
+  "ME": "U.S. Census Bureau, 2025 Gazetteer Files, Places, Maine (2025_gaz_place_23.txt), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_gaz_place_23.txt, downloaded 2026-11-05. lat/lon are the Census internal point (INTPTLAT, INTPTLONG) of each incorporated place, copied unchanged. U.S. government work, public domain. x/y are those points projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) (the us-atlas projection) by tools/map/prepare_map_data.mjs."
  },
  "states": {
   "CO": "Colorado",
@@ -95,7 +96,8 @@
   "RI": "Rhode Island",
   "MA": "Massachusetts",
   "NH": "New Hampshire",
-  "VT": "Vermont"
+  "VT": "Vermont",
+  "ME": "Maine"
  },
  "cities": [
   {
@@ -2849,6 +2851,17 @@
    "lon": -73.184857,
    "x": 862.8,
    "y": 128.6
+  },
+  {
+   "name": "Portland",
+   "state": "ME",
+   "slug": "portland-me",
+   "gazetteer_name": "Portland city",
+   "geoid": "2360545",
+   "lat": 43.633157,
+   "lon": -70.185305,
+   "x": 914.92,
+   "y": 135.26
   }
  ]
 }

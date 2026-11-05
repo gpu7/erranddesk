@@ -70,6 +70,7 @@
   var mab = (svg.getAttribute("data-ma") || "").split(" ").map(Number);
   var nhb = (svg.getAttribute("data-nh") || "").split(" ").map(Number);
   var vtb = (svg.getAttribute("data-vt") || "").split(" ").map(Number);
+  var meb = (svg.getAttribute("data-me") || "").split(" ").map(Number);
   var chtb = (svg.getAttribute("data-cht") || "").split(" ").map(Number);
   var bosb = (svg.getAttribute("data-bos") || "").split(" ").map(Number);
   var nycmb = (svg.getAttribute("data-nycm") || "").split(" ").map(Number);
@@ -228,6 +229,7 @@
     else if (a === "ma" && mab.length === 4) fit(mab[0], mab[1], mab[2], mab[3]);
     else if (a === "nh" && nhb.length === 4) fit(nhb[0], nhb[1], nhb[2], nhb[3]);
     else if (a === "vt" && vtb.length === 4) fit(vtb[0], vtb[1], vtb[2], vtb[3]);
+    else if (a === "me" && meb.length === 4) fit(meb[0], meb[1], meb[2], meb[3]);
     else if (a === "cht" && chtb.length === 4) fit(chtb[0], chtb[1], chtb[2], chtb[3]);
     else if (a === "bos" && bosb.length === 4) fit(bosb[0], bosb[1], bosb[2], bosb[3]);
     else if (a === "nycm" && nycmb.length === 4) fit(nycmb[0], nycmb[1], nycmb[2], nycmb[3]);
