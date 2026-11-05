@@ -2770,6 +2770,17 @@
    "lon": -71.561252,
    "x": 895.53,
    "y": 149.98
+  },
+  {
+   "name": "Dover",
+   "state": "NH",
+   "slug": "dover-nh",
+   "gazetteer_name": "Dover city",
+   "geoid": "3318820",
+   "lat": 43.18636,
+   "lon": -70.883623,
+   "x": 906.57,
+   "y": 148.12
   }
  ]
 }
