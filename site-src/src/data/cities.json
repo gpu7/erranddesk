@@ -2976,6 +2976,17 @@
    "lon": -157.84764,
    "x": 267.19,
    "y": 548.8
+  },
+  {
+   "name": "East Honolulu",
+   "state": "HI",
+   "slug": "east-honolulu",
+   "gazetteer_name": "East Honolulu CDP",
+   "geoid": "1506290",
+   "lat": 21.288446,
+   "lon": -157.7179,
+   "x": 269.95,
+   "y": 549.62
   }
  ]
 }
