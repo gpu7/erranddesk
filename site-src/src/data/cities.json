@@ -2998,6 +2998,17 @@
    "lon": -155.082892,
    "x": 326.31,
    "y": 585.6
+  },
+  {
+   "name": "Pearl City",
+   "state": "HI",
+   "slug": "pearl-city",
+   "gazetteer_name": "Pearl City CDP",
+   "geoid": "1562600",
+   "lat": 21.402609,
+   "lon": -157.956907,
+   "x": 264.87,
+   "y": 547.03
   }
  ]
 }
