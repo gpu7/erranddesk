@@ -2656,6 +2656,17 @@
    "lon": -71.42031,
    "x": 906.7,
    "y": 183.15
+  },
+  {
+   "name": "Pawtucket",
+   "state": "RI",
+   "slug": "pawtucket",
+   "gazetteer_name": "Pawtucket city",
+   "geoid": "4454640",
+   "lat": 41.874824,
+   "lon": -71.373323,
+   "x": 906.46,
+   "y": 179.15
   }
  ]
 }
