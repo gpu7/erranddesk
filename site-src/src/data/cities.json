@@ -2805,6 +2805,17 @@
    "lon": -73.238882,
    "x": 861.98,
    "y": 128.89
+  },
+  {
+   "name": "South Burlington",
+   "state": "VT",
+   "slug": "south-burlington",
+   "gazetteer_name": "South Burlington city",
+   "geoid": "5066175",
+   "lat": 44.436565,
+   "lon": -73.181103,
+   "x": 863.18,
+   "y": 129.89
   }
  ]
 }
