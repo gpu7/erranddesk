@@ -2838,6 +2838,17 @@
    "lon": -73.114121,
    "x": 863.94,
    "y": 128.45
+  },
+  {
+   "name": "Winooski",
+   "state": "VT",
+   "slug": "winooski",
+   "gazetteer_name": "Winooski city",
+   "geoid": "5085150",
+   "lat": 44.495587,
+   "lon": -73.184857,
+   "x": 862.8,
+   "y": 128.6
   }
  ]
 }
