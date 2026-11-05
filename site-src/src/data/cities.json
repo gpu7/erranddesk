@@ -2691,6 +2691,17 @@
    "lon": -71.018253,
    "x": 909.46,
    "y": 167.38
+  },
+  {
+   "name": "Worcester",
+   "state": "MA",
+   "slug": "worcester",
+   "gazetteer_name": "Worcester city",
+   "geoid": "2582000",
+   "lat": 42.269478,
+   "lon": -71.807783,
+   "x": 897.14,
+   "y": 172.28
   }
  ]
 }
