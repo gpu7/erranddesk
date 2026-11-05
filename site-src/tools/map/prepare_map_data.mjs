@@ -58,6 +58,7 @@ const newjersey = states.find(f => f.properties.name === 'New Jersey');
 const newyork = states.find(f => f.properties.name === 'New York');
 const connecticut = states.find(f => f.properties.name === 'Connecticut');
 const rhodeisland = states.find(f => f.properties.name === 'Rhode Island');
+const massachusetts = states.find(f => f.properties.name === 'Massachusetts');
 const pennsylvania = states.find(f => f.properties.name === 'Pennsylvania');
 const r = v => Math.round(v * 100) / 100;
 const bounds = f => path.bounds(f).flat().map(r);
@@ -152,6 +153,8 @@ const map = {
   connecticut_bounds: bounds(connecticut),
   rhodeisland: path(rhodeisland),
   rhodeisland_bounds: bounds(rhodeisland),
+  massachusetts: path(massachusetts),
+  massachusetts_bounds: bounds(massachusetts),
   pennsylvania: path(pennsylvania),
   pennsylvania_bounds: bounds(pennsylvania),
 };
