@@ -2862,6 +2862,17 @@
    "lon": -70.185305,
    "x": 914.92,
    "y": 135.26
+  },
+  {
+   "name": "Lewiston",
+   "state": "ME",
+   "slug": "lewiston",
+   "gazetteer_name": "Lewiston city",
+   "geoid": "2338740",
+   "lat": 44.089513,
+   "lon": -70.172095,
+   "x": 912.34,
+   "y": 125.19
   }
  ]
 }
