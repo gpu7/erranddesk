@@ -7,6 +7,7 @@ From the repo root:
 Builds the site twice in temporary directories (it does not write erranddesk-site/).
 """
 import hashlib, html, json, re, subprocess, sys, tempfile
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -107,7 +108,34 @@ FAQ_EDITS = {
     "guides/notary-options/index.html",
     "duluth/index.html",
 }
-FAQ_EDIT_URLS = {"/guides/notary-options/", "/duluth/"}
+# Pages whose body gained one contextual link, plus the guides index.
+# Titles, descriptions, sources and FAQ text stay on origin/main.
+LINK_EDITS = {
+    "guides/passport-checklist/index.html": ["/guides/passport-acceptance-visit/"],
+    "guides/notary-options/index.html": ["/guides/in-person-vs-remote-notary/"],
+    "guides/printing-prices/index.html": ["/guides/library-printing/"],
+    "guides/index.html": [
+        "/guides/in-person-vs-remote-notary/",
+        "/guides/library-printing/",
+        "/guides/passport-acceptance-visit/",
+    ],
+}
+BODY_EDIT_URLS = {
+    "/guides/",
+    "/guides/notary-options/",
+    "/guides/passport-checklist/",
+    "/guides/printing-prices/",
+}
+NEW_PAGE_FILES = {
+    "guides/in-person-vs-remote-notary/index.html",
+    "guides/library-printing/index.html",
+    "guides/passport-acceptance-visit/index.html",
+}
+NEW_URLS = {
+    "/guides/in-person-vs-remote-notary/",
+    "/guides/library-printing/",
+    "/guides/passport-acceptance-visit/",
+}
 _STATE_NAV = re.compile(br'\n?<nav class="more-in-state\b.*?</nav>\n?', re.S)
 _JSONLD = re.compile(br'<script type="application/ld\+json">.*?</script>\n?', re.S)
 _FAQ_BLOCK = re.compile(br'<h2 id="faq">.*?(?=<h2 )', re.S)
@@ -124,6 +152,28 @@ def without_faq_and_schema(raw):
     raw = norm_published(raw)
     raw = _JSONLD.sub(b"", raw)
     return _FAQ_BLOCK.sub(b"", raw)
+
+
+def assert_only_added_links(old, new, added_hrefs):
+    """A reciprocal link may be inserted. Title, FAQ, sources and JSON-LD stay."""
+    title_re = re.compile(r"<title>(.*?)</title>")
+    desc_re = re.compile(r'<meta name="description" content="([^"]*)">')
+    canon_re = re.compile(r'<link rel="canonical" href="([^"]+)">')
+    jsonld_re = re.compile(r'<script type="application/ld\+json">.*?</script>', re.S)
+    sources_re = re.compile(r'<ol class="sources">.*?</ol>', re.S)
+    faq_re = re.compile(r'<h2 id="faq">.*?(?=<h2 )', re.S)
+    assert title_re.search(old).group(1) == title_re.search(new).group(1)
+    assert desc_re.search(old).group(1) == desc_re.search(new).group(1)
+    assert canon_re.search(old).group(1) == canon_re.search(new).group(1)
+    assert jsonld_re.findall(old) == jsonld_re.findall(new)
+    assert sources_re.findall(old) == sources_re.findall(new)
+    assert faq_re.findall(old) == faq_re.findall(new)
+    old_hrefs = re.findall(r'href="([^"]+)"', old)
+    new_hrefs = re.findall(r'href="([^"]+)"', new)
+    extra = Counter(new_hrefs) - Counter(old_hrefs)
+    missing = Counter(old_hrefs) - Counter(new_hrefs)
+    assert not missing, missing
+    assert extra == Counter(added_hrefs), (extra, added_hrefs)
 
 
 def visible_text(raw):
@@ -176,36 +226,55 @@ def check_js_has_no_html_injection():
         assert banned not in text, banned
 
 
+def flags_by_url(index):
+    """token flags keyed by canonical URL, so inserted pages do not shift ids."""
+    id_to_url = {i: doc["u"] for i, doc in enumerate(index["docs"])}
+    out = {}
+    for token, packed in index["post"].items():
+        for number in packed:
+            url = id_to_url[number // 16]
+            flags = out.setdefault(url, {})
+            flags[token] = flags.get(token, 0) | (number % 16)
+    return out
+
+
 def assert_search_index_except_faq(old_bytes, new_bytes):
-    """Titles, descriptions and non-edited postings stay. FAQ pages may change body text."""
+    """Existing titles, descriptions and token flags stay.
+
+    Three new guides are added. Pages that gained a reciprocal link may change
+    body tokens. A new page can also change which rare sentence an unrelated
+    page quotes, so excerpt tails may move. Opening text and token flags of
+    pages we did not edit stay put. Duluth's FAQ is not edited.
+    """
     old, new = json.loads(old_bytes), json.loads(new_bytes)
     assert old["v"] == new["v"] == 1
-    assert [d["u"] for d in old["docs"]] == [d["u"] for d in new["docs"]]
-    edited = set()
-    for doc_id, (before, after) in enumerate(zip(old["docs"], new["docs"])):
-        assert before["u"] == after["u"]
-        assert before.get("t") == after.get("t")
-        assert before.get("d") == after.get("d")
-        if before["u"] in FAQ_EDIT_URLS:
-            edited.add(doc_id)
+    assert new["n"] == old["n"] + len(NEW_URLS) == 291
+    old_by = {doc["u"]: doc for doc in old["docs"]}
+    new_by = {doc["u"]: doc for doc in new["docs"]}
+    assert set(new_by) - set(old_by) == NEW_URLS
+    assert set(old_by) <= set(new_by)
+    for url, before in old_by.items():
+        after = new_by[url]
+        assert before.get("t") == after.get("t"), url
+        assert before.get("d") == after.get("d"), url
+        if url in BODY_EDIT_URLS:
             continue
-        assert before.get("x") == after.get("x"), before["u"]
-
-    def unpack(post):
-        return {n // 16: n % 16 for n in post}
-
-    tokens = set(old["post"]) | set(new["post"])
-    for token in tokens:
-        before = unpack(old["post"].get(token, []))
-        after = unpack(new["post"].get(token, []))
-        for doc_id, flags in before.items():
-            if doc_id in edited:
-                continue
-            assert after.get(doc_id) == flags, (token, old["docs"][doc_id]["u"])
-        for doc_id, flags in after.items():
-            if doc_id in edited:
-                continue
-            assert before.get(doc_id) == flags, (token, new["docs"][doc_id]["u"])
+        old_x, new_x = before.get("x") or "", after.get("x") or ""
+        if old_x != new_x:
+            assert old_x[:120] == new_x[:120], url
+            assert len(new_x) > 80, url
+    old_flags, new_flags = flags_by_url(old), flags_by_url(new)
+    for url in old_by:
+        if url in BODY_EDIT_URLS:
+            continue
+        assert old_flags.get(url, {}) == new_flags.get(url, {}), url
+    for url in NEW_URLS:
+        assert any(flags & searchindex.BODY for flags in new_flags[url].values()), url
+    # The notary how-to page keeps its indexed title. Duluth's title is untouched.
+    assert new_by["/guides/notary-options/"]["t"] == old_by["/guides/notary-options/"]["t"]
+    assert new_by["/duluth/"]["t"] == old_by["/duluth/"]["t"]
+    assert new_by["/duluth/"]["d"] == old_by["/duluth/"]["d"]
+    assert old_flags["/duluth/"] == new_flags["/duluth/"]
 
 
 def check_site(out):
@@ -264,13 +333,29 @@ def check_site(out):
     assert "which documents go to your state" in (out / "guides/apostille/index.html").read_text()
     assert "Cost and Limit" in (out / "guides/money-orders/index.html").read_text()
     assert 'href="/guides/free-notary/"' in (out / "guides/notary-options/index.html").read_text()
-    # Search script and stylesheet stay byte-identical. The index may gain body
-    # tokens from the FAQ edits; every other document's text and postings stay.
+    # Search script, stylesheet and shared CSS stay byte-identical.
+    # The index and sitemap gain the three new guides, and /search/ only
+    # changes the index payload hash.
     for rel in ("assets/search.js", "assets/search.css"):
         old = origin_bytes(rel)
         assert old is not None and old == (out / rel).read_bytes(), rel
-    assert_search_index_except_faq(origin_bytes("assets/search-index.json"), (out / "assets" / "search-index.json").read_bytes())
-    assert (out / "sitemap.xml").read_bytes() == origin_bytes("sitemap.xml")
+    index_bytes = (out / "assets" / "search-index.json").read_bytes()
+    assert_search_index_except_faq(origin_bytes("assets/search-index.json"), index_bytes)
+    digest = hashlib.sha256(index_bytes).hexdigest()[:10]
+    assert f"/assets/search-index.json?v={digest}" in search_html
+    old_search = origin_file("search/index.html")
+    def hide_hash(text):
+        return re.sub(r"search-index\.json\?v=[0-9a-f]+", "search-index.json?v=HASH", text)
+    assert hide_hash(old_search) == hide_hash(search_html)
+    assert "style.css?v=78dec13e70" in home
+    old_sm = origin_bytes("sitemap.xml").decode()
+    new_sm = (out / "sitemap.xml").read_text()
+    old_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm))
+    new_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", new_sm))
+    assert len(old_rows) == 288 and len(new_rows) == 291
+    assert set(new_rows) - set(old_rows) == {f"https://erranddesk.com{url}" for url in NEW_URLS}
+    for loc, lastmod in old_rows.items():
+        assert new_rows[loc] == lastmod, loc
     assert origin_bytes("assets/style.css") == (out / "assets" / "style.css").read_bytes()
     # Pages we did not rewrite match origin/main once the stylesheet fingerprint and
     # the injected state nav are ignored. That stays true after this branch merges.
@@ -279,13 +364,18 @@ def check_site(out):
         if rel in ("index.html", "search/index.html", "sitemap.xml") or rel.startswith("assets/search"):
             continue
         old = origin_bytes(rel)
-        assert old is not None, rel
+        if old is None:
+            assert rel in NEW_PAGE_FILES, rel
+            continue
         new = (out / rel).read_bytes()
         if rel == "assets/style.css":
             if old != new:
                 assert new.startswith(old) and b".more-in-state a{text-decoration:underline}" in new[len(old):], rel
             continue
         if norm_published(old) == norm_published(new):
+            continue
+        if rel in LINK_EDITS:
+            assert_only_added_links(old.decode(), new.decode(), LINK_EDITS[rel])
             continue
         if rel in FAQ_EDITS:
             assert without_faq_and_schema(old) == without_faq_and_schema(new), rel

@@ -8,6 +8,7 @@ Builds the site once in a temporary directory. It does not write erranddesk-site
 """
 import html as html_mod, json, re, subprocess, sys, tempfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "site-src"))
@@ -108,10 +109,34 @@ def city_hrefs(fragment):
     return re.findall(r'href="(/[a-z0-9-]+/)"', fragment)
 
 
-# Pages whose FAQ text changed in this pass. Title, description, canonical,
-# sources and non-FAQ JSON-LD stay locked to origin/main.
-EDITED_CITIES = {"duluth"}
-EDITED_GUIDES = {"notary-options"}
+# PR345's notary how-to FAQ and Duluth library FAQ are on origin/main.
+# This pass does not change them, so full JSON-LD (including FAQPage) must match.
+EDITED_CITIES = set()
+EDITED_GUIDES = set()
+
+# Three new guides. City links are only the places the page actually discusses.
+NEW_GUIDES = {
+    "passport-acceptance-visit": {"denver", "houston", "austin"},
+    "in-person-vs-remote-notary": {"cheyenne", "duluth"},
+    "library-printing": {"cheyenne", "denver", "duluth", "houston"},
+}
+NEW_GUIDE_TITLES = {
+    "passport-acceptance-visit": "Passport Acceptance Visit: What to Expect (2026)",
+    "in-person-vs-remote-notary": "In-Person vs Remote Online Notary (2026)",
+    "library-printing": "Library Printing: What to Bring (2026)",
+}
+OFFICIAL_HOSTS = {
+    "www.usps.com",
+    "houstonlibrary.org",
+    "library.austintexas.gov",
+    "www.nass.org",
+    "www.flsenate.gov",
+    "www.sos.state.tx.us",
+    "notary.cdn.sos.ca.gov",
+    "lclsonline.org",
+    "duluthlibrary.org",
+    "www.denverlibrary.org",
+}
 
 
 def plain_faq(fragment):
@@ -165,6 +190,44 @@ def assert_visible_faq_matches_schema(html, label):
             raise SystemExit(f"{label}: visible FAQ does not match JSON-LD ({q!r})")
 
 
+def assert_new_guide(html, name, sitemap, index):
+    """A new guide is indexable, sourced, and titled like the rest of the site."""
+    title = html_mod.unescape(re.search(r"<title>(.*?)</title>", html).group(1))
+    assert title == NEW_GUIDE_TITLES[name], (name, title)
+    assert len(title) <= 60, (name, len(title), title)
+    canon = f"https://erranddesk.com/guides/{name}/"
+    assert f'<link rel="canonical" href="{canon}">' in html
+    assert "noindex" not in html
+    assert f"<loc>{canon}</loc>" in sitemap
+    urls = {doc["u"] for doc in index["docs"]}
+    assert f"/guides/{name}/" in urls
+    graph = jsonld_graph(html)
+    types = {node.get("@type") for node in graph["@graph"]}
+    assert "Article" in types and "FAQPage" in types, (name, types)
+    sources = re.search(r'<ol class="sources">(.*?)</ol>', html, re.S)
+    assert sources, name
+    items = re.findall(r'<li id="([^"]+)">(.*?)</li>', sources.group(1), re.S)
+    assert len(items) >= 3, name
+    ids = {item_id for item_id, _ in items}
+    for item_id, body in items:
+        assert "(last checked Nov 6, 2026)" in body, (name, item_id)
+        links = re.findall(r'href="(https://[^"]+)"', body)
+        assert links, (name, item_id)
+        for link in links:
+            host = urlparse(link).hostname
+            assert host in OFFICIAL_HOSTS, (name, host)
+    for href in re.findall(r'href="#([^"]+)"', html):
+        assert f'id="{href}"' in html, (name, href)
+    body = re.sub(r'<ol class="sources">.*?</ol>', " ", html, flags=re.S)
+    assert "nearby" not in body.lower() and "nearest" not in body.lower()
+    # Citation markers point at a source on the same page.
+    for sup in re.findall(r"<sup>.*?</sup>", html, re.S):
+        cites = re.findall(r'href="#([^"]+)"', sup)
+        assert cites, name
+        for cite in cites:
+            assert cite in ids, (name, cite)
+
+
 def check_site(out, graph):
     map_html = (out / "map" / "index.html").read_text()
     ids = set(re.findall(r'\sid="([^"]+)"', map_html))
@@ -180,8 +243,24 @@ def check_site(out, graph):
     assert re.findall(r'<h3 id="(list-[^"]+)">([^<]+)</h3>', map_html) == re.findall(
         r'<h3 id="(list-[^"]+)">([^<]+)</h3>', old_map)
     sm = (out / "sitemap.xml").read_text()
-    assert sm.count("<loc>") == 288
-    assert sm == origin_text("sitemap.xml")
+    old_sm = origin_text("sitemap.xml")
+    assert old_sm.count("<loc>") == 288
+    assert sm.count("<loc>") == 291
+    old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
+    new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
+    old_map = dict(old_rows)
+    new_map = dict(new_rows)
+    assert set(old_map) <= set(new_map)
+    added = sorted(set(new_map) - set(old_map))
+    assert added == [
+        "https://erranddesk.com/guides/in-person-vs-remote-notary/",
+        "https://erranddesk.com/guides/library-printing/",
+        "https://erranddesk.com/guides/passport-acceptance-visit/",
+    ]
+    for loc, lastmod in old_map.items():
+        assert new_map[loc] == lastmod, loc
+    for loc in added:
+        assert new_map[loc] == "2026-11-06"
     index = json.loads((out / "assets" / "search-index.json").read_text())
     by_url = {doc["u"]: i for i, doc in enumerate(index["docs"])}
     title_re = re.compile(r"<title>(.*?)</title>")
@@ -241,6 +320,16 @@ def check_site(out, graph):
     for path in sorted(guide_dir.glob("*/index.html")):
         name = path.parent.name
         html = path.read_text()
+        if name in NEW_GUIDES:
+            assert_new_guide(html, name, sm, index)
+            body = sources_re.sub(" ", html)
+            found = set()
+            for href in city_hrefs(body):
+                target = href.strip("/")
+                if target in graph.by_slug:
+                    found.add(target)
+            assert found == NEW_GUIDES[name], (name, found, NEW_GUIDES[name])
+            continue
         old = origin_text(f"guides/{name}/index.html")
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
@@ -265,6 +354,19 @@ def check_site(out, graph):
             raise SystemExit(f"unexpected guide {name}")
     index_html = (guide_dir / "index.html").read_text()
     assert city_hrefs(index_html).count("/denver/") == 1
+    for slug in NEW_GUIDES:
+        assert f'href="/guides/{slug}/"' in index_html
+    notary = (out / "guides" / "notary-options" / "index.html").read_text()
+    assert "How do I get something notarized?" in notary
+    assert 'href="/guides/in-person-vs-remote-notary/"' in notary
+    duluth = (out / "duluth" / "index.html").read_text()
+    duluth_faq = re.search(
+        r"Can I get something notarized at the Duluth library\?</summary><p>(.*?)</p>", duluth).group(1)
+    assert "We didn't find a fee on the page" in duluth_faq
+    assert "not guaranteed" in duluth_faq
+    assert "free" not in duluth_faq.lower()
+    assert 'href="/guides/passport-acceptance-visit/"' in (out / "guides" / "passport-checklist" / "index.html").read_text()
+    assert 'href="/guides/library-printing/"' in (out / "guides" / "printing-prices" / "index.html").read_text()
     # The guides index already lists every city. It does not get another generated block.
     assert "more-in-state" not in index_html
     for html_path in out.rglob("*.html"):
