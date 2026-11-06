@@ -6,7 +6,7 @@ From the repo root:
 
 Builds the site once in a temporary directory. It does not write erranddesk-site/.
 """
-import json, re, subprocess, sys, tempfile
+import html as html_mod, json, re, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -108,6 +108,63 @@ def city_hrefs(fragment):
     return re.findall(r'href="(/[a-z0-9-]+/)"', fragment)
 
 
+# Pages whose FAQ text changed in this pass. Title, description, canonical,
+# sources and non-FAQ JSON-LD stay locked to origin/main.
+EDITED_CITIES = {"duluth"}
+EDITED_GUIDES = {"notary-options"}
+
+
+def plain_faq(fragment):
+    """Same visible-text rules build.py uses for FAQPage JSON-LD."""
+    x = re.sub(r"<sup>.*?</sup>", "", fragment, flags=re.S)
+    x = html_mod.unescape(re.sub(r"<[^>]+>", "", x))
+    x = re.sub(r"\s+", " ", x).strip()
+    return re.sub(r"\s+([.,;:])", r"\1", x)
+
+
+def jsonld_graph(html):
+    blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    if not blocks:
+        return None
+    if len(blocks) != 1:
+        raise SystemExit(f"expected one JSON-LD block, found {len(blocks)}")
+    return json.loads(blocks[0].strip().replace("<\\/", "</"))
+
+
+def graph_without_faq(html):
+    graph = jsonld_graph(html)
+    graph["@graph"] = [node for node in graph["@graph"] if node.get("@type") != "FAQPage"]
+    return graph
+
+
+def assert_visible_faq_matches_schema(html, label):
+    graph = jsonld_graph(html)
+    visible = re.findall(r"<details><summary>(.*?)</summary>(.*?)</details>", html, re.S)
+    if graph is None:
+        if visible:
+            raise SystemExit(f"{label}: FAQ details without JSON-LD")
+        return
+    articles = [node for node in graph["@graph"] if node.get("@type") == "Article"]
+    faqs = [node for node in graph["@graph"] if node.get("@type") == "FAQPage"]
+    if not articles:
+        if faqs:
+            raise SystemExit(f"{label}: FAQPage without an Article")
+        return
+    if not visible:
+        if faqs:
+            raise SystemExit(f"{label}: FAQPage markup without a visible FAQ")
+        return
+    if len(faqs) != 1:
+        raise SystemExit(f"{label}: expected one FAQPage, found {len(faqs)}")
+    main = faqs[0]["mainEntity"]
+    if len(main) != len(visible):
+        raise SystemExit(f"{label}: FAQ count {len(visible)} visible vs {len(main)} in JSON-LD")
+    for (question, answer), item in zip(visible, main):
+        q, a = plain_faq(question), plain_faq(answer)
+        if item.get("name") != q or item.get("acceptedAnswer", {}).get("text") != a:
+            raise SystemExit(f"{label}: visible FAQ does not match JSON-LD ({q!r})")
+
+
 def check_site(out, graph):
     map_html = (out / "map" / "index.html").read_text()
     ids = set(re.findall(r'\sid="([^"]+)"', map_html))
@@ -142,7 +199,10 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        assert jsonld_re.findall(html) == jsonld_re.findall(old)
+        if slug in EDITED_CITIES:
+            assert graph_without_faq(html) == graph_without_faq(old), slug
+        else:
+            assert jsonld_re.findall(html) == jsonld_re.findall(old)
         assert sources_re.findall(html) == sources_re.findall(old)
         navs = nav_re.findall(html)
         assert len(navs) == 1, slug
@@ -185,7 +245,10 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        assert jsonld_re.findall(html) == jsonld_re.findall(old)
+        if name in EDITED_GUIDES:
+            assert graph_without_faq(html) == graph_without_faq(old), name
+        else:
+            assert jsonld_re.findall(html) == jsonld_re.findall(old)
         assert sources_re.findall(html) == sources_re.findall(old), name
         # City links in the guide body, outside the source list.
         body = sources_re.sub(" ", html)
@@ -204,6 +267,8 @@ def check_site(out, graph):
     assert city_hrefs(index_html).count("/denver/") == 1
     # The guides index already lists every city. It does not get another generated block.
     assert "more-in-state" not in index_html
+    for html_path in out.rglob("*.html"):
+        assert_visible_faq_matches_schema(html_path.read_text(), html_path.relative_to(out).as_posix())
     print("html ok", pages, "city pages")
 
 

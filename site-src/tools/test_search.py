@@ -101,13 +101,29 @@ GUIDE_ANCHORS = {
     "guides/scanning/index.html",
     "guides/shredding/index.html",
 }
+# FAQ answers added or expanded from facts already on the page. Everything
+# outside that FAQ block, including titles and sources, stays on origin/main.
+FAQ_EDITS = {
+    "guides/notary-options/index.html",
+    "duluth/index.html",
+}
+FAQ_EDIT_URLS = {"/guides/notary-options/", "/duluth/"}
 _STATE_NAV = re.compile(br'\n?<nav class="more-in-state\b.*?</nav>\n?', re.S)
+_JSONLD = re.compile(br'<script type="application/ld\+json">.*?</script>\n?', re.S)
+_FAQ_BLOCK = re.compile(br'<h2 id="faq">.*?(?=<h2 )', re.S)
 
 
 def norm_published(raw):
     """Ignore the injected state nav and the style.css fingerprint."""
     raw = _STATE_NAV.sub(b"", raw)
     return re.sub(br"style\.css\?v=[0-9a-f]+", b"style.css?v=HASH", raw)
+
+
+def without_faq_and_schema(raw):
+    """Page bytes ignoring the FAQ block and generated JSON-LD."""
+    raw = norm_published(raw)
+    raw = _JSONLD.sub(b"", raw)
+    return _FAQ_BLOCK.sub(b"", raw)
 
 
 def visible_text(raw):
@@ -158,6 +174,38 @@ def check_js_has_no_html_injection():
     text = JS.read_text()
     for banned in ("innerHTML", "insertAdjacentHTML", "document.write", "eval(", "new Function"):
         assert banned not in text, banned
+
+
+def assert_search_index_except_faq(old_bytes, new_bytes):
+    """Titles, descriptions and non-edited postings stay. FAQ pages may change body text."""
+    old, new = json.loads(old_bytes), json.loads(new_bytes)
+    assert old["v"] == new["v"] == 1
+    assert [d["u"] for d in old["docs"]] == [d["u"] for d in new["docs"]]
+    edited = set()
+    for doc_id, (before, after) in enumerate(zip(old["docs"], new["docs"])):
+        assert before["u"] == after["u"]
+        assert before.get("t") == after.get("t")
+        assert before.get("d") == after.get("d")
+        if before["u"] in FAQ_EDIT_URLS:
+            edited.add(doc_id)
+            continue
+        assert before.get("x") == after.get("x"), before["u"]
+
+    def unpack(post):
+        return {n // 16: n % 16 for n in post}
+
+    tokens = set(old["post"]) | set(new["post"])
+    for token in tokens:
+        before = unpack(old["post"].get(token, []))
+        after = unpack(new["post"].get(token, []))
+        for doc_id, flags in before.items():
+            if doc_id in edited:
+                continue
+            assert after.get(doc_id) == flags, (token, old["docs"][doc_id]["u"])
+        for doc_id, flags in after.items():
+            if doc_id in edited:
+                continue
+            assert before.get(doc_id) == flags, (token, new["docs"][doc_id]["u"])
 
 
 def check_site(out):
@@ -216,11 +264,14 @@ def check_site(out):
     assert "which documents go to your state" in (out / "guides/apostille/index.html").read_text()
     assert "Cost and Limit" in (out / "guides/money-orders/index.html").read_text()
     assert 'href="/guides/free-notary/"' in (out / "guides/notary-options/index.html").read_text()
-    # Search assets stay byte-identical: state nav and guide anchors are not index text.
-    for rel in ("assets/search.js", "assets/search.css", "assets/search-index.json"):
+    # Search script and stylesheet stay byte-identical. The index may gain body
+    # tokens from the FAQ edits; every other document's text and postings stay.
+    for rel in ("assets/search.js", "assets/search.css"):
         old = origin_bytes(rel)
         assert old is not None and old == (out / rel).read_bytes(), rel
+    assert_search_index_except_faq(origin_bytes("assets/search-index.json"), (out / "assets" / "search-index.json").read_bytes())
     assert (out / "sitemap.xml").read_bytes() == origin_bytes("sitemap.xml")
+    assert origin_bytes("assets/style.css") == (out / "assets" / "style.css").read_bytes()
     # Pages we did not rewrite match origin/main once the stylesheet fingerprint and
     # the injected state nav are ignored. That stays true after this branch merges.
     # Guide pages may add anchors only; their visible words stay the same.
@@ -235,6 +286,9 @@ def check_site(out):
                 assert new.startswith(old) and b".more-in-state a{text-decoration:underline}" in new[len(old):], rel
             continue
         if norm_published(old) == norm_published(new):
+            continue
+        if rel in FAQ_EDITS:
+            assert without_faq_and_schema(old) == without_faq_and_schema(new), rel
             continue
         assert rel in GUIDE_ANCHORS, rel
         assert visible_text(old) == visible_text(new), rel
