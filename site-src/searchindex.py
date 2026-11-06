@@ -28,6 +28,8 @@ _SCRIPT = re.compile(r"<script\b[^>]*>.*?</script>", re.I | re.S)
 _STYLE = re.compile(r"<style\b[^>]*>.*?</style>", re.I | re.S)
 _SUP = re.compile(r"<sup\b[^>]*>.*?</sup>", re.I | re.S)
 _SOURCES = re.compile(r'<ol\b[^>]*class="sources"[^>]*>.*?</ol>', re.I | re.S)
+# Same-state city lists and the map's topic-guide link. Navigation, not page text.
+_SKIP_NAV = re.compile(r"<nav\b[^>]*\bdata-search-skip\b[^>]*>.*?</nav>", re.I | re.S)
 _TAG = re.compile(r"<[^>]+>")
 _H1 = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.I | re.S)
 _TOKEN = re.compile(r"[a-z0-9]+")
@@ -35,10 +37,11 @@ _SENT = re.compile(r"(?<=[.!?])\s+")
 
 
 def plain(fragment):
-    """Visible text of an HTML fragment, without citation markers or the source list."""
+    """Visible text of an HTML fragment, without citation markers, the source list, or skip-nav blocks."""
     x = _COMMENT.sub(" ", fragment)
     x = _SCRIPT.sub(" ", x)
     x = _STYLE.sub(" ", x)
+    x = _SKIP_NAV.sub(" ", x)
     x = _SUP.sub("", x)
     x = _SOURCES.sub(" ", x)
     x = _TAG.sub(" ", x)

@@ -9,6 +9,7 @@ Also writes public/sitemap.xml, public/robots.txt and public/assets/search-index
 and copies src/static/* (icons, og-image.png) to the site root.
 Search: every non-noindex page is indexed from its own title, path and body. The search
 form is added only on / and /search/. Other pages do not link the index or the search stylesheet.
+Same-state link blocks are marked data-search-skip and are left out of the index.
 SEO: every page gets Open Graph + Twitter card tags. JSON-LD: WebSite on the home page; Article + BreadcrumbList
 on guides, plus FAQPage built from the page's own <details><summary> FAQ text so markup can't drift from content."""
 import argparse, hashlib, html as htmlmod, json, os, re, shutil, sys
@@ -16,6 +17,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import searchindex
+import statelinks
 ROOT = Path(__file__).resolve().parent
 ap = argparse.ArgumentParser(description="Build the Errand Desk static site.")
 ap.add_argument("--out", help="output directory (default: public/ next to build.py). It is deleted and rebuilt.")
@@ -127,12 +129,14 @@ def page_path(page):
 if OUT.exists(): shutil.rmtree(OUT)
 shutil.copytree(SRC / "assets", OUT / "assets")
 for f in (SRC / "static").glob("*"): shutil.copy(f, OUT / f.name)
+CITY_LINKS = statelinks.load(SRC / "data" / "cities.json")
 pages = []
 for page in sorted((SRC / "pages").rglob("*.html")):
     raw = page.read_text()
     m = re.match(r"\s*<!--meta\s*(\{.*?\})\s*-->", raw, re.S)
     meta = json.loads(m.group(1)); body = raw[m.end():].strip()
     path = page_path(page)
+    body = CITY_LINKS.inject(path, body)
     pages.append((path, meta, body))
 index_pages = [{"url": "/" + path, "title": meta["title"], "description": meta["description"], "body": body}
                for path, meta, body in pages if not meta.get("noindex")]

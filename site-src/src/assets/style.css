@@ -58,3 +58,8 @@ summary{cursor:pointer;font-weight:600}
 .usmap-tools button:hover{background:#e9eef2}.usmap-tools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .usmap-help{margin-top:6px}
 .city-list{columns:2;column-gap:24px}@media (max-width:600px){.city-list{columns:1}}
+/* Same-state city links. The header rule removes underlines from every nav link; put them back here. */
+.more-in-state h2{font-size:1.15rem;margin-top:1.25em}
+.more-in-state ul{margin-top:.35em}
+.more-in-state a{text-decoration:underline}
+.more-in-state .small{margin:.45em 0 0}

@@ -6,7 +6,7 @@ From the repo root:
 
 Builds the site twice in temporary directories (it does not write erranddesk-site/).
 """
-import hashlib, json, re, subprocess, sys, tempfile
+import hashlib, html, json, re, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -86,6 +86,38 @@ def origin_file(path):
     return None if raw is None else raw.decode()
 
 
+# Guides where the only edit is an <a> around a city the page already named.
+# Visible wording stays the same, so this check still passes after the change is on main.
+GUIDE_ANCHORS = {
+    "guides/apostille/index.html",
+    "guides/certified-copies/index.html",
+    "guides/fax-prices/index.html",
+    "guides/free-notary/index.html",
+    "guides/notary-options/index.html",
+    "guides/one-stop-errands/index.html",
+    "guides/passport-photo-prices/index.html",
+    "guides/photocopies/index.html",
+    "guides/printing-prices/index.html",
+    "guides/scanning/index.html",
+    "guides/shredding/index.html",
+}
+_STATE_NAV = re.compile(br'\n?<nav class="more-in-state\b.*?</nav>\n?', re.S)
+
+
+def norm_published(raw):
+    """Ignore the injected state nav and the style.css fingerprint."""
+    raw = _STATE_NAV.sub(b"", raw)
+    return re.sub(br"style\.css\?v=[0-9a-f]+", b"style.css?v=HASH", raw)
+
+
+def visible_text(raw):
+    text = raw.decode()
+    text = re.sub(r"<script\b[^>]*>.*?</script>", " ", text, flags=re.S | re.I)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = html.unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def check_synthetic():
     index = searchindex.build_index([
         {"url": "/", "title": "Home", "description": "Start here", "body": "<h1>Home</h1><p>Welcome aboard.</p>"},
@@ -102,6 +134,16 @@ def check_synthetic():
         {"url": "/", "title": "Home", "description": "Start here", "body": "<h1>Home</h1><p>Welcome aboard.</p>"},
     ])), "index bytes must not depend on input order"
     assert "javascript:" not in blob
+    skipped = searchindex.build_index([{
+        "url": "/denver/",
+        "title": "Denver document errands",
+        "description": "Denver only",
+        "body": '<h1>Denver</h1><p>Library fax.</p><nav class="more-in-state" data-search-skip>'
+                '<a href="/aurora/">Aurora, Colorado</a><a href="/pueblo/">Pueblo</a></nav>',
+    }])
+    assert "aurora" not in skipped["post"] and "pueblo" not in skipped["post"] and "colorado" not in skipped["post"]
+    assert "fax" in skipped["post"]
+    assert searchindex.plain('<p>Denver fax.</p><nav data-search-skip><a href="/aurora/">Aurora</a></nav>') == "Denver fax."
 
 
 def check_stop_list():
@@ -151,13 +193,12 @@ def check_site(out):
     brand = home.index('<a class="brand"')
     brand_end = home.index("</a>", brand)
     assert form_at > brand_end
-    # Home keeps its title, description, canonical, JSON-LD, main column and footer.
-    # The only head addition is the search stylesheet, and the header gains the form.
+    # Home keeps its title, description, canonical, JSON-LD, search form, main column and footer.
+    # style.css may gain the same-state link rules, so only that fingerprint may differ.
     published_home = origin_file("index.html")
     assert main_block(published_home) == main_block(home)
     assert tail_block(published_home) == tail_block(home)
-    home_head = re.sub(r'\n<link rel="stylesheet" href="/assets/search.css\?v=[0-9a-f]+">', "", head_block(home))
-    assert head_block(published_home) == home_head
+    assert head_block(published_home) == head_block(home)
     search_html = (out / "search" / "index.html").read_text()
     assert search_html.count('<form class="site-search"') == 1
     assert "/assets/search.js?v=" in search_html and "/assets/search-index.json?v=" in search_html
@@ -165,14 +206,6 @@ def check_site(out):
     assert 'rel="canonical" href="https://erranddesk.com/search/"' in search_html
     assert "<title>Search Errand Desk</title>" in search_html
     assert "application/ld+json" not in search_html
-    # Every previously published page, including 404, stays byte-identical.
-    # style.css is unchanged, so its fingerprint does not rewrite those pages.
-    for rel in sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()):
-        if rel in ("index.html", "search/index.html", "sitemap.xml") or rel.startswith("assets/search"):
-            continue
-        old = origin_bytes(rel)
-        assert old is not None, rel
-        assert old == (out / rel).read_bytes(), rel
     for rel in ("denver/index.html", "about/index.html", "map/index.html", "guides/scanning/index.html",
                 "guides/apostille/index.html", "guides/money-orders/index.html", "guides/notary-options/index.html",
                 "aurora-il/index.html", "404.html"):
@@ -183,6 +216,28 @@ def check_site(out):
     assert "which documents go to your state" in (out / "guides/apostille/index.html").read_text()
     assert "Cost and Limit" in (out / "guides/money-orders/index.html").read_text()
     assert 'href="/guides/free-notary/"' in (out / "guides/notary-options/index.html").read_text()
+    # Search assets stay byte-identical: state nav and guide anchors are not index text.
+    for rel in ("assets/search.js", "assets/search.css", "assets/search-index.json"):
+        old = origin_bytes(rel)
+        assert old is not None and old == (out / rel).read_bytes(), rel
+    assert (out / "sitemap.xml").read_bytes() == origin_bytes("sitemap.xml")
+    # Pages we did not rewrite match origin/main once the stylesheet fingerprint and
+    # the injected state nav are ignored. That stays true after this branch merges.
+    # Guide pages may add anchors only; their visible words stay the same.
+    for rel in sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()):
+        if rel in ("index.html", "search/index.html", "sitemap.xml") or rel.startswith("assets/search"):
+            continue
+        old = origin_bytes(rel)
+        assert old is not None, rel
+        new = (out / rel).read_bytes()
+        if rel == "assets/style.css":
+            if old != new:
+                assert new.startswith(old) and b".more-in-state a{text-decoration:underline}" in new[len(old):], rel
+            continue
+        if norm_published(old) == norm_published(new):
+            continue
+        assert rel in GUIDE_ANCHORS, rel
+        assert visible_text(old) == visible_text(new), rel
     broken = []
     for html_path in out.rglob("*.html"):
         text = html_path.read_text()
