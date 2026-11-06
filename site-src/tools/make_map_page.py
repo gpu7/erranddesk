@@ -430,6 +430,10 @@ page = f"""<!--meta
 <h2 id="list">City guides on this map</h2>
 {items}
 
+<nav class="more-in-state" aria-label="Topic guides" data-search-skip>
+<p class="small"><a href="/guides/">Topic guides</a> for fax, notary, passport photos and printing.</p>
+</nav>
+
 <h2 id="about-map">About this map</h2>
 <p class="small">State outlines: U.S. Census Bureau cartographic boundary files (2017, 1:10,000,000), via the <a href="https://github.com/topojson/us-atlas">us-atlas</a> project (ISC license), drawn in an Albers equal-area projection with Alaska and Hawaii shown as insets. City dots: the internal point of each city in the U.S. Census Bureau's <a href="https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html">2025 Gazetteer places file</a>.{OVN} A dot marks the city, not a specific office. The map needs JavaScript to zoom; the list above works without it.</p>
 </article>
