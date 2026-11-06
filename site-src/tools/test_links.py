@@ -109,10 +109,8 @@ def city_hrefs(fragment):
     return re.findall(r'href="(/[a-z0-9-]+/)"', fragment)
 
 
-# PR345's notary how-to FAQ and Duluth library FAQ are on origin/main.
-# This pass does not change them, so full JSON-LD (including FAQPage) must match.
-EDITED_CITIES = set()
-EDITED_GUIDES = set()
+# PR345's notary how-to FAQ and Duluth library FAQ stay on origin/main.
+# This pass does not rewrite them. Duluth is checked by the assertions below.
 
 # Three new guides. City links are only the places the page actually discusses.
 NEW_GUIDES = {
@@ -162,9 +160,29 @@ def graph_without_faq(html):
     return graph
 
 
+_JSONLD_BLOCK = re.compile(r'<script type="application/ld\+json">.*?</script>\n?', re.S)
+_DETAILS_BLOCK = re.compile(r"<details><summary>(.*?)</summary>.*?</details>\n?", re.S)
+
+
+def page_outside_faq(html):
+    """Page bytes with JSON-LD and question <details> removed. Other disclosures stay."""
+    def keep(match):
+        return "" if plain_faq(match.group(1)).endswith("?") else match.group(0)
+    return _DETAILS_BLOCK.sub(keep, _JSONLD_BLOCK.sub("", html))
+
+
+def detail_pairs(html):
+    return re.findall(r"<details><summary>(.*?)</summary>(.*?)</details>", html, re.S)
+
+
+def visible_question_faqs(html):
+    """FAQ schema follows question disclosures only, not every <details> list."""
+    return [(q, a) for q, a in detail_pairs(html) if plain_faq(q).endswith("?")]
+
+
 def assert_visible_faq_matches_schema(html, label):
     graph = jsonld_graph(html)
-    visible = re.findall(r"<details><summary>(.*?)</summary>(.*?)</details>", html, re.S)
+    visible = visible_question_faqs(html)
     if graph is None:
         if visible:
             raise SystemExit(f"{label}: FAQ details without JSON-LD")
@@ -181,13 +199,27 @@ def assert_visible_faq_matches_schema(html, label):
         return
     if len(faqs) != 1:
         raise SystemExit(f"{label}: expected one FAQPage, found {len(faqs)}")
+    if faqs[0].get("url") != re.search(r'<link rel="canonical" href="([^"]+)"', html).group(1):
+        raise SystemExit(f"{label}: FAQPage url is not the page canonical")
     main = faqs[0]["mainEntity"]
     if len(main) != len(visible):
         raise SystemExit(f"{label}: FAQ count {len(visible)} visible vs {len(main)} in JSON-LD")
+    names = []
     for (question, answer), item in zip(visible, main):
         q, a = plain_faq(question), plain_faq(answer)
+        if not q or not a:
+            raise SystemExit(f"{label}: empty FAQ question or answer")
+        if item.get("@type") != "Question" or item.get("acceptedAnswer", {}).get("@type") != "Answer":
+            raise SystemExit(f"{label}: FAQ entity types are not Question/Answer")
         if item.get("name") != q or item.get("acceptedAnswer", {}).get("text") != a:
             raise SystemExit(f"{label}: visible FAQ does not match JSON-LD ({q!r})")
+        names.append(q)
+    if len(names) != len({name.casefold() for name in names}):
+        raise SystemExit(f"{label}: duplicate FAQ questions")
+    for question, _ in detail_pairs(html):
+        label_text = plain_faq(question)
+        if not label_text.endswith("?") and label_text in names:
+            raise SystemExit(f"{label}: non-question disclosure is in FAQPage ({label_text!r})")
 
 
 def assert_new_guide(html, name, sitemap, index):
@@ -244,23 +276,11 @@ def check_site(out, graph):
         r'<h3 id="(list-[^"]+)">([^<]+)</h3>', old_map)
     sm = (out / "sitemap.xml").read_text()
     old_sm = origin_text("sitemap.xml")
-    assert old_sm.count("<loc>") == 288
     assert sm.count("<loc>") == 291
+    assert old_sm.count("<loc>") == 291
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
-    old_map = dict(old_rows)
-    new_map = dict(new_rows)
-    assert set(old_map) <= set(new_map)
-    added = sorted(set(new_map) - set(old_map))
-    assert added == [
-        "https://erranddesk.com/guides/in-person-vs-remote-notary/",
-        "https://erranddesk.com/guides/library-printing/",
-        "https://erranddesk.com/guides/passport-acceptance-visit/",
-    ]
-    for loc, lastmod in old_map.items():
-        assert new_map[loc] == lastmod, loc
-    for loc in added:
-        assert new_map[loc] == "2026-11-06"
+    assert old_rows == new_rows, "sitemap URLs or lastmod dates changed"
     index = json.loads((out / "assets" / "search-index.json").read_text())
     by_url = {doc["u"]: i for i, doc in enumerate(index["docs"])}
     title_re = re.compile(r"<title>(.*?)</title>")
@@ -278,10 +298,13 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        if slug in EDITED_CITIES:
-            assert graph_without_faq(html) == graph_without_faq(old), slug
+        # A practical FAQ may be added or tightened. Titles, sources, and the
+        # non-FAQ graph stay on origin/main. Non-question disclosures stay too.
+        assert page_outside_faq(html) == page_outside_faq(old), slug
+        if visible_question_faqs(html) == visible_question_faqs(old):
+            assert jsonld_re.findall(html) == jsonld_re.findall(old), slug
         else:
-            assert jsonld_re.findall(html) == jsonld_re.findall(old)
+            assert graph_without_faq(html) == graph_without_faq(old), slug
         assert sources_re.findall(html) == sources_re.findall(old)
         navs = nav_re.findall(html)
         assert len(navs) == 1, slug
@@ -334,10 +357,11 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        if name in EDITED_GUIDES:
-            assert graph_without_faq(html) == graph_without_faq(old), name
+        assert page_outside_faq(html) == page_outside_faq(old), name
+        if visible_question_faqs(html) == visible_question_faqs(old):
+            assert jsonld_re.findall(html) == jsonld_re.findall(old), name
         else:
-            assert jsonld_re.findall(html) == jsonld_re.findall(old)
+            assert graph_without_faq(html) == graph_without_faq(old), name
         assert sources_re.findall(html) == sources_re.findall(old), name
         # City links in the guide body, outside the source list.
         body = sources_re.sub(" ", html)

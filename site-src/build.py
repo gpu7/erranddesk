@@ -11,7 +11,8 @@ Search: every non-noindex page is indexed from its own title, path and body. The
 form is added only on / and /search/. Other pages do not link the index or the search stylesheet.
 Same-state link blocks are marked data-search-skip and are left out of the index.
 SEO: every page gets Open Graph + Twitter card tags. JSON-LD: WebSite on the home page; Article + BreadcrumbList
-on guides, plus FAQPage built from the page's own <details><summary> FAQ text so markup can't drift from content."""
+on guides, plus one FAQPage built from the page's own question <details> (summary ends with "?") so markup
+can't drift from visible FAQ text. Other disclosures, such as a facility list, stay on the page and out of FAQPage."""
 import argparse, hashlib, html as htmlmod, json, os, re, shutil, sys
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -90,6 +91,22 @@ def plain(fragment):
     x = re.sub(r"\s+", " ", x).strip()
     return re.sub(r"\s+([.,;:])", r"\1", x)
 
+def faq_pairs(body):
+    """Question disclosures only. A <details> list that is not a question is not an FAQ."""
+    pairs, seen = [], set()
+    for q, a in re.findall(r"<details><summary>(.*?)</summary>(.*?)</details>", body, re.S):
+        question, answer = plain(q), plain(a)
+        if not question.endswith("?"):
+            continue
+        if not answer:
+            raise SystemExit(f"FAQ question has an empty answer: {question}")
+        key = question.casefold()
+        if key in seen:
+            raise SystemExit(f"duplicate FAQ question: {question}")
+        seen.add(key)
+        pairs.append((q, a))
+    return pairs
+
 def jsonld(meta, body, url, lastmod):
     graph, kind = [], meta.get("schema")
     if kind == "website":
@@ -103,7 +120,7 @@ def jsonld(meta, body, url, lastmod):
         graph.append({"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
             {"@type": "ListItem", "position": 2, "name": h1, "item": url}]})
-        faqs = re.findall(r"<details><summary>(.*?)</summary>(.*?)</details>", body, re.S)
+        faqs = faq_pairs(body)
         if faqs:
             graph.append({"@type": "FAQPage", "url": url, "mainEntity": [
                 {"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
