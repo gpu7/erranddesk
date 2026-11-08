@@ -260,6 +260,62 @@ def assert_new_guide(html, name, sitemap, index):
             assert cite in ids, (name, cite)
 
 
+def assert_sioux_falls_shredder(html, old):
+    """Downtown Library guest shredder is the only Sioux Falls body change."""
+    assert visible_question_faqs(html) == visible_question_faqs(old)
+    shred = re.search(r'<h2 id="shredding">(.*?)</ul>', html, re.S).group(1)
+    assert "Downtown Library (free, guest-operated)" in shred
+    assert "confirmed on Nov 8, 2026" in shred
+    assert "guests can use a shredder there during open hours" in shred
+    assert "it is free" in shred
+    assert "does not offer shredding events" in shred
+    assert "reported, not a public library page" in shred
+    assert 'href="#s28"' in shred and 'href="#s3"' in shred
+    assert "That page's feature list does not include shredding" in shred
+    assert "doesn't state a page limit, an appointment rule or a capacity" in shred
+    assert "we didn't find an upcoming free shred event on the official city and county pages we checked." in shred
+    assert "2601 S Minnesota Ave" in shred
+    assert "mailto:" not in shred
+    assert "@" not in shred
+    sources = re.search(r'<ol class="sources">(.*?)</ol>', html, re.S).group(1)
+    old_sources = re.search(r'<ol class="sources">(.*?)</ol>', old, re.S).group(1)
+    s28 = re.search(r'<li id="s28">(.*?)</li>', sources, re.S)
+    assert s28, "missing staff-confirmation source"
+    note = s28.group(1)
+    assert "confirmation dated Nov 8, 2026" in note
+    assert "reported, not a public library page" in note
+    assert "There is no public URL for this reply." in note
+    assert "that page does not list shredding" in note
+    assert "https://www.siouxlandlib.org/Venues/downtown-library" in note
+    assert "mailto:" not in note and "@" not in note
+    assert "(last checked Nov 8, 2026)" in note
+    without_new = re.sub(r'\s*<li id="s28">.*?</li>', "", sources, count=1, flags=re.S)
+    without_new = without_new.replace(
+        "siouxlandlib.org/Venues/downtown-library</a> (last checked Nov 8, 2026)",
+        "siouxlandlib.org/Venues/downtown-library</a> (last checked Oct 29, 2026)",
+    )
+    assert without_new == old_sources
+    reverted = html.replace(
+        'Details last checked <time datetime="2026-11-08">Nov 8, 2026</time>',
+        'All details last checked <time datetime="2026-10-29">Oct 29, 2026</time>',
+    ).replace(
+        '"dateModified": "2026-11-08"',
+        '"dateModified": "2026-10-29"',
+    ).replace(
+        "Sources last checked Oct 29 or Nov 8, 2026, as marked on each, except the locator data file.",
+        "All sources last checked Oct 29, 2026, except the locator data file.",
+    )
+    old_ul = re.search(r'(<h2 id="shredding">.*?</ul>)', old, re.S).group(1)
+    reverted = re.sub(r'<h2 id="shredding">.*?</ul>', lambda m: old_ul, reverted, count=1, flags=re.S)
+    reverted = re.sub(r'\s*<li id="s28">.*?</li>', "", reverted, count=1, flags=re.S)
+    reverted = reverted.replace(
+        "siouxlandlib.org/Venues/downtown-library</a> (last checked Nov 8, 2026)",
+        "siouxlandlib.org/Venues/downtown-library</a> (last checked Oct 29, 2026)",
+    )
+    assert "Nov 8, 2026" not in reverted
+    assert reverted == old
+
+
 def check_site(out, graph):
     map_html = (out / "map" / "index.html").read_text()
     ids = set(re.findall(r'\sid="([^"]+)"', map_html))
@@ -280,7 +336,12 @@ def check_site(out, graph):
     assert old_sm.count("<loc>") == 291
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
-    assert old_rows == new_rows, "sitemap URLs or lastmod dates changed"
+    assert [loc for loc, _ in old_rows] == [loc for loc, _ in new_rows]
+    for (loc, old_date), (_, new_date) in zip(old_rows, new_rows):
+        if loc == "https://erranddesk.com/sioux-falls/":
+            assert old_date == "2026-10-29" and new_date == "2026-11-08", (old_date, new_date)
+        else:
+            assert old_date == new_date, (loc, old_date, new_date)
     index = json.loads((out / "assets" / "search-index.json").read_text())
     by_url = {doc["u"]: i for i, doc in enumerate(index["docs"])}
     title_re = re.compile(r"<title>(.*?)</title>")
@@ -300,12 +361,16 @@ def check_site(out, graph):
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
         # A practical FAQ may be added or tightened. Titles, sources, and the
         # non-FAQ graph stay on origin/main. Non-question disclosures stay too.
-        assert page_outside_faq(html) == page_outside_faq(old), slug
-        if visible_question_faqs(html) == visible_question_faqs(old):
-            assert jsonld_re.findall(html) == jsonld_re.findall(old), slug
+        # Sioux Falls adds the Nov 8, 2026 Downtown Library shredder confirmation.
+        if slug == "sioux-falls":
+            assert_sioux_falls_shredder(html, old)
         else:
-            assert graph_without_faq(html) == graph_without_faq(old), slug
-        assert sources_re.findall(html) == sources_re.findall(old)
+            assert page_outside_faq(html) == page_outside_faq(old), slug
+            if visible_question_faqs(html) == visible_question_faqs(old):
+                assert jsonld_re.findall(html) == jsonld_re.findall(old), slug
+            else:
+                assert graph_without_faq(html) == graph_without_faq(old), slug
+            assert sources_re.findall(html) == sources_re.findall(old)
         navs = nav_re.findall(html)
         assert len(navs) == 1, slug
         nav = navs[0]
