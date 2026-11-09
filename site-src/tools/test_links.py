@@ -287,6 +287,42 @@ def assert_recheck_c1_browser(html, old, slug):
         r'<meta name="description" content="([^"]*)">', old).group(1)
 
 
+def assert_nov9_city_facts(html, old, slug):
+    """Knoxville notary end date, Bangor clerk URL, Columbus GA probate address."""
+    assert 'Details last checked <time datetime="2026-11-09">Nov 9, 2026</time>' in html, slug
+    assert '"dateModified": "2026-11-09"' in html, slug
+    assert re.search(r"<title>(.*?)</title>", html).group(1) == re.search(r"<title>(.*?)</title>", old).group(1)
+    assert re.search(r'<meta name="description" content="([^"]*)">', html).group(1) == re.search(
+        r'<meta name="description" content="([^"]*)">', old).group(1)
+    if slug == "knoxville":
+        assert "after October 31, 2026 it no longer notarizes documents" in html
+        assert "still shows the old $3.00 fee" in html
+        assert "knoxcounty.org/clerk/notary.php</a> (last checked Nov 9, 2026)" in html
+        assert "will no longer offer this service" not in html
+        assert "Don't plan on it." not in html
+        assert "$3.00 notary service ends" not in html
+    elif slug == "bangor":
+        assert "bangormaine.gov/173/City-Clerk-Treasury" in html
+        assert "195/City-Clerk" not in html
+        assert "Absentee-Early-Voting" not in html
+        assert "Monday–Friday 8 a.m.–4:15 p.m. at 73 Harlow St." in html
+        assert "Dedimus Justice $5 and Attestation $5" in html
+        assert "1st Copy 15$" in html and "marriage license 40$" in html
+        assert "bangormaine.gov/DocumentCenter/View/1652/Clerk--Treasury-Fee-Schedule-PDF</a> (last checked Nov 9, 2026)" in html
+    else:
+        assert "100 10th St., 2nd Floor, Columbus, GA 31901" in html
+        assert "John D. Allen Government Center" in html
+        assert "as of November 9, 2026" in html
+        assert "We didn't find a current relocation notice" in html
+        assert "moving this week" not in html
+        assert "closes at 3 p.m. on Nov. 6" not in html
+        assert "The court is moving" not in html
+        assert "100 10th St., 6th Floor" in html
+        assert "columbusga.gov/probate/</a> (last checked Nov 9, 2026)" in html or "columbusga.gov/probate</a> (last checked Nov 9, 2026)" in html
+        assert "100 10th Street, 2nd Floor Tower" in html
+        assert "closed Monday, Nov. 9, 2026, from 8:00 a.m. to 5:00 p.m." in html
+
+
 def assert_sioux_falls_shredder(html, old):
     """Downtown Library guest shredder is the only Sioux Falls body change."""
     assert visible_question_faqs(html) == visible_question_faqs(old)
@@ -366,13 +402,16 @@ def check_site(out, graph):
     assert [loc for loc, _ in old_rows] == [loc for loc, _ in new_rows]
     recheck_lastmod = {
         "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
-        "https://erranddesk.com/birmingham/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/montgomery/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/phoenix/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/tucson/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/mesa/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/gilbert/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/chandler/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/birmingham/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/montgomery/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/phoenix/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/tucson/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/mesa/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/gilbert/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/chandler/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/knoxville/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/bangor/": ("2026-11-05", "2026-11-09"),
+        "https://erranddesk.com/columbus-ga/": ("2026-11-03", "2026-11-09"),
     }
     for (loc, old_date), (_, new_date) in zip(old_rows, new_rows):
         if loc in recheck_lastmod:
@@ -406,6 +445,8 @@ def check_site(out, graph):
             assert html == old
         elif slug in {"birmingham", "montgomery", "phoenix", "tucson", "mesa", "gilbert", "chandler"}:
             assert_recheck_c1_browser(html, old, slug)
+        elif slug in {"knoxville", "bangor", "columbus-ga"}:
+            assert_nov9_city_facts(html, old, slug)
         else:
             assert page_outside_faq(html) == page_outside_faq(old), slug
             if visible_question_faqs(html) == visible_question_faqs(old):
