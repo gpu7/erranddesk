@@ -220,13 +220,9 @@ def main():
         old_sm = origin_text("sitemap.xml")
         sm_norm = sm  # sioux-falls lastmod already 2026-11-08 on origin/main
         for slug, old_date in (
-            ("birmingham", "2026-10-31"),
-            ("montgomery", "2026-10-31"),
-            ("phoenix", "2026-10-29"),
-            ("tucson", "2026-10-29"),
-            ("mesa", "2026-10-29"),
-            ("gilbert", "2026-10-29"),
-            ("chandler", "2026-10-29"),
+            ("knoxville", "2026-10-31"),
+            ("bangor", "2026-11-05"),
+            ("columbus-ga", "2026-11-03"),
         ):
             sm_norm = sm_norm.replace(
                 f"<loc>https://erranddesk.com/{slug}/</loc><lastmod>2026-11-09</lastmod>",

@@ -210,6 +210,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
             elif url in {
                 "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
                 "/mesa/", "/gilbert/", "/chandler/",
+                "/knoxville/", "/bangor/", "/columbus-ga/",
             }:
                 assert "Details last checked Nov 9, 2026" in new_x[:160], (url, new_x[:160])
             else:
@@ -219,6 +220,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
     recheck_paths = {
         "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
         "/mesa/", "/gilbert/", "/chandler/", "/sioux-falls/",
+        "/knoxville/", "/bangor/", "/columbus-ga/",
     }
     for url in old_by:
         if url in changed_urls or url in recheck_paths:
@@ -309,13 +311,16 @@ def check_site(out):
     assert len(new_rows) == 291 and set(new_rows) == set(old_rows)
     recheck_lastmod = {
         "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
-        "https://erranddesk.com/birmingham/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/montgomery/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/phoenix/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/tucson/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/mesa/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/gilbert/": ("2026-10-29", "2026-11-09"),
-        "https://erranddesk.com/chandler/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/birmingham/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/montgomery/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/phoenix/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/tucson/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/mesa/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/gilbert/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/chandler/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/knoxville/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/bangor/": ("2026-11-05", "2026-11-09"),
+        "https://erranddesk.com/columbus-ga/": ("2026-11-03", "2026-11-09"),
     }
     for loc, (old_d, new_d) in recheck_lastmod.items():
         assert old_rows[loc] == old_d and new_rows[loc] == new_d, loc
@@ -350,9 +355,18 @@ def check_site(out):
         if rel in {
             "birmingham/index.html", "montgomery/index.html", "phoenix/index.html",
             "tucson/index.html", "mesa/index.html", "gilbert/index.html", "chandler/index.html",
+            "knoxville/index.html", "bangor/index.html", "columbus-ga/index.html",
         }:
             text = new.decode()
             assert 'datetime="2026-11-09"' in text
+            if rel == "knoxville/index.html":
+                assert "no longer notarizes documents" in text
+            elif rel == "bangor/index.html":
+                assert "bangormaine.gov/173/City-Clerk-Treasury" in text
+                assert "195/City-Clerk" not in text
+            elif rel == "columbus-ga/index.html":
+                assert "100 10th St., 2nd Floor, Columbus, GA 31901" in text
+                assert "moving this week" not in text
             continue
         if norm_published(old) == norm_published(new):
             continue
