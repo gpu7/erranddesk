@@ -207,12 +207,21 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
                 assert new_x.startswith(
                     "City guide · Sioux Falls, South Dakota · Details last checked Nov 8, 2026"
                 ), new_x[:160]
+            elif url in {
+                "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
+                "/mesa/", "/gilbert/", "/chandler/",
+            }:
+                assert "Details last checked Nov 9, 2026" in new_x[:160], (url, new_x[:160])
             else:
                 assert old_x[:120] == new_x[:120], url
             assert len(new_x) > 80, url
     old_flags, new_flags = flags_by_url(old), flags_by_url(new)
+    recheck_paths = {
+        "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
+        "/mesa/", "/gilbert/", "/chandler/", "/sioux-falls/",
+    }
     for url in old_by:
-        if url in changed_urls or url == "/sioux-falls/":
+        if url in changed_urls or url in recheck_paths:
             continue
         assert old_flags.get(url, {}) == new_flags.get(url, {}), url
     assert "/duluth/" not in changed_urls
@@ -298,9 +307,21 @@ def check_site(out):
     old_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm))
     new_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", new_sm))
     assert len(new_rows) == 291 and set(new_rows) == set(old_rows)
-    sioux = "https://erranddesk.com/sioux-falls/"
-    assert old_rows[sioux] == "2026-10-29" and new_rows[sioux] == "2026-11-08"
-    assert {k: v for k, v in old_rows.items() if k != sioux} == {k: v for k, v in new_rows.items() if k != sioux}
+    recheck_lastmod = {
+        "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
+        "https://erranddesk.com/birmingham/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/montgomery/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/phoenix/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/tucson/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/mesa/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/gilbert/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/chandler/": ("2026-10-29", "2026-11-09"),
+    }
+    for loc, (old_d, new_d) in recheck_lastmod.items():
+        assert old_rows[loc] == old_d and new_rows[loc] == new_d, loc
+    assert {k: v for k, v in old_rows.items() if k not in recheck_lastmod} == {
+        k: v for k, v in new_rows.items() if k not in recheck_lastmod
+    }
     assert origin_bytes("assets/style.css") == (out / "assets" / "style.css").read_bytes()
     assert 'href="/guides/passport-acceptance-visit/"' in (out / "guides" / "passport-checklist" / "index.html").read_text()
     assert 'href="/guides/in-person-vs-remote-notary/"' in (out / "guides" / "notary-options" / "index.html").read_text()
@@ -325,6 +346,13 @@ def check_site(out):
             assert "reported, not a public library page" in text
             assert "That page's feature list does not include shredding" in text
             assert "2601 S Minnesota Ave" in text
+            continue
+        if rel in {
+            "birmingham/index.html", "montgomery/index.html", "phoenix/index.html",
+            "tucson/index.html", "mesa/index.html", "gilbert/index.html", "chandler/index.html",
+        }:
+            text = new.decode()
+            assert 'datetime="2026-11-09"' in text
             continue
         if norm_published(old) == norm_published(new):
             continue
