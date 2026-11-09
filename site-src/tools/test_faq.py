@@ -218,10 +218,21 @@ def main():
         assert not any(name.startswith("Manhattan") for name in nyc_names)
         sm = (out / "sitemap.xml").read_text()
         old_sm = origin_text("sitemap.xml")
-        assert sm.replace(
-            "<loc>https://erranddesk.com/sioux-falls/</loc><lastmod>2026-11-08</lastmod>",
-            "<loc>https://erranddesk.com/sioux-falls/</loc><lastmod>2026-10-29</lastmod>",
-        ) == old_sm
+        sm_norm = sm  # sioux-falls lastmod already 2026-11-08 on origin/main
+        for slug, old_date in (
+            ("birmingham", "2026-10-31"),
+            ("montgomery", "2026-10-31"),
+            ("phoenix", "2026-10-29"),
+            ("tucson", "2026-10-29"),
+            ("mesa", "2026-10-29"),
+            ("gilbert", "2026-10-29"),
+            ("chandler", "2026-10-29"),
+        ):
+            sm_norm = sm_norm.replace(
+                f"<loc>https://erranddesk.com/{slug}/</loc><lastmod>2026-11-09</lastmod>",
+                f"<loc>https://erranddesk.com/{slug}/</loc><lastmod>{old_date}</lastmod>",
+            )
+        assert sm_norm == old_sm
         print(f"added questions {added_questions}; expanded answers {expanded}")
     print("ok")
 

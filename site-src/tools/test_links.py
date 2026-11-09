@@ -260,6 +260,33 @@ def assert_new_guide(html, name, sitemap, index):
             assert cite in ids, (name, cite)
 
 
+
+def assert_recheck_c1_browser(html, old, slug):
+    """AL/AK/AZ/AR quarterly recheck browser follow-up (Nov 9, 2026)."""
+    assert 'Details last checked <time datetime="2026-11-09">Nov 9, 2026</time>' in html, slug
+    assert '"dateModified": "2026-11-09"' in html, slug
+    if slug == "birmingham":
+        assert "jccal.org/m/newsflash/Archive/Item/82?arcId=202" in html
+        assert "Home/Detail/82" not in html
+    elif slug == "montgomery":
+        assert "montgomeryprobatecourtal.gov/home-probateoffice" in html
+        assert "montgomeryprobatecourtal.gov/divisions/records-recording" in html
+        assert "city-clerk-s-office/request-for-public-records" in html
+        assert "montgomerycountyal.gov/departments/probate-court" not in html
+        assert "how-do-i/request/public-record" not in html
+    else:
+        assert "azsos.gov/business/notary" in html
+        assert "azsos.gov/business/notary-public/remote-enotary" in html
+        assert re.search(r"azsos\.gov/business/notary-public(?!/)", html) is None, slug
+        assert "A Travel ID or Travel driver license, original or renewal, is $25." in html
+        assert "A non-travel driver license is $25 (ages 16–39), $20 (40–44), $15 (45–49), or $10 (age 50 and older, and five-year licenses)" in html
+        assert "A Travel ID or driver license, original or renewal, is $25" not in html
+    # Titles and descriptions stay.
+    assert re.search(r"<title>(.*?)</title>", html).group(1) == re.search(r"<title>(.*?)</title>", old).group(1)
+    assert re.search(r'<meta name="description" content="([^"]*)">', html).group(1) == re.search(
+        r'<meta name="description" content="([^"]*)">', old).group(1)
+
+
 def assert_sioux_falls_shredder(html, old):
     """Downtown Library guest shredder is the only Sioux Falls body change."""
     assert visible_question_faqs(html) == visible_question_faqs(old)
@@ -337,9 +364,19 @@ def check_site(out, graph):
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
     assert [loc for loc, _ in old_rows] == [loc for loc, _ in new_rows]
+    recheck_lastmod = {
+        "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
+        "https://erranddesk.com/birmingham/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/montgomery/": ("2026-10-31", "2026-11-09"),
+        "https://erranddesk.com/phoenix/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/tucson/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/mesa/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/gilbert/": ("2026-10-29", "2026-11-09"),
+        "https://erranddesk.com/chandler/": ("2026-10-29", "2026-11-09"),
+    }
     for (loc, old_date), (_, new_date) in zip(old_rows, new_rows):
-        if loc == "https://erranddesk.com/sioux-falls/":
-            assert old_date == "2026-10-29" and new_date == "2026-11-08", (old_date, new_date)
+        if loc in recheck_lastmod:
+            assert (old_date, new_date) == recheck_lastmod[loc], (loc, old_date, new_date)
         else:
             assert old_date == new_date, (loc, old_date, new_date)
     index = json.loads((out / "assets" / "search-index.json").read_text())
@@ -362,8 +399,13 @@ def check_site(out, graph):
         # A practical FAQ may be added or tightened. Titles, sources, and the
         # non-FAQ graph stay on origin/main. Non-question disclosures stay too.
         # Sioux Falls adds the Nov 8, 2026 Downtown Library shredder confirmation.
+        # AL/AK/AZ/AR quarterly recheck browser follow-up (Nov 9, 2026): citation
+        # URL redirects and Arizona MVD fee wording on seven city pages.
         if slug == "sioux-falls":
-            assert_sioux_falls_shredder(html, old)
+            # Shredder confirmation already on origin/main (PR #349).
+            assert html == old
+        elif slug in {"birmingham", "montgomery", "phoenix", "tucson", "mesa", "gilbert", "chandler"}:
+            assert_recheck_c1_browser(html, old, slug)
         else:
             assert page_outside_faq(html) == page_outside_faq(old), slug
             if visible_question_faqs(html) == visible_question_faqs(old):
