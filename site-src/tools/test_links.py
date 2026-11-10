@@ -46,6 +46,21 @@ def origin_text(path):
     return raw.stdout.decode()
 
 
+POLICY_FOOTER_LINKS = (
+    '    <p class="small"><a href="/about/">About</a> · <a href="/disclosure/">Disclosure</a> '
+    '· <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>\n'
+)
+NEW_POLICY_SITEMAP = {
+    "https://erranddesk.com/privacy/",
+    "https://erranddesk.com/contact/",
+}
+
+
+def drop_policy_footer(text):
+    """Remove the Privacy/Contact footer line added in November 2026."""
+    return text.replace(POLICY_FOOTER_LINKS, "")
+
+
 def reachability(graph):
     for code, group in graph.by_state.items():
         slugs = [city["slug"] for city in group]
@@ -395,11 +410,17 @@ def check_site(out, graph):
         r'<h3 id="(list-[^"]+)">([^<]+)</h3>', old_map)
     sm = (out / "sitemap.xml").read_text()
     old_sm = origin_text("sitemap.xml")
-    assert sm.count("<loc>") == 291
+    assert sm.count("<loc>") == 293
     assert old_sm.count("<loc>") == 291
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
-    assert [loc for loc, _ in old_rows] == [loc for loc, _ in new_rows]
+    old_locs = [loc for loc, _ in old_rows]
+    new_locs = [loc for loc, _ in new_rows]
+    assert [loc for loc in new_locs if loc not in NEW_POLICY_SITEMAP] == old_locs
+    new_dates = dict(new_rows)
+    assert new_dates["https://erranddesk.com/about/"] == "2026-11-10"
+    assert new_dates["https://erranddesk.com/privacy/"] == "2026-11-10"
+    assert new_dates["https://erranddesk.com/contact/"] == "2026-11-10"
     recheck_lastmod = {
         "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
         "https://erranddesk.com/birmingham/": ("2026-11-09", "2026-11-09"),
@@ -409,13 +430,22 @@ def check_site(out, graph):
         "https://erranddesk.com/mesa/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/gilbert/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/chandler/": ("2026-11-09", "2026-11-09"),
-        "https://erranddesk.com/knoxville/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/bangor/": ("2026-11-05", "2026-11-09"),
-        "https://erranddesk.com/columbus-ga/": ("2026-11-03", "2026-11-09"),
+        "https://erranddesk.com/knoxville/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/bangor/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/columbus-ga/": ("2026-11-09", "2026-11-09"),
     }
-    for (loc, old_date), (_, new_date) in zip(old_rows, new_rows):
+    new_by_loc = dict(new_rows)
+    policy_lastmod = {
+        "https://erranddesk.com/about/",
+        "https://erranddesk.com/privacy/",
+        "https://erranddesk.com/contact/",
+    }
+    for loc, old_date in old_rows:
+        new_date = new_by_loc[loc]
         if loc in recheck_lastmod:
             assert (old_date, new_date) == recheck_lastmod[loc], (loc, old_date, new_date)
+        elif loc in policy_lastmod:
+            continue
         else:
             assert old_date == new_date, (loc, old_date, new_date)
     index = json.loads((out / "assets" / "search-index.json").read_text())
@@ -442,13 +472,13 @@ def check_site(out, graph):
         # URL redirects and Arizona MVD fee wording on seven city pages.
         if slug == "sioux-falls":
             # Shredder confirmation already on origin/main (PR #349).
-            assert html == old
+            assert drop_policy_footer(html) == old
         elif slug in {"birmingham", "montgomery", "phoenix", "tucson", "mesa", "gilbert", "chandler"}:
             assert_recheck_c1_browser(html, old, slug)
         elif slug in {"knoxville", "bangor", "columbus-ga"}:
             assert_nov9_city_facts(html, old, slug)
         else:
-            assert page_outside_faq(html) == page_outside_faq(old), slug
+            assert drop_policy_footer(page_outside_faq(html)) == page_outside_faq(old), slug
             if visible_question_faqs(html) == visible_question_faqs(old):
                 assert jsonld_re.findall(html) == jsonld_re.findall(old), slug
             else:
@@ -505,7 +535,7 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        assert page_outside_faq(html) == page_outside_faq(old), name
+        assert drop_policy_footer(page_outside_faq(html)) == page_outside_faq(old), name
         if visible_question_faqs(html) == visible_question_faqs(old):
             assert jsonld_re.findall(html) == jsonld_re.findall(old), name
         else:
@@ -541,6 +571,17 @@ def check_site(out, graph):
     assert 'href="/guides/library-printing/"' in (out / "guides" / "printing-prices" / "index.html").read_text()
     # The guides index already lists every city. It does not get another generated block.
     assert "more-in-state" not in index_html
+    for slug, title in (("privacy", "Privacy Policy | Errand Desk"), ("contact", "Contact Errand Desk")):
+        html = (out / slug / "index.html").read_text()
+        assert f"<title>{title}</title>" in html
+        assert len(title) <= 60
+        assert f'<link rel="canonical" href="https://erranddesk.com/{slug}/">' in html
+        assert "erranddesk@protonmail.com" in html
+        assert f"<loc>https://erranddesk.com/{slug}/</loc>" in sm
+    about = (out / "about" / "index.html").read_text()
+    assert "corrections contact will be added" not in about
+    assert "erranddesk@protonmail.com" in about
+    assert 'href="/contact/"' in about
     for html_path in out.rglob("*.html"):
         assert_visible_faq_matches_schema(html_path.read_text(), html_path.relative_to(out).as_posix())
     print("html ok", pages, "city pages")

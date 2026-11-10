@@ -137,7 +137,7 @@ def main():
         read_list = []
         for path in sorted(out.glob("*/index.html")):
             rel = path.relative_to(out).as_posix()
-            if rel in ("about/index.html", "disclosure/index.html", "map/index.html", "search/index.html"):
+            if rel in ("about/index.html", "disclosure/index.html", "map/index.html", "search/index.html", "contact/index.html", "privacy/index.html"):
                 continue
             if rel.startswith("guides/"):
                 continue
@@ -218,16 +218,16 @@ def main():
         assert not any(name.startswith("Manhattan") for name in nyc_names)
         sm = (out / "sitemap.xml").read_text()
         old_sm = origin_text("sitemap.xml")
-        sm_norm = sm  # sioux-falls lastmod already 2026-11-08 on origin/main
-        for slug, old_date in (
-            ("knoxville", "2026-10-31"),
-            ("bangor", "2026-11-05"),
-            ("columbus-ga", "2026-11-03"),
-        ):
-            sm_norm = sm_norm.replace(
-                f"<loc>https://erranddesk.com/{slug}/</loc><lastmod>2026-11-09</lastmod>",
-                f"<loc>https://erranddesk.com/{slug}/</loc><lastmod>{old_date}</lastmod>",
-            )
+        sm_norm = re.sub(
+            r"  <url><loc>https://erranddesk.com/(?:contact|privacy)/</loc><lastmod>2026-11-10</lastmod></url>\n",
+            "",
+            sm,
+        )
+        sm_norm = sm_norm.replace(
+            "<loc>https://erranddesk.com/about/</loc><lastmod>2026-11-10</lastmod>",
+            "<loc>https://erranddesk.com/about/</loc><lastmod>2026-10-21</lastmod>",
+        )
+        # knoxville/bangor/columbus-ga lastmods are already 2026-11-09 on origin/main.
         assert sm_norm == old_sm
         print(f"added questions {added_questions}; expanded answers {expanded}")
     print("ok")
