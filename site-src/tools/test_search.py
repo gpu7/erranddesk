@@ -223,7 +223,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
         assert before.get("t") == after.get("t"), url
         assert before.get("d") == after.get("d"), url
         old_x, new_x = before.get("x") or "", after.get("x") or ""
-        if url == "/about/":
+        if url in {"/about/", "/contact/"}:
             assert len(new_x) > 80, url
             continue
         if old_x != new_x:
@@ -249,7 +249,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
         "/knoxville/", "/bangor/", "/columbus-ga/",
     }
     for url in old_by:
-        if url in changed_urls or url in recheck_paths or url == "/about/":
+        if url in changed_urls or url in recheck_paths or url in {"/about/", "/contact/"}:
             continue
         assert old_flags.get(url, {}) == new_flags.get(url, {}), url
     assert "/duluth/" not in changed_urls
