@@ -411,12 +411,12 @@ def check_site(out, graph):
     sm = (out / "sitemap.xml").read_text()
     old_sm = origin_text("sitemap.xml")
     assert sm.count("<loc>") == 293
-    assert old_sm.count("<loc>") == 291
+    assert old_sm.count("<loc>") == 293
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
     old_locs = [loc for loc, _ in old_rows]
     new_locs = [loc for loc, _ in new_rows]
-    assert [loc for loc in new_locs if loc not in NEW_POLICY_SITEMAP] == old_locs
+    assert new_locs == old_locs
     new_dates = dict(new_rows)
     assert new_dates["https://erranddesk.com/about/"] == "2026-11-10"
     assert new_dates["https://erranddesk.com/privacy/"] == "2026-11-10"
@@ -472,13 +472,13 @@ def check_site(out, graph):
         # URL redirects and Arizona MVD fee wording on seven city pages.
         if slug == "sioux-falls":
             # Shredder confirmation already on origin/main (PR #349).
-            assert drop_policy_footer(html) == old
+            assert drop_policy_footer(html) == drop_policy_footer(old)
         elif slug in {"birmingham", "montgomery", "phoenix", "tucson", "mesa", "gilbert", "chandler"}:
             assert_recheck_c1_browser(html, old, slug)
         elif slug in {"knoxville", "bangor", "columbus-ga"}:
             assert_nov9_city_facts(html, old, slug)
         else:
-            assert drop_policy_footer(page_outside_faq(html)) == page_outside_faq(old), slug
+            assert drop_policy_footer(page_outside_faq(html)) == drop_policy_footer(page_outside_faq(old)), slug
             if visible_question_faqs(html) == visible_question_faqs(old):
                 assert jsonld_re.findall(html) == jsonld_re.findall(old), slug
             else:
@@ -535,7 +535,7 @@ def check_site(out, graph):
         assert title_re.search(html).group(1) == title_re.search(old).group(1)
         assert desc_re.search(html).group(1) == desc_re.search(old).group(1)
         assert canon_re.search(html).group(1) == canon_re.search(old).group(1)
-        assert drop_policy_footer(page_outside_faq(html)) == page_outside_faq(old), name
+        assert drop_policy_footer(page_outside_faq(html)) == drop_policy_footer(page_outside_faq(old)), name
         if visible_question_faqs(html) == visible_question_faqs(old):
             assert jsonld_re.findall(html) == jsonld_re.findall(old), name
         else:

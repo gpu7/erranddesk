@@ -24,7 +24,7 @@ site.config.json    base_url, default_lastmod, cf_analytics_token (public Cloudf
 src/layout.html     shared header, nav, footer; tokens like {{title}}, {{nav_fax}}, {{analytics}}
 src/assets/         style.css (link gets ?v=<sha256 prefix> for cache-busting)
 src/pages/          page bodies, each starting with <!--meta {"title","description","nav","lastmod","schema"} -->
-src/static/         copied to the site root: 404.html, og-image.png, favicons, icons
+src/static/         copied to the site root: 404.html, og-image.png, favicons, icons, IndexNow key file
 tools/              make_og_image.py (optional; needs Pillow and the Inter font, so edit the font path for your machine)
 ```
 
@@ -69,8 +69,9 @@ To add a nav item, add a `{{nav_<key>}}` token in `layout.html` and the matching
 ## Deploy
 
 After a PR that changes `erranddesk-site/` is merged to `main`:
-1. Upload `erranddesk-site/` to the site's S3 bucket with explicit Content-Type and Cache-Control headers. HTML and sitemap get 5 minutes; CSS, icons and PNGs get one year, immutable; og-image.png gets one day. `assets/search.css` (`text/css`), `assets/search.js` (`text/javascript`) and `assets/search-index.json` (`application/json`) are fingerprinted with `?v=` and can use the long cache. Don't use `--delete`.
+1. Upload `erranddesk-site/` to the site's S3 bucket with explicit Content-Type and Cache-Control headers. HTML and sitemap get 5 minutes; CSS, icons and PNGs get one year, immutable; og-image.png gets one day. `assets/search.css` (`text/css`), `assets/search.js` (`text/javascript`) and `assets/search-index.json` (`application/json`) are fingerprinted with `?v=` and can use the long cache. Don't use `--delete`. The usual upload includes `*.html`, `*.css`, `*.js`, `sitemap.xml`, `robots.txt`, PNGs and favicons, so it will miss the IndexNow key file (`src/static/<32-hex-char-key>.txt`, copied to the site root). Upload that `.txt` separately as `text/plain; charset=utf-8` with `Cache-Control: public, max-age=86400`.
 2. Invalidate `/*` on the CloudFront distribution and wait for it to complete.
-3. Spot-check the live site with curl: status codes, titles, sitemap, og-image, http→https and 404.
+3. After the invalidation completes, tell search engines about the published pages: `python3 site-src/tools/indexnow_ping.py --all` (or pass the changed `https://erranddesk.com/...` URLs). The script reads the key from the static key file and prints the HTTP status.
+4. Spot-check the live site with curl: status codes, titles, sitemap, og-image, http→https and 404. Confirm the IndexNow key URL returns the key as `text/plain`.
 
 The bucket and distribution identifiers are deliberately kept out of this repo.
