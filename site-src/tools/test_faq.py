@@ -218,17 +218,8 @@ def main():
         assert not any(name.startswith("Manhattan") for name in nyc_names)
         sm = (out / "sitemap.xml").read_text()
         old_sm = origin_text("sitemap.xml")
-        sm_norm = re.sub(
-            r"  <url><loc>https://erranddesk.com/(?:contact|privacy)/</loc><lastmod>2026-11-10</lastmod></url>\n",
-            "",
-            sm,
-        )
-        sm_norm = sm_norm.replace(
-            "<loc>https://erranddesk.com/about/</loc><lastmod>2026-11-10</lastmod>",
-            "<loc>https://erranddesk.com/about/</loc><lastmod>2026-10-21</lastmod>",
-        )
-        # knoxville/bangor/columbus-ga lastmods are already 2026-11-09 on origin/main.
-        assert sm_norm == old_sm
+        # Privacy, contact, and the About lastmod are already on origin/main (#352).
+        assert sm == old_sm
         print(f"added questions {added_questions}; expanded answers {expanded}")
     print("ok")
 

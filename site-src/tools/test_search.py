@@ -214,7 +214,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
     """
     old, new = json.loads(old_bytes), json.loads(new_bytes)
     assert old["v"] == new["v"] == 1
-    assert old["n"] == 291 and new["n"] == 293
+    assert old["n"] == new["n"] == 293
     old_by = {doc["u"]: doc for doc in old["docs"]}
     new_by = {doc["u"]: doc for doc in new["docs"]}
     assert set(new_by) == set(old_by) | NEW_POLICY_URLS
@@ -296,7 +296,7 @@ def check_site(out):
     # style.css may gain the same-state link rules, so only that fingerprint may differ.
     published_home = origin_file("index.html")
     assert main_block(published_home) == main_block(home)
-    assert tail_block(published_home) == drop_policy_footer(tail_block(home))
+    assert drop_policy_footer(tail_block(published_home)) == drop_policy_footer(tail_block(home))
     assert head_block(published_home) == head_block(home)
     search_html = (out / "search" / "index.html").read_text()
     assert search_html.count('<form class="site-search"') == 1
@@ -328,13 +328,13 @@ def check_site(out):
     old_search = origin_file("search/index.html")
     def hide_hash(text):
         return re.sub(r"search-index\.json\?v=[0-9a-f]+", "search-index.json?v=HASH", text)
-    assert hide_hash(old_search) == hide_hash(drop_policy_footer(search_html))
+    assert hide_hash(drop_policy_footer(old_search)) == hide_hash(drop_policy_footer(search_html))
     assert "style.css?v=78dec13e70" in home
     old_sm = origin_bytes("sitemap.xml").decode()
     new_sm = (out / "sitemap.xml").read_text()
     old_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm))
     new_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", new_sm))
-    assert len(old_rows) == 291 and len(new_rows) == 293
+    assert len(old_rows) == len(new_rows) == 293
     assert set(new_rows) == set(old_rows) | NEW_POLICY_SITEMAP
     assert new_rows["https://erranddesk.com/about/"] == "2026-11-10"
     assert new_rows["https://erranddesk.com/privacy/"] == "2026-11-10"
@@ -363,6 +363,9 @@ def check_site(out):
         k: v for k, v in new_rows.items() if k not in recheck_lastmod and k not in policy_lastmod
     }
     assert origin_bytes("assets/style.css") == (out / "assets" / "style.css").read_bytes()
+    key_files = [p for p in out.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt", p.name)]
+    assert len(key_files) == 1, [p.name for p in key_files]
+    assert key_files[0].read_text() == key_files[0].stem
     assert 'href="/guides/passport-acceptance-visit/"' in (out / "guides" / "passport-checklist" / "index.html").read_text()
     assert 'href="/guides/in-person-vs-remote-notary/"' in (out / "guides" / "notary-options" / "index.html").read_text()
     assert 'href="/guides/library-printing/"' in (out / "guides" / "printing-prices" / "index.html").read_text()
@@ -373,6 +376,10 @@ def check_site(out):
             continue
         old = origin_bytes(rel)
         if old is None:
+            name = Path(rel).name
+            if re.fullmatch(r"[0-9a-f]{32}\.txt", name):
+                assert (out / rel).read_text() == Path(rel).stem, rel
+                continue
             if rel not in NEW_POLICY_FILES:
                 raise SystemExit(f"unexpected new file {rel}")
             text = (out / rel).read_text()
