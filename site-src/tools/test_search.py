@@ -89,8 +89,29 @@ def origin_file(path):
 _STATE_NAV = re.compile(br'\n?<nav class="more-in-state\b.*?</nav>\n?', re.S)
 
 
+POLICY_FOOTER_LINKS = (
+    '    <p class="small"><a href="/about/">About</a> · <a href="/disclosure/">Disclosure</a> '
+    '· <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>\n'
+)
+POLICY_FOOTER_LINKS_B = POLICY_FOOTER_LINKS.encode("utf-8")
+NEW_POLICY_URLS = {"/privacy/", "/contact/"}
+NEW_POLICY_FILES = {"privacy/index.html", "contact/index.html"}
+NEW_POLICY_SITEMAP = {
+    "https://erranddesk.com/privacy/",
+    "https://erranddesk.com/contact/",
+}
+
+
+def drop_policy_footer(text):
+    """Remove the Privacy/Contact footer line added in November 2026."""
+    if isinstance(text, bytes):
+        return text.replace(POLICY_FOOTER_LINKS_B, b"")
+    return text.replace(POLICY_FOOTER_LINKS, "")
+
+
 def norm_published(raw):
-    """Ignore the injected state nav and the style.css fingerprint."""
+    """Ignore the injected state nav, the style.css fingerprint, and the policy footer links."""
+    raw = drop_policy_footer(raw)
     raw = _STATE_NAV.sub(b"", raw)
     return re.sub(br"style\.css\?v=[0-9a-f]+", b"style.css?v=HASH", raw)
 
@@ -193,15 +214,18 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
     """
     old, new = json.loads(old_bytes), json.loads(new_bytes)
     assert old["v"] == new["v"] == 1
-    assert new["n"] == old["n"] == 291
+    assert old["n"] == 291 and new["n"] == 293
     old_by = {doc["u"]: doc for doc in old["docs"]}
     new_by = {doc["u"]: doc for doc in new["docs"]}
-    assert set(new_by) == set(old_by)
+    assert set(new_by) == set(old_by) | NEW_POLICY_URLS
     for url, before in old_by.items():
         after = new_by[url]
         assert before.get("t") == after.get("t"), url
         assert before.get("d") == after.get("d"), url
         old_x, new_x = before.get("x") or "", after.get("x") or ""
+        if url == "/about/":
+            assert len(new_x) > 80, url
+            continue
         if old_x != new_x:
             if url == "/sioux-falls/":
                 assert new_x.startswith(
@@ -216,6 +240,8 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
             else:
                 assert old_x[:120] == new_x[:120], url
             assert len(new_x) > 80, url
+    assert new_by["/privacy/"]["t"] == "Privacy policy"
+    assert new_by["/contact/"]["t"] == "Contact Errand Desk"
     old_flags, new_flags = flags_by_url(old), flags_by_url(new)
     recheck_paths = {
         "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
@@ -223,7 +249,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
         "/knoxville/", "/bangor/", "/columbus-ga/",
     }
     for url in old_by:
-        if url in changed_urls or url in recheck_paths:
+        if url in changed_urls or url in recheck_paths or url == "/about/":
             continue
         assert old_flags.get(url, {}) == new_flags.get(url, {}), url
     assert "/duluth/" not in changed_urls
@@ -270,7 +296,7 @@ def check_site(out):
     # style.css may gain the same-state link rules, so only that fingerprint may differ.
     published_home = origin_file("index.html")
     assert main_block(published_home) == main_block(home)
-    assert tail_block(published_home) == tail_block(home)
+    assert tail_block(published_home) == drop_policy_footer(tail_block(home))
     assert head_block(published_home) == head_block(home)
     search_html = (out / "search" / "index.html").read_text()
     assert search_html.count('<form class="site-search"') == 1
@@ -302,13 +328,17 @@ def check_site(out):
     old_search = origin_file("search/index.html")
     def hide_hash(text):
         return re.sub(r"search-index\.json\?v=[0-9a-f]+", "search-index.json?v=HASH", text)
-    assert hide_hash(old_search) == hide_hash(search_html)
+    assert hide_hash(old_search) == hide_hash(drop_policy_footer(search_html))
     assert "style.css?v=78dec13e70" in home
     old_sm = origin_bytes("sitemap.xml").decode()
     new_sm = (out / "sitemap.xml").read_text()
     old_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm))
     new_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", new_sm))
-    assert len(new_rows) == 291 and set(new_rows) == set(old_rows)
+    assert len(old_rows) == 291 and len(new_rows) == 293
+    assert set(new_rows) == set(old_rows) | NEW_POLICY_SITEMAP
+    assert new_rows["https://erranddesk.com/about/"] == "2026-11-10"
+    assert new_rows["https://erranddesk.com/privacy/"] == "2026-11-10"
+    assert new_rows["https://erranddesk.com/contact/"] == "2026-11-10"
     recheck_lastmod = {
         "https://erranddesk.com/sioux-falls/": ("2026-11-08", "2026-11-08"),
         "https://erranddesk.com/birmingham/": ("2026-11-09", "2026-11-09"),
@@ -318,14 +348,19 @@ def check_site(out):
         "https://erranddesk.com/mesa/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/gilbert/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/chandler/": ("2026-11-09", "2026-11-09"),
-        "https://erranddesk.com/knoxville/": ("2026-10-31", "2026-11-09"),
-        "https://erranddesk.com/bangor/": ("2026-11-05", "2026-11-09"),
-        "https://erranddesk.com/columbus-ga/": ("2026-11-03", "2026-11-09"),
+        "https://erranddesk.com/knoxville/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/bangor/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/columbus-ga/": ("2026-11-09", "2026-11-09"),
     }
     for loc, (old_d, new_d) in recheck_lastmod.items():
         assert old_rows[loc] == old_d and new_rows[loc] == new_d, loc
-    assert {k: v for k, v in old_rows.items() if k not in recheck_lastmod} == {
-        k: v for k, v in new_rows.items() if k not in recheck_lastmod
+    policy_lastmod = {
+        "https://erranddesk.com/about/",
+        "https://erranddesk.com/privacy/",
+        "https://erranddesk.com/contact/",
+    }
+    assert {k: v for k, v in old_rows.items() if k not in recheck_lastmod and k not in policy_lastmod} == {
+        k: v for k, v in new_rows.items() if k not in recheck_lastmod and k not in policy_lastmod
     }
     assert origin_bytes("assets/style.css") == (out / "assets" / "style.css").read_bytes()
     assert 'href="/guides/passport-acceptance-visit/"' in (out / "guides" / "passport-checklist" / "index.html").read_text()
@@ -338,10 +373,32 @@ def check_site(out):
             continue
         old = origin_bytes(rel)
         if old is None:
-            raise SystemExit(f"unexpected new file {rel}")
+            if rel not in NEW_POLICY_FILES:
+                raise SystemExit(f"unexpected new file {rel}")
+            text = (out / rel).read_text()
+            title = re.search(r"<title>(.*?)</title>", text).group(1)
+            assert len(title) <= 60, (rel, len(title), title)
+            assert "erranddesk@protonmail.com" in text
+            if rel == "privacy/index.html":
+                assert "Cloudflare Web Analytics" in text
+                assert "Amazon S3" in text and "CloudFront" in text
+                assert "Google Analytics" in text
+                assert 'datetime="2026-11-10"' in text
+                assert "user accounts" in text
+            else:
+                assert "not a government office" in text
+                assert "can't process applications" in text
+                assert 'datetime="2026-11-10"' in text
+            continue
         new = (out / rel).read_bytes()
         if rel == "assets/style.css":
             assert old == new, rel
+            continue
+        if rel == "about/index.html":
+            text = new.decode()
+            assert "corrections contact will be added" not in text
+            assert "erranddesk@protonmail.com" in text
+            assert 'href="/contact/"' in text
             continue
         if rel == "sioux-falls/index.html":
             assert question_faq_html(old.decode()) == question_faq_html(new.decode())
