@@ -237,6 +237,8 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
                 "/knoxville/", "/bangor/", "/columbus-ga/",
             }:
                 assert "Details last checked Nov 9, 2026" in new_x[:160], (url, new_x[:160])
+            elif url == "/hartford/":
+                assert "Details last checked Nov 16, 2026" in new_x[:160], (url, new_x[:160])
             else:
                 assert old_x[:120] == new_x[:120], url
             assert len(new_x) > 80, url
@@ -246,7 +248,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
     recheck_paths = {
         "/birmingham/", "/montgomery/", "/phoenix/", "/tucson/",
         "/mesa/", "/gilbert/", "/chandler/", "/sioux-falls/",
-        "/knoxville/", "/bangor/", "/columbus-ga/",
+        "/knoxville/", "/bangor/", "/columbus-ga/", "/hartford/",
     }
     for url in old_by:
         if url in changed_urls or url in recheck_paths or url in {"/about/", "/contact/"}:
@@ -351,6 +353,7 @@ def check_site(out):
         "https://erranddesk.com/knoxville/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/bangor/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/columbus-ga/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/hartford/": ("2026-11-04", "2026-11-16"),
     }
     for loc, (old_d, new_d) in recheck_lastmod.items():
         assert old_rows[loc] == old_d and new_rows[loc] == new_d, loc
@@ -431,6 +434,11 @@ def check_site(out):
             elif rel == "columbus-ga/index.html":
                 assert "100 10th St., 2nd Floor, Columbus, GA 31901" in text
                 assert "moving this week" not in text
+            continue
+        if rel == "hartford/index.html":
+            text = new.decode()
+            assert 'datetime="2026-11-16"' in text
+            assert "hplct.org/find-borrow/using-your-library/mobile-printing/" in text
             continue
         if norm_published(old) == norm_published(new):
             continue

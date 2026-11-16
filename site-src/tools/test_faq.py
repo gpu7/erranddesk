@@ -219,7 +219,11 @@ def main():
         sm = (out / "sitemap.xml").read_text()
         old_sm = origin_text("sitemap.xml")
         # Privacy, contact, and the About lastmod are already on origin/main (#352).
-        assert sm == old_sm
+        # Hartford lastmod moves with the Nov 16, 2026 recheck citation fix.
+        assert sm.replace(
+            "<loc>https://erranddesk.com/hartford/</loc><lastmod>2026-11-16</lastmod>",
+            "<loc>https://erranddesk.com/hartford/</loc><lastmod>2026-11-04</lastmod>",
+        ) == old_sm
         print(f"added questions {added_questions}; expanded answers {expanded}")
     print("ok")
 
