@@ -433,6 +433,7 @@ def check_site(out, graph):
         "https://erranddesk.com/knoxville/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/bangor/": ("2026-11-09", "2026-11-09"),
         "https://erranddesk.com/columbus-ga/": ("2026-11-09", "2026-11-09"),
+        "https://erranddesk.com/hartford/": ("2026-11-04", "2026-11-16"),
     }
     new_by_loc = dict(new_rows)
     policy_lastmod = {
@@ -477,6 +478,13 @@ def check_site(out, graph):
             assert_recheck_c1_browser(html, old, slug)
         elif slug in {"knoxville", "bangor", "columbus-ga"}:
             assert_nov9_city_facts(html, old, slug)
+        elif slug == "hartford":
+            # CT/CA/CO/DE quarterly recheck (Nov 16, 2026): Hartford library mobile-printing URL moved.
+            assert 'Details last checked <time datetime="2026-11-16">Nov 16, 2026</time>' in html
+            assert '"dateModified": "2026-11-16"' in html
+            assert "hplct.org/find-borrow/using-your-library/mobile-printing/" in html
+            assert "www.hplct.org/using-your-library/wirelessprinting" not in html
+            assert re.search(r"<title>(.*?)</title>", html).group(1) == re.search(r"<title>(.*?)</title>", old).group(1)
         else:
             assert drop_policy_footer(page_outside_faq(html)) == drop_policy_footer(page_outside_faq(old)), slug
             if visible_question_faqs(html) == visible_question_faqs(old):
