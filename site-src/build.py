@@ -5,7 +5,7 @@ optional schema: "website" | "article" | "collection" | "page").
 URL scheme: src/pages/index.html -> /, src/pages/about.html -> /about/,
 src/pages/guides/fax-prices.html -> /guides/fax-prices/, src/pages/guides/index.html -> /guides/.
 Config: site.config.json (base_url, default_lastmod, cf_analytics_token). Env SITE_BASE_URL overrides base_url.
-Also writes public/sitemap.xml, public/robots.txt and public/assets/search-index.json,
+Also writes public/sitemap.xml, public/robots.txt, public/llms.txt and public/assets/search-index.json,
 and copies src/static/* (icons, og-image.png) to the site root.
 Search: every non-noindex page is indexed from its own title, path and body. The search
 form is added only on / and /search/. Other pages do not link the index or the search stylesheet.
@@ -169,6 +169,7 @@ for path, meta, body in pages:
     content = (body.replace("{{search_script}}", f"/assets/search.js?v={JS_V}")
                     .replace("{{search_index}}", f"/assets/search-index.json?v={INDEX_V}"))
     html = (layout.replace("{{title}}", meta["title"]).replace("{{description}}", meta["description"])
+        .replace("{{robots}}", '<meta name="robots" content="noindex">\n' if meta.get("noindex") else "")
         .replace("{{canonical}}", url)
         .replace("{{social}}", social_tags(meta, url))
         .replace("{{jsonld}}", jsonld(meta, content, url, lastmod))
@@ -194,3 +195,60 @@ sm.append("</urlset>")
 (OUT / "sitemap.xml").write_text("\n".join(sm) + "\n")
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}sitemap.xml\n")
 print(f"built sitemap.xml ({len(urls)} urls) and robots.txt, base {BASE}")
+
+# llms.txt: a markdown map for AI crawlers. Built only from the published (non-noindex) pages and
+# cities.json; every sentence below reuses wording that is already on the site (home, About, Contact,
+# city pages). Not linked from any page. Upload with Content-Type text/plain; charset=utf-8.
+def llms_txt():
+    live = {path: (meta, body) for path, meta, body in pages if not meta.get("noindex")}
+    def h1_of(body): return plain(re.search(r"<h1[^>]*>(.*?)</h1>", body, re.S).group(1))
+    def guide_line(path):
+        meta, body = live[path]
+        return f"- [{h1_of(body)}]({BASE}{path}): {meta['description']}"
+    guide_paths = [p for p in live if p.startswith("guides/") and p != "guides/"]
+    index_body = live["guides/"][1]
+    ordered = []
+    for href in re.findall(r'href="/(guides/[^"#?]+/)"', index_body):  # same order as the All guides page
+        if href in guide_paths and href not in ordered: ordered.append(href)
+    ordered += sorted(p for p in guide_paths if p not in ordered)
+    n_cities = sum(1 for c in CITY_LINKS.cities if c["slug"] + "/" in live)
+    states_used = [code for code in CITY_LINKS.states if any(c["state"] == code and c["slug"] + "/" in live for c in CITY_LINKS.cities)]
+    out = [
+        "# Errand Desk", "",
+        "> Plain, sourced answers for everyday US paperwork errands: where to go, what it costs, and what to ask before you drive over. "
+        "Every price links to its source and has a \"last checked\" date. Errand Desk is independent and is not affiliated with any government agency or with the businesses it lists.", "",
+        f"Errand Desk has {len(ordered)} topic guides and {n_cities} city guides covering {len(states_used)} states.", "",
+        "## Root URL", "", BASE.rstrip("/"), "",
+        "## About", "",
+        f"- [About this site and how we check prices]({BASE}about/)",
+        f"- [Affiliate disclosure]({BASE}disclosure/)",
+        f"- [Contact]({BASE}contact/)",
+        f"- [Privacy]({BASE}privacy/)", "",
+        "## How we verify", "",
+        "- We take every price and service detail from the provider's own official page. Where that isn't possible, we use a clearly cited, reputable source and label the figure as reported, not official.",
+        "- Every figure links to its source and carries the date we last checked it.",
+        "- If a provider doesn't publish a national price, we say exactly that. We don't estimate or average prices.",
+        "- Library, bank and single-store prices are examples, not national prices.",
+        "- We don't publish reviews, star ratings or testimonials we haven't verified.",
+        "- Some links are affiliate links, marked \"(paid link)\". Commissions never change the facts, prices or order of options we report.", "",
+        "## Topic guides", "",
+        f"- [All guides]({BASE}guides/)",
+    ] + [guide_line(p) for p in ordered] + [
+        "", "## City guides", "",
+        "Each city guide says where to print, notarize, apply for a passport and get certified copies in that city, using only official and provider pages. Each fact links to its source. Some facts are statewide, countywide or national rather than local, and the page labels those.", "",
+        f"- [Map of our city guides]({BASE}map/)", "",
+    ]
+    for code, state in CITY_LINKS.states.items():
+        cs = sorted((c for c in CITY_LINKS.cities if c["state"] == code and c["slug"] + "/" in live), key=lambda c: (c["name"].lower(), c["slug"]))
+        if not cs: continue
+        out += [f"### {state}", ""] + [f"- [{c['name']}]({BASE}{c['slug']}/)" for c in cs] + [""]
+    out += [
+        "## Not covered / disclaimer", "",
+        "- Errand Desk publishes general information from official pages. We can't process applications, accept filings, or answer questions about a specific case, appointment, or record. Contact the agency or office named on the relevant page.",
+        "- This is general information, not legal advice. Errand Desk is not a government office.",
+        "- Many locations are franchises or set their own prices. Prices and hours change; always confirm with the location before you go.",
+        "- To report something out of date, email erranddesk@protonmail.com with the page URL and a link to the official source.", "",
+    ]
+    return "\n".join(out)
+(OUT / "llms.txt").write_text(llms_txt(), encoding="utf-8")
+print("built llms.txt")

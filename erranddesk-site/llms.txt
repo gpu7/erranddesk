@@ -1,0 +1,477 @@
+# Errand Desk
+
+> Plain, sourced answers for everyday US paperwork errands: where to go, what it costs, and what to ask before you drive over. Every price links to its source and has a "last checked" date. Errand Desk is independent and is not affiliated with any government agency or with the businesses it lists.
+
+Errand Desk has 20 topic guides and 265 city guides covering 50 states.
+
+## Root URL
+
+https://erranddesk.com
+
+## About
+
+- [About this site and how we check prices](https://erranddesk.com/about/)
+- [Affiliate disclosure](https://erranddesk.com/disclosure/)
+- [Contact](https://erranddesk.com/contact/)
+- [Privacy](https://erranddesk.com/privacy/)
+
+## How we verify
+
+- We take every price and service detail from the provider's own official page. Where that isn't possible, we use a clearly cited, reputable source and label the figure as reported, not official.
+- Every figure links to its source and carries the date we last checked it.
+- If a provider doesn't publish a national price, we say exactly that. We don't estimate or average prices.
+- Library, bank and single-store prices are examples, not national prices.
+- We don't publish reviews, star ratings or testimonials we haven't verified.
+- Some links are affiliate links, marked "(paid link)". Commissions never change the facts, prices or order of options we report.
+
+## Topic guides
+
+- [All guides](https://erranddesk.com/guides/)
+- [Where to fax and what it costs: UPS Store vs FedEx Office vs Staples vs your library (2026)](https://erranddesk.com/guides/fax-prices/): Fax prices at The UPS Store, FedEx Office, Staples and public libraries, plus free library options and receiving faxes. Every figure sourced and dated.
+- [Where to get something notarized, and what it costs (2026)](https://erranddesk.com/guides/notary-options/): Where to get a document notarized and what it costs: banks, credit unions, libraries, AAA, The UPS Store and online notary, plus state fee limits.
+- [In-person or remote online notary: how to choose (2026)](https://erranddesk.com/guides/in-person-vs-remote-notary/): How to choose between an in-person notary and remote online notarization: personal appearance, state rules, and what the recipient of the document will accept.
+- [Where to get something notarized for free (2026)](https://erranddesk.com/guides/free-notary/): Free notary options from official pages: Bank of America, Chase, Wells Fargo, U.S. Bank, PNC, TD Bank and Regions, plus credit unions, libraries and AAA.
+- [Mobile notary fees by state: what the law caps (2026)](https://erranddesk.com/guides/mobile-notary/): What a mobile notary is, the most a notary may charge per act or signature in each state, and state travel-fee rules, from official sources.
+- [How to get an FBI background check and fingerprints (2026)](https://erranddesk.com/guides/background-checks/): How to request your own FBI Identity History Summary: the $18 fee, online and mail steps, processing times, fingerprinting and state examples.
+- [Where to get a document notarized and copied in one trip (2026)](https://erranddesk.com/guides/one-stop-errands/): Where to get a document notarized, copied and shipped in one stop: The UPS Store, FedEx Office, banks and public libraries, from official pages.
+- [How to get an apostille: who issues it and what states charge (2026)](https://erranddesk.com/guides/apostille/): How to get an apostille: which documents go to your state or the U.S. Department of State, and what each state charges, from official pages.
+- [Where to get a money order and what it costs (2026)](https://erranddesk.com/guides/money-orders/): Money order fees and limits from official pages: USPS, Walmart, Western Union, MoneyGram and 7-Eleven, plus how to pay, track and cash one.
+- [How to ship a package: USPS, UPS and FedEx basics (2026)](https://erranddesk.com/guides/shipping/): USPS retail shipping prices, how UPS and FedEx price packages, what to bring, free drop-off vs pickup fees, and tracking, from official pages.
+- [USPS Certified Mail, Registered Mail, Return Receipt and PO Boxes (2026)](https://erranddesk.com/guides/usps-services/): USPS Certified Mail, Return Receipt, Registered Mail and Certificate of Mailing prices from Notice 123, plus how PO Box sizes, terms and prices work.
+- [How to get a certified copy of a birth certificate or other record (2026)](https://erranddesk.com/guides/certified-copies/): Where to get certified copies of birth, death, marriage, property and court records, with example fees from state, county and court pages.
+- [How much does it cost to print? Staples vs FedEx Office vs UPS Store vs Office Depot vs your library (2026)](https://erranddesk.com/guides/printing-prices/): Where to print documents and what it costs per page: Staples, FedEx Office, The UPS Store, Office Depot, CVS, Walgreens and free library options.
+- [Library printing: what to bring (2026)](https://erranddesk.com/guides/library-printing/): What to check before printing at a public library: card rules, how the file gets to the printer, paper and payment, and how four library systems handle pickup.
+- [Where to make photocopies: prices and free options (2026)](https://erranddesk.com/guides/photocopies/): Photocopy prices per page at Staples, FedEx Office, The UPS Store, Office Depot, CVS and Walgreens, plus library copiers, from official pages.
+- [Where to scan documents: free and paid options (2026)](https://erranddesk.com/guides/scanning/): Where to scan documents to email or USB, and what it costs: self-service at Staples, FedEx Office and Office Depot; some UPS Stores scan; free library scanners.
+- [Where to shred documents: prices and free options (2026)](https://erranddesk.com/guides/shredding/): Shredding prices per pound at Staples, Office Depot, The UPS Store and FedEx Office, plus free county and credit union shred days, from official pages.
+- [Passport photos: where to get one, what it costs, and the official rules (2026)](https://erranddesk.com/guides/passport-photo-prices/): Passport photo prices at Walmart, USPS, FedEx Office, Walgreens, CVS and The UPS Store, with sources, plus the State Department's official photo rules.
+- [US passport application checklist: what to bring (2026)](https://erranddesk.com/guides/passport-checklist/): What to bring to apply for or renew a US passport: a checklist from official State Department pages, with fees, forms and photocopy rules.
+- [What to expect at a passport acceptance visit (2026)](https://erranddesk.com/guides/passport-acceptance-visit/): What happens at a US passport acceptance visit: an unsigned DS-11, separate facility and State Department payments, and how to check the appointment and photo.
+
+## City guides
+
+Each city guide says where to print, notarize, apply for a passport and get certified copies in that city, using only official and provider pages. Each fact links to its source. Some facts are statewide, countywide or national rather than local, and the page labels those.
+
+- [Map of our city guides](https://erranddesk.com/map/)
+
+### Colorado
+
+- [Arvada](https://erranddesk.com/arvada/)
+- [Aurora](https://erranddesk.com/aurora/)
+- [Boulder](https://erranddesk.com/boulder/)
+- [Broomfield](https://erranddesk.com/broomfield/)
+- [Castle Rock](https://erranddesk.com/castle-rock/)
+- [Centennial](https://erranddesk.com/centennial/)
+- [Colorado Springs](https://erranddesk.com/colorado-springs/)
+- [Commerce City](https://erranddesk.com/commerce-city/)
+- [Denver](https://erranddesk.com/denver/)
+- [Fort Collins](https://erranddesk.com/fort-collins/)
+- [Grand Junction](https://erranddesk.com/grand-junction/)
+- [Greeley](https://erranddesk.com/greeley/)
+- [Lakewood](https://erranddesk.com/lakewood/)
+- [Littleton](https://erranddesk.com/littleton/)
+- [Longmont](https://erranddesk.com/longmont/)
+- [Loveland](https://erranddesk.com/loveland/)
+- [Parker](https://erranddesk.com/parker/)
+- [Pueblo](https://erranddesk.com/pueblo/)
+- [Thornton](https://erranddesk.com/thornton/)
+- [Westminster](https://erranddesk.com/westminster/)
+
+### Wyoming
+
+- [Casper](https://erranddesk.com/casper/)
+- [Cheyenne](https://erranddesk.com/cheyenne/)
+- [Gillette](https://erranddesk.com/gillette/)
+- [Laramie](https://erranddesk.com/laramie/)
+- [Rock Springs](https://erranddesk.com/rock-springs/)
+
+### Utah
+
+- [Provo](https://erranddesk.com/provo/)
+- [Salt Lake City](https://erranddesk.com/salt-lake-city/)
+- [St. George](https://erranddesk.com/st-george/)
+- [West Jordan](https://erranddesk.com/west-jordan/)
+- [West Valley City](https://erranddesk.com/west-valley-city/)
+
+### Nebraska
+
+- [Bellevue](https://erranddesk.com/bellevue/)
+- [Grand Island](https://erranddesk.com/grand-island/)
+- [Kearney](https://erranddesk.com/kearney/)
+- [Lincoln](https://erranddesk.com/lincoln/)
+- [Omaha](https://erranddesk.com/omaha/)
+
+### Kansas
+
+- [Kansas City](https://erranddesk.com/kansas-city/)
+- [Olathe](https://erranddesk.com/olathe/)
+- [Overland Park](https://erranddesk.com/overland-park/)
+- [Topeka](https://erranddesk.com/topeka/)
+- [Wichita](https://erranddesk.com/wichita/)
+
+### New Mexico
+
+- [Albuquerque](https://erranddesk.com/albuquerque/)
+- [Las Cruces](https://erranddesk.com/las-cruces/)
+- [Rio Rancho](https://erranddesk.com/rio-rancho/)
+- [Roswell](https://erranddesk.com/roswell/)
+- [Santa Fe](https://erranddesk.com/santa-fe/)
+
+### Arizona
+
+- [Chandler](https://erranddesk.com/chandler/)
+- [Gilbert](https://erranddesk.com/gilbert/)
+- [Mesa](https://erranddesk.com/mesa/)
+- [Phoenix](https://erranddesk.com/phoenix/)
+- [Tucson](https://erranddesk.com/tucson/)
+
+### South Dakota
+
+- [Aberdeen](https://erranddesk.com/aberdeen/)
+- [Brookings](https://erranddesk.com/brookings/)
+- [Rapid City](https://erranddesk.com/rapid-city/)
+- [Sioux Falls](https://erranddesk.com/sioux-falls/)
+- [Watertown](https://erranddesk.com/watertown/)
+
+### North Dakota
+
+- [Bismarck](https://erranddesk.com/bismarck/)
+- [Fargo](https://erranddesk.com/fargo/)
+- [Grand Forks](https://erranddesk.com/grand-forks/)
+- [Minot](https://erranddesk.com/minot/)
+- [West Fargo](https://erranddesk.com/west-fargo/)
+
+### Montana
+
+- [Billings](https://erranddesk.com/billings/)
+- [Bozeman](https://erranddesk.com/bozeman/)
+- [Butte-Silver Bow](https://erranddesk.com/butte/)
+- [Great Falls](https://erranddesk.com/great-falls/)
+- [Missoula](https://erranddesk.com/missoula/)
+
+### Nevada
+
+- [Henderson](https://erranddesk.com/henderson/)
+- [Las Vegas](https://erranddesk.com/las-vegas/)
+- [North Las Vegas](https://erranddesk.com/north-las-vegas/)
+- [Reno](https://erranddesk.com/reno/)
+- [Sparks](https://erranddesk.com/sparks/)
+
+### Idaho
+
+- [Boise](https://erranddesk.com/boise/)
+- [Caldwell](https://erranddesk.com/caldwell/)
+- [Idaho Falls](https://erranddesk.com/idaho-falls/)
+- [Meridian](https://erranddesk.com/meridian/)
+- [Nampa](https://erranddesk.com/nampa/)
+
+### Washington
+
+- [Bellevue](https://erranddesk.com/bellevue-wa/)
+- [Seattle](https://erranddesk.com/seattle/)
+- [Spokane](https://erranddesk.com/spokane/)
+- [Tacoma](https://erranddesk.com/tacoma/)
+- [Vancouver](https://erranddesk.com/vancouver/)
+
+### Oregon
+
+- [Eugene](https://erranddesk.com/eugene/)
+- [Gresham](https://erranddesk.com/gresham/)
+- [Hillsboro](https://erranddesk.com/hillsboro/)
+- [Portland](https://erranddesk.com/portland/)
+- [Salem](https://erranddesk.com/salem/)
+
+### California
+
+- [Fresno](https://erranddesk.com/fresno/)
+- [Los Angeles](https://erranddesk.com/los-angeles/)
+- [San Diego](https://erranddesk.com/san-diego/)
+- [San Francisco](https://erranddesk.com/san-francisco/)
+- [San Jose](https://erranddesk.com/san-jose/)
+
+### Oklahoma
+
+- [Broken Arrow](https://erranddesk.com/broken-arrow/)
+- [Edmond](https://erranddesk.com/edmond/)
+- [Norman](https://erranddesk.com/norman/)
+- [Oklahoma City](https://erranddesk.com/oklahoma-city/)
+- [Tulsa](https://erranddesk.com/tulsa/)
+
+### Texas
+
+- [Austin](https://erranddesk.com/austin/)
+- [Dallas](https://erranddesk.com/dallas/)
+- [Fort Worth](https://erranddesk.com/fort-worth/)
+- [Houston](https://erranddesk.com/houston/)
+- [San Antonio](https://erranddesk.com/san-antonio/)
+
+### Minnesota
+
+- [Bloomington](https://erranddesk.com/bloomington/)
+- [Duluth](https://erranddesk.com/duluth/)
+- [Minneapolis](https://erranddesk.com/minneapolis/)
+- [Rochester](https://erranddesk.com/rochester/)
+- [St. Paul](https://erranddesk.com/st-paul/)
+
+### Iowa
+
+- [Ankeny](https://erranddesk.com/ankeny/)
+- [Cedar Rapids](https://erranddesk.com/cedar-rapids/)
+- [Davenport](https://erranddesk.com/davenport/)
+- [Des Moines](https://erranddesk.com/des-moines/)
+- [Sioux City](https://erranddesk.com/sioux-city/)
+
+### Missouri
+
+- [Columbia](https://erranddesk.com/columbia/)
+- [Independence](https://erranddesk.com/independence/)
+- [Kansas City](https://erranddesk.com/kansas-city-mo/)
+- [Springfield](https://erranddesk.com/springfield/)
+- [St. Louis](https://erranddesk.com/st-louis/)
+
+### Arkansas
+
+- [Fayetteville](https://erranddesk.com/fayetteville/)
+- [Fort Smith](https://erranddesk.com/fort-smith/)
+- [Jonesboro](https://erranddesk.com/jonesboro/)
+- [Little Rock](https://erranddesk.com/little-rock/)
+- [Springdale](https://erranddesk.com/springdale/)
+
+### Louisiana
+
+- [Baton Rouge](https://erranddesk.com/baton-rouge/)
+- [Lafayette](https://erranddesk.com/lafayette/)
+- [Lake Charles](https://erranddesk.com/lake-charles/)
+- [New Orleans](https://erranddesk.com/new-orleans/)
+- [Shreveport](https://erranddesk.com/shreveport/)
+
+### Wisconsin
+
+- [Green Bay](https://erranddesk.com/green-bay/)
+- [Kenosha](https://erranddesk.com/kenosha/)
+- [Madison](https://erranddesk.com/madison/)
+- [Milwaukee](https://erranddesk.com/milwaukee/)
+- [Racine](https://erranddesk.com/racine/)
+
+### Illinois
+
+- [Aurora](https://erranddesk.com/aurora-il/)
+- [Chicago](https://erranddesk.com/chicago/)
+- [Joliet](https://erranddesk.com/joliet/)
+- [Naperville](https://erranddesk.com/naperville/)
+- [Rockford](https://erranddesk.com/rockford/)
+
+### Mississippi
+
+- [Biloxi](https://erranddesk.com/biloxi/)
+- [Gulfport](https://erranddesk.com/gulfport/)
+- [Hattiesburg](https://erranddesk.com/hattiesburg/)
+- [Jackson](https://erranddesk.com/jackson/)
+- [Southaven](https://erranddesk.com/southaven/)
+
+### Tennessee
+
+- [Chattanooga](https://erranddesk.com/chattanooga/)
+- [Clarksville](https://erranddesk.com/clarksville/)
+- [Knoxville](https://erranddesk.com/knoxville/)
+- [Memphis](https://erranddesk.com/memphis/)
+- [Nashville](https://erranddesk.com/nashville/)
+
+### Kentucky
+
+- [Bowling Green](https://erranddesk.com/bowling-green/)
+- [Covington](https://erranddesk.com/covington/)
+- [Lexington](https://erranddesk.com/lexington/)
+- [Louisville](https://erranddesk.com/louisville/)
+- [Owensboro](https://erranddesk.com/owensboro/)
+
+### Alabama
+
+- [Birmingham](https://erranddesk.com/birmingham/)
+- [Huntsville](https://erranddesk.com/huntsville/)
+- [Mobile](https://erranddesk.com/mobile/)
+- [Montgomery](https://erranddesk.com/montgomery/)
+- [Tuscaloosa](https://erranddesk.com/tuscaloosa/)
+
+### Indiana
+
+- [Carmel](https://erranddesk.com/carmel/)
+- [Evansville](https://erranddesk.com/evansville/)
+- [Fishers](https://erranddesk.com/fishers/)
+- [Fort Wayne](https://erranddesk.com/fort-wayne/)
+- [Indianapolis](https://erranddesk.com/indianapolis/)
+
+### Michigan
+
+- [Ann Arbor](https://erranddesk.com/ann-arbor/)
+- [Detroit](https://erranddesk.com/detroit/)
+- [Grand Rapids](https://erranddesk.com/grand-rapids/)
+- [Sterling Heights](https://erranddesk.com/sterling-heights/)
+- [Warren](https://erranddesk.com/warren/)
+
+### Ohio
+
+- [Akron](https://erranddesk.com/akron/)
+- [Cincinnati](https://erranddesk.com/cincinnati/)
+- [Cleveland](https://erranddesk.com/cleveland/)
+- [Columbus](https://erranddesk.com/columbus/)
+- [Toledo](https://erranddesk.com/toledo/)
+
+### Florida
+
+- [Jacksonville](https://erranddesk.com/jacksonville/)
+- [Miami](https://erranddesk.com/miami/)
+- [Orlando](https://erranddesk.com/orlando/)
+- [Port St. Lucie](https://erranddesk.com/port-st-lucie/)
+- [Tampa](https://erranddesk.com/tampa/)
+
+### Georgia
+
+- [Atlanta](https://erranddesk.com/atlanta/)
+- [Augusta](https://erranddesk.com/augusta/)
+- [Columbus](https://erranddesk.com/columbus-ga/)
+- [Macon](https://erranddesk.com/macon/)
+- [Savannah](https://erranddesk.com/savannah/)
+
+### South Carolina
+
+- [Charleston](https://erranddesk.com/charleston/)
+- [Columbia](https://erranddesk.com/columbia-sc/)
+- [Mount Pleasant](https://erranddesk.com/mount-pleasant/)
+- [North Charleston](https://erranddesk.com/north-charleston/)
+- [Rock Hill](https://erranddesk.com/rock-hill/)
+
+### North Carolina
+
+- [Charlotte](https://erranddesk.com/charlotte/)
+- [Durham](https://erranddesk.com/durham/)
+- [Greensboro](https://erranddesk.com/greensboro/)
+- [Raleigh](https://erranddesk.com/raleigh/)
+- [Winston-Salem](https://erranddesk.com/winston-salem/)
+
+### Virginia
+
+- [Chesapeake](https://erranddesk.com/chesapeake/)
+- [Newport News](https://erranddesk.com/newport-news/)
+- [Norfolk](https://erranddesk.com/norfolk/)
+- [Richmond](https://erranddesk.com/richmond/)
+- [Virginia Beach](https://erranddesk.com/virginia-beach/)
+
+### West Virginia
+
+- [Charleston](https://erranddesk.com/charleston-wv/)
+- [Huntington](https://erranddesk.com/huntington/)
+- [Morgantown](https://erranddesk.com/morgantown/)
+- [Parkersburg](https://erranddesk.com/parkersburg/)
+- [Wheeling](https://erranddesk.com/wheeling/)
+
+### Pennsylvania
+
+- [Allentown](https://erranddesk.com/allentown/)
+- [Erie](https://erranddesk.com/erie/)
+- [Philadelphia](https://erranddesk.com/philadelphia/)
+- [Pittsburgh](https://erranddesk.com/pittsburgh/)
+- [Reading](https://erranddesk.com/reading/)
+
+### Maryland
+
+- [Baltimore](https://erranddesk.com/baltimore/)
+- [Bowie](https://erranddesk.com/bowie/)
+- [Frederick](https://erranddesk.com/frederick/)
+- [Gaithersburg](https://erranddesk.com/gaithersburg/)
+- [Rockville](https://erranddesk.com/rockville/)
+
+### Delaware
+
+- [Dover](https://erranddesk.com/dover/)
+- [Middletown](https://erranddesk.com/middletown/)
+- [Milford](https://erranddesk.com/milford/)
+- [Newark](https://erranddesk.com/newark/)
+- [Wilmington](https://erranddesk.com/wilmington/)
+
+### New Jersey
+
+- [Elizabeth](https://erranddesk.com/elizabeth/)
+- [Jersey City](https://erranddesk.com/jersey-city/)
+- [Newark](https://erranddesk.com/newark-nj/)
+- [Paterson](https://erranddesk.com/paterson/)
+- [Trenton](https://erranddesk.com/trenton/)
+
+### New York
+
+- [Buffalo](https://erranddesk.com/buffalo/)
+- [New York City](https://erranddesk.com/new-york-city/)
+- [Rochester](https://erranddesk.com/rochester-ny/)
+- [Syracuse](https://erranddesk.com/syracuse/)
+- [Yonkers](https://erranddesk.com/yonkers/)
+
+### Connecticut
+
+- [Bridgeport](https://erranddesk.com/bridgeport/)
+- [Hartford](https://erranddesk.com/hartford/)
+- [New Haven](https://erranddesk.com/new-haven/)
+- [Stamford](https://erranddesk.com/stamford/)
+- [Waterbury](https://erranddesk.com/waterbury/)
+
+### Rhode Island
+
+- [Cranston](https://erranddesk.com/cranston/)
+- [East Providence](https://erranddesk.com/east-providence/)
+- [Pawtucket](https://erranddesk.com/pawtucket/)
+- [Providence](https://erranddesk.com/providence/)
+- [Warwick](https://erranddesk.com/warwick/)
+
+### Massachusetts
+
+- [Boston](https://erranddesk.com/boston/)
+- [Cambridge](https://erranddesk.com/cambridge/)
+- [Lowell](https://erranddesk.com/lowell/)
+- [Springfield](https://erranddesk.com/springfield-ma/)
+- [Worcester](https://erranddesk.com/worcester/)
+
+### New Hampshire
+
+- [Concord](https://erranddesk.com/concord/)
+- [Dover](https://erranddesk.com/dover-nh/)
+- [Manchester](https://erranddesk.com/manchester/)
+- [Nashua](https://erranddesk.com/nashua/)
+- [Rochester](https://erranddesk.com/rochester-nh/)
+
+### Vermont
+
+- [Burlington](https://erranddesk.com/burlington/)
+- [Essex Junction](https://erranddesk.com/essex-junction/)
+- [Rutland](https://erranddesk.com/rutland/)
+- [South Burlington](https://erranddesk.com/south-burlington/)
+- [Winooski](https://erranddesk.com/winooski/)
+
+### Maine
+
+- [Auburn](https://erranddesk.com/auburn/)
+- [Bangor](https://erranddesk.com/bangor/)
+- [Lewiston](https://erranddesk.com/lewiston/)
+- [Portland](https://erranddesk.com/portland-me/)
+- [South Portland](https://erranddesk.com/south-portland/)
+
+### Alaska
+
+- [Anchorage](https://erranddesk.com/anchorage/)
+- [Fairbanks](https://erranddesk.com/fairbanks/)
+- [Juneau](https://erranddesk.com/juneau/)
+- [Sitka](https://erranddesk.com/sitka/)
+- [Wasilla](https://erranddesk.com/wasilla/)
+
+### Hawaii
+
+- [East Honolulu](https://erranddesk.com/east-honolulu/)
+- [Hilo](https://erranddesk.com/hilo/)
+- [Honolulu](https://erranddesk.com/honolulu/)
+- [Pearl City](https://erranddesk.com/pearl-city/)
+- [Waipahu](https://erranddesk.com/waipahu/)
+
+## Not covered / disclaimer
+
+- Errand Desk publishes general information from official pages. We can't process applications, accept filings, or answer questions about a specific case, appointment, or record. Contact the agency or office named on the relevant page.
+- This is general information, not legal advice. Errand Desk is not a government office.
+- Many locations are franchises or set their own prices. Prices and hours change; always confirm with the location before you go.
+- To report something out of date, email erranddesk@protonmail.com with the page URL and a link to the official source.
