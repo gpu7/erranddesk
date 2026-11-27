@@ -57,7 +57,8 @@ def with_search_form(html):
 SITE_NAME = "Errand Desk"
 OG_IMAGE = BASE + "og-image.png"
 OG_ALT = "Errand Desk: sourced, dated prices for fax, notary and passport photo errands"
-ORG = {"@type": "Organization", "name": SITE_NAME, "url": BASE}
+CANONICAL = "Plain, sourced answers for everyday US paperwork errands: where to go, what it costs, and what to ask before you drive over."
+ORG = {"@type": "Organization", "name": SITE_NAME, "url": BASE, "description": CANONICAL}
 
 def attr(v): return htmlmod.escape(v, quote=True)
 
@@ -215,7 +216,7 @@ def llms_txt():
     states_used = [code for code in CITY_LINKS.states if any(c["state"] == code and c["slug"] + "/" in live for c in CITY_LINKS.cities)]
     out = [
         "# Errand Desk", "",
-        "> Plain, sourced answers for everyday US paperwork errands: where to go, what it costs, and what to ask before you drive over. "
+        f"> {CANONICAL} "
         "Every price links to its source and has a \"last checked\" date. Errand Desk is independent and is not affiliated with any government agency or with the businesses it lists.", "",
         f"Errand Desk has {len(ordered)} topic guides and {n_cities} city guides covering {len(states_used)} states.", "",
         "## Root URL", "", BASE.rstrip("/"), "",

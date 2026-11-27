@@ -1,6 +1,6 @@
 # Errand Desk
 
-Plain, sourced answers for everyday US paperwork errands: where to go and what it costs to fax, print, get a document notarized, get a passport photo, or get a certified copy. Every figure links to its source and carries a "last checked" date.
+Plain, sourced answers for everyday US paperwork errands: where to go, what it costs, and what to ask before you drive over. Every figure links to its source and carries a "last checked" date.
 
 Live site: https://erranddesk.com
 
