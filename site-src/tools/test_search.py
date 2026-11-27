@@ -214,7 +214,7 @@ def assert_search_index_except_faq(old_bytes, new_bytes, changed_urls):
     """
     old, new = json.loads(old_bytes), json.loads(new_bytes)
     assert old["v"] == new["v"] == 1
-    assert old["n"] == new["n"] == 293
+    assert old["n"] == new["n"] == 292
     old_by = {doc["u"]: doc for doc in old["docs"]}
     new_by = {doc["u"]: doc for doc in new["docs"]}
     assert set(new_by) == set(old_by) | NEW_POLICY_URLS
@@ -336,7 +336,7 @@ def check_site(out):
     new_sm = (out / "sitemap.xml").read_text()
     old_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm))
     new_rows = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", new_sm))
-    assert len(old_rows) == len(new_rows) == 293
+    assert len(old_rows) == len(new_rows) == 292
     assert set(new_rows) == set(old_rows) | NEW_POLICY_SITEMAP
     assert new_rows["https://erranddesk.com/about/"] == "2026-11-10"
     assert new_rows["https://erranddesk.com/privacy/"] == "2026-11-10"

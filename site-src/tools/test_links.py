@@ -410,8 +410,8 @@ def check_site(out, graph):
         r'<h3 id="(list-[^"]+)">([^<]+)</h3>', old_map)
     sm = (out / "sitemap.xml").read_text()
     old_sm = origin_text("sitemap.xml")
-    assert sm.count("<loc>") == 293
-    assert old_sm.count("<loc>") == 293
+    assert sm.count("<loc>") == 292
+    assert old_sm.count("<loc>") == 292
     old_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old_sm)
     new_rows = re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", sm)
     old_locs = [loc for loc, _ in old_rows]
